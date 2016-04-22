@@ -16,10 +16,11 @@
   <meta name="description" content="Posts and writings by Philipp Kats">
 
     
-    
+  <meta name="keywords" content="github, dashboard">
+
   <title>
     City fish
-      </title>
+    &ndash; Dashboard up and running with Github GH_pages  </title>
 
   </head>
 
@@ -58,34 +59,40 @@
     <h3><a href="/dashboard-up-and-running-with-github-gh_pages.html">Dashboard up and running with Github GH_pages</a></h3>
   </div>
   <div class="article_text">
-    <p>Publishing your dashboard straight from github</p>
+    <p>In many cases you want to publish either results of your work, documentation or specific tool in the web. While there are tons of hosting servicces, it is quite convenient to start publishing your static pages, e.g. all html, css and javascript is pre-generated. THis does not mean that data is required to be static: you can point to the outer source of data (which is the best practice anyway).</p>
+<p>Among other advantages of this approach, most useful is that it fully copy with "Continious integration" idea, — you can constantly add new features and work on your project, while (either all or selected) commits will be automatically broadcasted.</p>
+<p>There are two main options of publshing on github: <code>project gh-pages</code> and <code>account page</code>. Obviously, there is room for only one account page, so lets stick with gh-pages. </p>
+<p>So, let's do it:</p>
+<h3>1. create a repo</h3>
+<p>Start with <code>git init</code> in the project folder, then create a repository on the github without anything (nor README nor license), and copy the second option code from new github repo to your command line and execute. check Github.</p>
+<p>OR create a repo  on the github, and clone 
+- <code>git c</code></p>
+<h3>1. populate with content</h3>
+<h3>1. create a gh-pages orphan branch</h3>
+<h3>1. check if broadcasting works</h3>
+<h3>1. if you need, sync main branch push with gh-pages push. This will make each new edit to be broadcasted</h3>
+<p><a href="http://stackoverflow.com/questions/5807459/github-mirroring-gh-pages-to-master/7472481#7472481">source</a>
+Go to the repository <code>.git/config</code>:
+    <code>subl .git/config</code> or <code>nano .git/config</code></p>
+<p>Add the following 2 lines to the [remote "origin"] section:</p>
+<div class="highlight"><pre><span></span>push = +refs/heads/master:refs/heads/gh-pages
+push = +refs/heads/master:refs/heads/master
+</pre></div>
+
+
+<p>And you're done!</p>
   </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
-    <h3><a href="/small-memo-on-development-of-the-package-using-conda-sphynx-and-pyscaffold.html">Small memo on development of the package using conda, sphynx, and pyscaffold</a></h3>
+  <div class="article_meta">
+    <p>Posted on: Fri 22 April 2016</p>
+    <p>Category: <a href="/category/blog.html">blog</a>
+       &ndash; Tags:
+            <a href="/tag/github.html">github</a>,            <a href="/tag/dashboard.html">dashboard</a>                </p>
   </div>
-  <div class="article_text">
-    <p>Creating a proper package repo with conda, pyscaffold, sphinx, git and travis Ci</p>
-  </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
-    <h3><a href="/small-memo-on-development-of-the-package-using-conda-sphynx-and-pyscaffold.html">Small memo on development of the package using conda, sphynx, and pyscaffold</a></h3>
-  </div>
-  <div class="article_text">
-    <p>Creating a proper package repo with conda, pyscaffold, sphinx, git and travis Ci</p>
-  </div>
+
+  
 </article>
 
-    <footer>
-  <div id="paginator">
-
-</div>
-</footer>
-
+        
     <div id="ending_message">
       <p>&copy; Philipp Kats. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. </p>
     </div>

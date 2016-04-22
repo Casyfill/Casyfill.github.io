@@ -16,10 +16,11 @@
   <meta name="description" content="Posts and writings by Philipp Kats">
 
     
-    
+  <meta name="keywords" content="CI, travisCI, conda, pyscaffold">
+
   <title>
     City fish
-      </title>
+    &ndash; Small memo on development of the package using conda, sphynx, and pyscaffold  </title>
 
   </head>
 
@@ -55,37 +56,53 @@
 
     <article>
   <div class="article_title">
-    <h3><a href="/dashboard-up-and-running-with-github-gh_pages.html">Dashboard up and running with Github GH_pages</a></h3>
-  </div>
-  <div class="article_text">
-    <p>Publishing your dashboard straight from github</p>
-  </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
     <h3><a href="/small-memo-on-development-of-the-package-using-conda-sphynx-and-pyscaffold.html">Small memo on development of the package using conda, sphynx, and pyscaffold</a></h3>
   </div>
   <div class="article_text">
-    <p>Creating a proper package repo with conda, pyscaffold, sphinx, git and travis Ci</p>
+    <p>Creating a module might be tedious, especially if we want to test and document it. Fortunately, there is a large set of tools and services that helps us to copy with such a task, installed properly. In fact, once package deployed correctly, everything else is very simple.</p>
+<p>This memo is compiled partly from presentation and tutorial by Mohit Sharma, and several other sources, like <a href="http://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/20/conda/">this</a></p>
+<h2>I. Creating conda environment</h2>
+<ul>
+<li>go to the project folder</li>
+<li>create env: <code>conda create -n yourenvname python=x.x anaconda</code></li>
+<li>activate env: <code>source activate yourenvname</code></li>
+<li>install packages: <code>conda install -n yourenvname [package]</code><ul>
+<li>sphinx: <code>conda install -n yourenvname sphinx</code></li>
+<li>pyscaffold: <code>conda install -n yourenvname -c https://conda.anaconda.org/ioos pyscaffold</code></li>
+<li>setuptools: <code>conda install -n project setuptools</code> </li>
+</ul>
+</li>
+</ul>
+<p>You can also add <a href="https://tox.readthedocs.org/en/latest/">Tox</a> as integration.</p>
+<h2>II. Create sceleton</h2>
+<ul>
+<li>lets generate module seceleton directory: <code>putup -l 'mit' project  --with-travis</code>. Skeleton in this case starts with git initialized and test folder preapared for Travis integration.</li>
+</ul>
+<h2>III. Documentation</h2>
+<ul>
+<li>go to the folder</li>
+<li>run <code>sphinx-quickstart</code> to generate html documentation</li>
+<li>more info <a href="http://www.sphinx-doc.org/en/stable/tutorial.html">here</a></li>
+</ul>
+<h2>IV. Git Repository and Integration</h2>
+<ul>
+<li>now you can create repository on the gitHub and connect to local environment</li>
+<li>to syncronise your repo with travis, comment line31, 32 in <code>tests/travis_install.sh</code></li>
+<li>setup coverall</li>
+<li>enjoy (and start checking the documentation)</li>
+</ul>
   </div>
+  <div class="article_meta">
+    <p>Posted on: Thu 21 April 2016</p>
+    <p>Category: <a href="/category/blog.html">blog</a>
+       &ndash; Tags:
+            <a href="/tag/ci.html">CI</a>,            <a href="/tag/travisci.html">travisCI</a>,            <a href="/tag/conda.html">conda</a>,            <a href="/tag/pyscaffold.html">pyscaffold</a>                </p>
+  </div>
+
+  
 </article>
-<hr />
-<article>
-  <div class="article_title">
-    <h3><a href="/small-memo-on-development-of-the-package-using-conda-sphynx-and-pyscaffold.html">Small memo on development of the package using conda, sphynx, and pyscaffold</a></h3>
-  </div>
-  <div class="article_text">
-    <p>Creating a proper package repo with conda, pyscaffold, sphinx, git and travis Ci</p>
-  </div>
-</article>
 
-    <footer>
-  <div id="paginator">
-
-</div>
-</footer>
-
+        
     <div id="ending_message">
       <p>&copy; Philipp Kats. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. </p>
     </div>
