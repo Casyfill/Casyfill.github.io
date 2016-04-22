@@ -1,9 +1,8 @@
 body {
   margin: 0;
   padding: 0;
-  background-image: "images/background_stripe.png";
-  background-repeat: repeat;
-  /*color: #4d4d4d;*/
+
+  color: #4d4d4d;
   font-family: 'PT Sans', sans-serif;
   font-size: 18px;
 }
@@ -137,7 +136,10 @@ main div#ending_message {
     top: 0;
     left: 0;
     border-right: #eeeeee 1px solid;
+    background-image: url(https://raw.githubusercontent.com/Casyfill/Casyfill.github.io/master/theme/images/background_stripe.png);
+    background-repeat: repeat;
     aside {
+
 
 }
   }
@@ -151,8 +153,14 @@ main div#ending_message {
   aside div#user_meta ul li {
     display: block;
   }
+
+  aside li{
+    background-color: #818181;
+
+  }
   main {
     width: 75%;
+
     position: absolute;
     top: 0;
     left: 25%;
@@ -166,5 +174,3 @@ main div#ending_message {
     border-top: 0;
   }
 }
-
-
