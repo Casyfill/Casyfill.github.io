@@ -1,8 +1,9 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #ffffff;
-  color: #4d4d4d;
+  background-image: "images/background_stripe.png";
+  background-repeat: repeat;
+  /*color: #4d4d4d;*/
   font-family: 'PT Sans', sans-serif;
   font-size: 18px;
 }
@@ -136,6 +137,9 @@ main div#ending_message {
     top: 0;
     left: 0;
     border-right: #eeeeee 1px solid;
+    aside {
+
+}
   }
   aside h2 {
     margin: 10px 0 0 0;
@@ -162,3 +166,5 @@ main div#ending_message {
     border-top: 0;
   }
 }
+
+

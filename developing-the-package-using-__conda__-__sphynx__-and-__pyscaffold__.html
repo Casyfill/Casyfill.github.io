@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Philipp Kats">
+  <meta name="description" content="Posts and writings by Philipp Kats">
+
+
+<meta name="keywords" content="CI, travisCI, conda, pyscaffold">
+
+  <title>
+    City fish
+&ndash; Developing the package using __conda__, __sphynx__, and __pyscaffold__  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="">
+        <img src="/theme/images/logo.png" alt="logo">
+      </a>
+      <h2><a href="">Philipp Kats</a></h2>
+      <p></p>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/projects.html">Projects</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="">Index</a> &brvbar; <a href="/archives.html">Archives</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="/developing-the-package-using-__conda__-__sphynx__-and-__pyscaffold__.html">Developing the package using __conda__, __sphynx__, and __pyscaffold__</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Creating a module might be tedious, especially if we want to test and document it. Fortunately, there is a large set of tools and services that helps us to copy with such a task, installed properly. In fact, once package deployed correctly, everything else is very simple.</p>
+<p>This memo is compiled partly from presentation and tutorial by Mohit Sharma, and several other sources, like <a href="http://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/20/conda/">this</a></p>
+<h2>I. Creating conda environment</h2>
+<ul>
+<li>go to the project folder</li>
+<li>create env: <code>conda create -n yourenvname python=x.x anaconda</code></li>
+<li>activate env: <code>source activate yourenvname</code></li>
+<li>install packages: ``<ul>
+<li>sphinx: <code>conda install -n yourenvname sphinx</code></li>
+<li>pyscaffold: <code>conda install -n yourenvname -c https://conda.anaconda.org/ioos pyscaffold</code></li>
+<li>setuptools: <code>conda install -n project setuptools</code> </li>
+</ul>
+</li>
+</ul>
+<p>You can also add <a href="https://tox.readthedocs.org/en/latest/">Tox</a> as integration.</p>
+<h2>II. Create sceleton</h2>
+<ul>
+<li>lets generate module seceleton directory: <code>putup -l 'mit' project  --with-travis</code>. Skeleton in this case starts with git initialized and test folder preapared for Travis integration.</li>
+</ul>
+<h2>III. Documentation</h2>
+<ul>
+<li>go to the folder</li>
+<li>run <code>sphinx-quickstart</code> to generate html documentation</li>
+<li>more info <a href="http://www.sphinx-doc.org/en/stable/tutorial.html">here</a></li>
+</ul>
+<h2>IV. Git Repository and Integration</h2>
+<ul>
+<li>now you can create repository on the gitHub and connect to local environment</li>
+<li>to syncronise your repo with travis, comment line31, 32 in <code>tests/travis_install.sh</code></li>
+<li>setup coverall</li>
+<li>enjoy (and start checking the documentation)</li>
+</ul>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Thu 21 April 2016</p>
+    <p>Category: <a href="/category/blog.html">blog</a>
+ &ndash; Tags:
+      <a href="/tag/ci.html">CI</a>,      <a href="/tag/travisci.html">travisCI</a>,      <a href="/tag/conda.html">conda</a>,      <a href="/tag/pyscaffold.html">pyscaffold</a>    </p>
+  </div>
+
+
+</article>
+
+
+    <div id="ending_message">
+      <p>&copy; Philipp Kats. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. </p>
+    </div>
+  </main>
+</body>
+</html>
