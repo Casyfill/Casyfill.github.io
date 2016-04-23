@@ -46,7 +46,8 @@ aside div#user_meta ul li a {
   border-radius: 15px;
   -moz-border-radius: 15px;
   -webkit-border-radius: 15px;
-  color: #999999;
+  color: #040404;
+  background-color: #e2dada;
 }
 main header {
   padding: 40px;
@@ -154,10 +155,6 @@ main div#ending_message {
     display: block;
   }
 
-  aside li{
-    background-color: #818181;
-
-  }
   main {
     width: 75%;
 
