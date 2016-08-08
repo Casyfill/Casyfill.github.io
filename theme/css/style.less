@@ -44,7 +44,7 @@ img {
 aside {
   div#user_meta {
     padding: 40px;
-    text-align: center;
+    text-align: right;
 
     h2 {
       margin: 15px 0 5px 0;
@@ -63,18 +63,16 @@ aside {
 
       li {
         display: inline;
-        line-height: 3em;
+
 
         a {
-          padding: 5px 15px 5px 15px;
-          border: 3px solid @light-grey;
-          .border-radius(15px);
-          color: @med-grey;
+          background-color: #000000;
+          color: #ffffff;
         }
       }
     }
   }
-}
+}// XXX:
 
 main {
   header {
@@ -176,12 +174,15 @@ main {
 
 @media screen and (min-width: 1024px) {
   aside {
-    width: 25%;
+    width: 15%;
     height: 100%;
     position: fixed;
     top: 0;
     left: 0;
     border-right: @light-grey 1px solid;
+    aside {
+    background-image: url(images/background_stripe.png);
+    background-repeat: repeat;}
 
     h2 {
       margin: 10px 0 0 0;
