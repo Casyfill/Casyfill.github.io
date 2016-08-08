@@ -123,6 +123,10 @@ main div#ending_message {
   padding: 0 40px 0 40px;
   color: #eeeeee;
   font-size: 10px;
+  height: 30px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 @media screen and (min-width: 1024px) {
   aside {
