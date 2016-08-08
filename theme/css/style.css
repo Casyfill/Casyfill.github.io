@@ -121,7 +121,7 @@ main footer a.button_accent:active {
 main div#ending_message {
   border-top: #eeeeee 1px solid;
   padding: 0 40px 0 40px;
-  color: #999999;
+  color: #eeeeee;
   font-size: 10px;
 }
 @media screen and (min-width: 1024px) {
@@ -153,7 +153,7 @@ main div#ending_message {
     left: 15%;
     overflow-x: hidden;
     overflow-y: hidden;
-    background-color: #aabcc8;
+    background-color: #7e8d8c;
     height:100%;
   }
   main article {
