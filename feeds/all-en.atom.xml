@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>City fish</title><link href="http://casyfill.github.io/" rel="alternate"></link><link href="http://casyfill.github.io/feeds/all-en.atom.xml" rel="self"></link><id>http://casyfill.github.io/</id><updated>2016-04-22T00:00:00-04:00</updated><entry><title>Dashboard up and running. Part I</title><link href="http://casyfill.github.io/dashboard-up-and-running-part-i.html" rel="alternate"></link><updated>2016-04-22T00:00:00-04:00</updated><author><name>Philipp Kats</name></author><id>tag:casyfill.github.io,2016-04-22:dashboard-up-and-running-part-i.html</id><summary type="html">&lt;p&gt;In many cases you want to publish either results of your work, documentation or specific tool in the web. While there are tons of hosting servicces, it is quite convenient to start publishing your static pages, e.g. all html, css and javascript is pre-generated. THis does not mean that data is required to be static: you can point to the outer source of data (which is the best practice anyway).&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>City fish</title><link href="http://casyfill.github.io/" rel="alternate"></link><link href="http://casyfill.github.io/feeds/all-en.atom.xml" rel="self"></link><id>http://casyfill.github.io/</id><updated>2016-04-22T00:00:00-04:00</updated><entry><title>Dashboard up and running. Part I</title><link href="http://casyfill.github.io/dashboard-up-and-running-part-i.html" rel="alternate"></link><updated>2016-04-22T00:00:00-04:00</updated><author><name>Philipp Kats</name></author><id>tag:casyfill.github.io,2016-04-22:dashboard-up-and-running-part-i.html</id><summary type="html">&lt;p&gt;In many cases you want to publish either results of your work, documentation or specific tool in the web. While there are tons of hosting services, it is quite convenient to start publishing your static pages, e.g. all html, css and javascript is pre-generated. This does not mean that data is required to be static: you can point to the outer source of data (which is the best practice anyway).&lt;/p&gt;
 &lt;p&gt;Among other advantages of this approach, most useful is that it fully copy with "Continious integration" idea, — you can constantly add new features and work on your project, while (either all or selected) commits will be automatically broadcasted.&lt;/p&gt;
-&lt;p&gt;There are two main options of publshing on github: &lt;code&gt;project gh-pages&lt;/code&gt; and &lt;code&gt;account page&lt;/code&gt;. Obviously, there is room for only one account page, so lets stick with gh-pages. &lt;/p&gt;
+&lt;p&gt;There are two main options of publshing on github: &lt;code&gt;project gh-pages&lt;/code&gt; and &lt;code&gt;account page&lt;/code&gt;. Obviously, there is room for only one account page, so lets stick with gh-pages.&lt;/p&gt;
 &lt;p&gt;So, let's do it:&lt;/p&gt;
 &lt;h3&gt;1. create a repo&lt;/h3&gt;
 &lt;p&gt;Start with &lt;code&gt;git init&lt;/code&gt; in the project folder, then create a repository on the github without anything (nor README nor license), and copy the second option code from new github repo to your command line and execute. check Github.&lt;/p&gt;
-&lt;p&gt;OR create a repo  on the github, and clone 
+&lt;p&gt;OR create a repo  on the github, and clone
 - &lt;code&gt;git clone your_repo_https_link&lt;/code&gt;&lt;/p&gt;
 &lt;h3&gt;1. populate with content&lt;/h3&gt;
-&lt;h3&gt;1. create a gh-pages orphan branch&lt;/h3&gt;
-&lt;h3&gt;1. check if broadcasting works&lt;/h3&gt;
-&lt;h3&gt;1. if you need, sync main branch push with gh-pages push. This will make each new edit to be broadcasted&lt;/h3&gt;
+&lt;h3&gt;2. create a gh-pages orphan branch&lt;/h3&gt;
+&lt;h3&gt;3. check if broadcasting works&lt;/h3&gt;
+&lt;h3&gt;4. if you need, sync main branch push with gh-pages push. This will make each new edit to be broadcasted&lt;/h3&gt;
 &lt;p&gt;&lt;a href="http://stackoverflow.com/questions/5807459/github-mirroring-gh-pages-to-master/7472481#7472481"&gt;source&lt;/a&gt;
 Go to the repository &lt;code&gt;.git/config&lt;/code&gt;:
     &lt;code&gt;subl .git/config&lt;/code&gt; or &lt;code&gt;nano .git/config&lt;/code&gt;&lt;/p&gt;
