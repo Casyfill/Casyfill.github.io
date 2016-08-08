@@ -154,7 +154,7 @@ main div#ending_message {
     overflow-x: hidden;
     overflow-y: hidden;
     background-color: #7e8d8c;
-    /*height:100%;*/
+    min-height:100%;
   }
   main article {
     max-width: 1040px;
