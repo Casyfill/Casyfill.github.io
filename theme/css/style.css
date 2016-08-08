@@ -136,7 +136,7 @@ main div#ending_message {
     top: 0;
     left: 0;
     border-right: #eeeeee 1px solid;
-    background-image: url(images/background_stripe.png);
+    background-image: url(../images/background_stripe.png);
     background-repeat: repeat;
 }
   }
