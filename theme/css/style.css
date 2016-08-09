@@ -172,5 +172,6 @@ main div#ending_message {
       width: 1024px; /*or any other size*/
       height: 572px; /*or any other size*/
       overflow: hidden;
+      border:none;
    }
 }
