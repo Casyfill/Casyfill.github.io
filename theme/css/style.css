@@ -169,8 +169,8 @@ main div#ending_message {
   }
 
   iframe.noScrolling{
-      width: 1024px; /*or any other size*/
-      height: 572px; /*or any other size*/
+      width: 1024px;
+      height: 540px; 
       overflow: hidden;
       border:none;
    }
