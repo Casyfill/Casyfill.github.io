@@ -167,4 +167,10 @@ main div#ending_message {
   main header {
     border-top: 0;
   }
+
+  iframe.noScrolling{
+      width: 1024px; /*or any other size*/
+      height: 572px; /*or any other size*/
+      overflow: hidden;
+   }
 }
