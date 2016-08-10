@@ -53,91 +53,73 @@
     <h3><a href="../../../../posts/2016/08/just-make-it/">just MAKE it</a></h3>
   </div>
   <div class="article_text">
-    <p>You should always be able to explain what you're doing to your grandma. At least, so do they say.
-However, when your product is literally a bunch of scripts that just DO something, it becomes hard to pass it
-not only to your client or colleague - even by yourself, you'll find it hard to remember all the aspects and commands
-in a few weeks.</p>
-<p>Of course, that is why we use user interfaces - GUI represents all set of commands and operations you have, as well as current status, data, etc, etc. GUI is fun; However, many times, you don't have time nor budget to develop a good one. Because of this, and a few other reasons, you probably want to stick with command line. Yet again, command line is just fine, but it is quite hard to remember and tedious to replicate - if actual process requires a combination of scripts to be run with different settings ( I will definitely write another post on writing your CLI interface with <a href="https://github.com/docopt/docopt">docopts</a> another time). And explaining that to your grandma (colleague, boss, client)... they will definetely remember, who is the source of all this anxiety with commands.</p>
-<p>So, what we gonna do? I'd say, MAKE. Makefiles - tool that is already installed on any mac or linux system. All you have to do, is to create a <code>makefile</code> in the right directory, and then describe all functions within this file. For example,
-concider having a <code>Makefile</code> with this code in your folder:</p>
-<div class="highlight"><pre><span></span>hello:
-    @echo &#39;Hello world!&#39;
-</pre></div>
-
-
-<p>This sequence of command - action has it's own name in Make - <code>rule</code>. Note: the <tab> in the command line is necessary for make to work. Now, enter <code>make hello</code> in the command line. If everything is correct, program will print <code>Hello world!</code> as you'd expect it.</p>
+    <p>You should always be able to explain what you're doing to your grandma.</p>
+<p>At least, so do they say. However, when your product is literally a bunch of scripts that just DO something, it becomes hard to explain how to use it not only to your client or colleague - even by yourself, you'll find it hard to remember all the aspects and commands a few weeks later.</p>
+<p>Of course, that is why we use user interfaces - GUI represents all set of commands and operations you have, as well as current status, data, etc, etc. GUI is fun; Most of the time, however,  you don't have time nor budget to develop a good one.</p>
+<p>Because of this, and a few other reasons, you probably want to stick with command line. Yet again, command line is great, but it is quite hard to remember and tedious to repeat - especially if process requires a combination of scripts to be run with different settings ( I will definitely write another post on writing your CLI interface with <a href="https://github.com/docopt/docopt">docopts</a> another time). And explaining that to your grandma (colleague, boss, client)... they will definitely remember, whom to blame for all this anxiety with commands they have.</p>
+<p>So, what we gonna do? I'd say, MAKE. MAKE is a tool that is preinstalled already on any mac or linux system. All you have to do, is to create a <code>Makefile</code> in the right directory, and then describe all functions - rules -  within this file. For example, consider having a <code>Makefile</code> with this code in your folder:</p>
+<h1>!make</h1>
+<p>hello:
+    @echo 'Hello world!'</p>
+<p>Note: the <tab> in the command line is necessary for make to work. Now, enter <code>make hello</code> in the command line. If everything is correct, program will print <code>Hello world!</code> as you'd expect it.</p>
 <p>Same way, you can run any bash command, python script with parameters, or other tool (think git, for example).
-The beauty is, those commands will work for anyone on any UNIX machine, and the <code>Makefile</code> is simple enough for anyone to reed, what are the commands and what exactly do they do.</p>
+The beauty is, those commands will work for anyone on any UNIX machine, and the <code>Makefile</code> is simple enough for anyone to reed and understand.</p>
 <p>Makefiles were created to simplify compiling C code into binary. Generally, every rule in the Makefile should follow
 this pattern:</p>
-<div class="highlight"><pre><span></span>&lt;target&gt;: &lt;file&gt;
-    &lt;operations&gt; &lt;parameters&gt;
-</pre></div>
-
-
+<h1>!make</h1>
+<p><target>: <file>
+    <operations> <parameters></p>
 <p>However, for our python-data practice, we rarely need target files.
 In fact, as we don't need any files, we should state our commands as .PHONY. A phony target is one that is not really the name of a file; rather it is just a name for a recipe to be executed when you make an explicit request. There are two reasons to use a phony target: to avoid a conflict with a file of the same name, and to improve performance.
 In order to do so, just add a declaration:</p>
-<div class="highlight"><pre><span></span><span class="nl">.PHONY:</span> <span class="nf">hello</span>
-
-<span class="nl">hello:</span>
-    <span class="err">@</span><span class="nf">echo</span> <span class="err">&#39;</span><span class="no">Hello</span> <span class="no">world</span><span class="p">!</span><span class="err">&#39;</span>
-</pre></div>
-
-
+<h1>!make</h1>
+<p>.PHONY: hello</p>
+<p>hello:
+    @echo 'Hello world!'</p>
 <p>You also can define common variables and keep comments (here I use example from GNU Make documentation):</p>
-<div class="highlight"><pre><span></span><span class="c"># target file</span>
-<span class="nv">TARGET</span> <span class="o">=</span> myprog
-
-<span class="nf">all</span><span class="o">:</span> <span class="k">$(</span><span class="nv">TARGET</span><span class="k">)</span>
-  <span class="k">$(</span>TARGET<span class="k">)</span>: <span class="k">$(</span>TARGET<span class="k">)</span>.c
-  <span class="k">$(</span>CC<span class="k">)</span> <span class="k">$(</span>CFLAGS<span class="k">)</span> -o <span class="k">$(</span>TARGET<span class="k">)</span> <span class="k">$(</span>TARGET<span class="k">)</span>.c
-
-<span class="nf">clean</span><span class="o">:</span>
-  <span class="k">$(</span>RM<span class="k">)</span> <span class="k">$(</span>TARGET<span class="k">)</span>
-</pre></div>
-
-
-<p>Sometimes, you want to add a parameter (for example, folder name) from the SHELL; Generally, it is a bad practice, as things start to be complicated again. However, you can declare a variable in the file, then, pass it's value from the shell:</p>
-<div class="highlight"><pre><span></span><span class="p">$</span><span class="nv">make</span><span class="x"> target FOO=bar</span>
-</pre></div>
-
-
+<h1>!make</h1>
+<p># target file
+  TARGET = myprog</p>
+<p>all: $(TARGET)
+    $(TARGET): $(TARGET).c
+    $(CC) $(CFLAGS) -o $(TARGET) $(TARGET).c</p>
+<p>clean:
+    $(RM) $(TARGET)</p>
+<p>Sometimes, you want to add a parameter (for example, folder name) from the shell. Generally, it is a bad practice, as things start to be complicated again. However, you can declare a variable in the file, then pass it's value from the shell:</p>
+<h1>!bash</h1>
+<p>$make target FOO=bar</p>
 <h2>Practice</h2>
-<p>Lets take more practical example: I want to create a template project in my root folder, and I am tired of creating it manually. Lets write the following in our <code>Makefile</code>:</p>
-<div class="highlight"><pre><span></span><span class="nl">.PHONY:</span> <span class="nf">project</span>
-
-<span class="nl">project:</span>
-    <span class="nf">mkdir</span> <span class="no">project</span><span class="err">;</span>
-    <span class="nf">cd</span> <span class="no">project</span><span class="err">;</span> <span class="no">mkdir</span> <span class="no">outbox</span><span class="err">;</span> <span class="no">mkdir</span> <span class="no">inbox</span><span class="err">;</span> <span class="no">mkdir</span> <span class="no">code</span><span class="err">;</span> <span class="no">mkdir</span> <span class="no">data</span><span class="err">;</span> <span class="no">touch</span> <span class="no">README.md</span><span class="err">;</span>
-</pre></div>
-
-
+<p>Lets take more practical example: I want to create a template project in my root folder, and I am tired of doing it manually. Lets write the following in our <code>Makefile</code>:</p>
+<h1>!make</h1>
+<p>.PHONY: project</p>
+<p>project:
+    mkdir project;
+    cd project; mkdir outbox; mkdir inbox; mkdir code; mkdir data; touch README.md;</p>
 <p>And our main command is done. however, if I want to specify another version of template, say, for data visualisation,
 I can add another command:</p>
-<div class="highlight"><pre><span></span><span class="n">project</span><span class="o">:</span>
-    <span class="n">mkdir</span> <span class="n">project</span><span class="o">;</span>
-    <span class="n">cd</span> <span class="n">project</span><span class="o">;</span> <span class="n">mkdir</span> <span class="n">outbox</span><span class="o">;</span> <span class="n">mkdir</span> <span class="n">inbox</span><span class="o">;</span> <span class="n">mkdir</span> <span class="n">code</span><span class="o">;</span> <span class="n">mkdir</span> <span class="n">data</span><span class="o">;</span> <span class="n">touch</span> <span class="n">README</span><span class="o">.</span><span class="na">md</span><span class="o">;</span>
-
-<span class="n">dataviz</span><span class="o">:</span> <span class="n">project</span><span class="o">;</span>
-    <span class="n">cd</span> <span class="n">project</span><span class="o">;</span> <span class="n">mkdir</span> <span class="n">assets</span><span class="o">;</span> <span class="n">cd</span> <span class="n">assets</span><span class="o">;</span> <span class="n">mkdir</span> <span class="n">fonts</span><span class="o">;</span> <span class="n">mkdir</span> <span class="n">img</span><span class="o">;</span> <span class="n">mkdir</span> <span class="n">icons</span><span class="o">;</span>
-    <span class="n">cd</span> <span class="n">project</span><span class="o">;</span> <span class="n">mkdir</span> <span class="n">js</span><span class="o">;</span> <span class="n">cd</span> <span class="n">js</span><span class="o">;</span> <span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="err">@</span><span class="n">github</span><span class="o">.</span><span class="na">com</span><span class="o">:</span><span class="n">d3</span><span class="o">/</span><span class="n">d3</span><span class="o">.</span><span class="na">git</span><span class="o">;</span>
-</pre></div>
-
-
+<h1>!make</h1>
+<p>project:
+    mkdir project;
+    cd project; mkdir outbox; mkdir inbox; mkdir code; mkdir data; touch README.md;</p>
+<p>dataviz: project;
+    cd project; mkdir assets; cd assets; mkdir fonts; mkdir img; mkdir icons;
+    cd project; mkdir js; cd js; git clone git@github.com:d3/d3.git;</p>
 <p>And now we have another template, which adds D3 library. NOTE: It might be more sufficient to define your templates as different branches of the same repository on the github, and use Makefile just as an interface to clone them and drop the git link.</p>
-<p>Similarly, you can wrap your complex data product into bunch of simple commands.
-My Foursquare scraper, for example, is described with:
-- print status
-- run scraper
-- dump data to csv
-- clean all data
-- report data statistics
-- show a log</p>
+<p>Similarly, you can wrap your complex data product into bunch of simple commands. My Foursquare scraper, for example, is described with:</p>
+<ul>
+<li>print status</li>
+<li>run scraper</li>
+<li>dump data to csv</li>
+<li>clean all data</li>
+<li>report data statistics</li>
+<li>show a log</li>
+</ul>
 <p>Of course, this interface does not reduce your actual flexibility, as code is unchanged - you only define the most common cases.</p>
-<p>For more information on Makefiles, check
-- <a href="http://mrbook.org/blog/tutorials/make/">Makefiles. Tutorial by example</a>
-- <a href="https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_makefiles.html">GNU: Using make and writing Makefiles</a></p>
+<p>For more information on Makefiles, check</p>
+<ul>
+<li><a href="http://mrbook.org/blog/tutorials/make/">Makefiles. Tutorial by example</a></li>
+<li><a href="https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_makefiles.html">GNU: Using make and writing Makefiles</a></li>
+</ul>
   </div>
   <div class="article_meta">
     <p>Posted on: Wed 10 August 2016</p>
