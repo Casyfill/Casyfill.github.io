@@ -1,5 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>City fish</title><link href="http://casyfill.github.io/" rel="alternate"></link><link href="http://casyfill.github.io/feeds/all-en.atom.xml" rel="self"></link><id>http://casyfill.github.io/</id><updated>2016-04-22T00:00:00-04:00</updated><entry><title>Dashboard up and running. Part I</title><link href="http://casyfill.github.io/posts/2016/04/dashboard-up-and-running-part-i/" rel="alternate"></link><updated>2016-04-22T00:00:00-04:00</updated><author><name>Philipp Kats</name></author><id>tag:casyfill.github.io,2016-04-22:posts/2016/04/dashboard-up-and-running-part-i/</id><summary type="html">&lt;p&gt;In many cases you want to publish either results of your work, documentation or specific tool in the web. While there are tons of hosting services, it is quite convenient to start publishing your static pages, e.g. all html, css and javascript is pre-generated. This does not mean that data is required to be static: you can point to the outer source of data (which is the best practice anyway).&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>City fish</title><link href="http://casyfill.github.io/" rel="alternate"></link><link href="http://casyfill.github.io/feeds/all-en.atom.xml" rel="self"></link><id>http://casyfill.github.io/</id><updated>2016-08-10T00:00:00-04:00</updated><entry><title>just MAKE it</title><link href="http://casyfill.github.io/posts/2016/08/just-make-it/" rel="alternate"></link><updated>2016-08-10T00:00:00-04:00</updated><author><name>Philipp Kats</name></author><id>tag:casyfill.github.io,2016-08-10:posts/2016/08/just-make-it/</id><summary type="html">&lt;p&gt;You should always be able to explain what you're doing to your grandma. At least, so do they say.
+However, when your product is literally a bunch of scripts that just DO something, it becomes hard to pass it
+not only to your client or colleague - even by yourself, you'll find it hard to remember all the aspects and commands
+in a few weeks.&lt;/p&gt;
+&lt;p&gt;Of course, that is why we use user interfaces - GUI represents all set of commands and operations you have, as well as current status, data, etc, etc. GUI is fun; However, many times, you don't have time nor budget to develop a good one. Because of this, and a few other reasons, you probably want to stick with command line. Yet again, command line is just fine, but it is quite hard to remember and tedious to replicate - if actual process requires a combination of scripts to be run with different settings ( I will definitely write another post on writing your CLI interface with &lt;a href="https://github.com/docopt/docopt"&gt;docopts&lt;/a&gt; another time). And explaining that to your grandma (colleague, boss, client)... they will definetely remember, who is the source of all this anxiety with commands.&lt;/p&gt;
+&lt;p&gt;So, what we gonna do? I'd say, MAKE. Makefiles - tool that is already installed on any mac or linux system. All you have to do, is to create a &lt;code&gt;makefile&lt;/code&gt; in the right directory, and then describe all functions within this file. For example,
+concider having a &lt;code&gt;Makefile&lt;/code&gt; with this code in your folder:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;hello:
+    @echo &amp;#39;Hello world!&amp;#39;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This sequence of command - action has it's own name in Make - &lt;code&gt;rule&lt;/code&gt;. Note: the &lt;tab&gt; in the command line is necessary for make to work. Now, enter &lt;code&gt;make hello&lt;/code&gt; in the command line. If everything is correct, program will print &lt;code&gt;Hello world!&lt;/code&gt; as you'd expect it.&lt;/p&gt;
+&lt;p&gt;Same way, you can run any bash command, python script with parameters, or other tool (think git, for example).
+The beauty is, those commands will work for anyone on any UNIX machine, and the &lt;code&gt;Makefile&lt;/code&gt; is simple enough for anyone to reed, what are the commands and what exactly do they do.&lt;/p&gt;
+&lt;p&gt;Makefiles were created to simplify compiling C code into binary. Generally, every rule in the Makefile should follow
+this pattern:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;lt;target&amp;gt;: &amp;lt;file&amp;gt;
+    &amp;lt;operations&amp;gt; &amp;lt;parameters&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;However, for our python-data practice, we rarely need target files.
+In fact, as we don't need any files, we should state our commands as .PHONY. A phony target is one that is not really the name of a file; rather it is just a name for a recipe to be executed when you make an explicit request. There are two reasons to use a phony target: to avoid a conflict with a file of the same name, and to improve performance.
+In order to do so, just add a declaration:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nl"&gt;.PHONY:&lt;/span&gt; &lt;span class="nf"&gt;hello&lt;/span&gt;
+
+&lt;span class="nl"&gt;hello:&lt;/span&gt;
+    &lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="nf"&gt;echo&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="no"&gt;Hello&lt;/span&gt; &lt;span class="no"&gt;world&lt;/span&gt;&lt;span class="p"&gt;!&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You also can define common variables and keep comments (here I use example from GNU Make documentation):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c"&gt;# target file&lt;/span&gt;
+&lt;span class="nv"&gt;TARGET&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; myprog
+
+&lt;span class="nf"&gt;all&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;&lt;span class="nv"&gt;TARGET&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
+  &lt;span class="k"&gt;$(&lt;/span&gt;TARGET&lt;span class="k"&gt;)&lt;/span&gt;: &lt;span class="k"&gt;$(&lt;/span&gt;TARGET&lt;span class="k"&gt;)&lt;/span&gt;.c
+  &lt;span class="k"&gt;$(&lt;/span&gt;CC&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;CFLAGS&lt;span class="k"&gt;)&lt;/span&gt; -o &lt;span class="k"&gt;$(&lt;/span&gt;TARGET&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;TARGET&lt;span class="k"&gt;)&lt;/span&gt;.c
+
+&lt;span class="nf"&gt;clean&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+  &lt;span class="k"&gt;$(&lt;/span&gt;RM&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;TARGET&lt;span class="k"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Sometimes, you want to add a parameter (for example, folder name) from the SHELL; Generally, it is a bad practice, as things start to be complicated again. However, you can declare a variable in the file, then, pass it's value from the shell:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;make&lt;/span&gt;&lt;span class="x"&gt; target FOO=bar&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Practice&lt;/h2&gt;
+&lt;p&gt;Lets take more practical example: I want to create a template project in my root folder, and I am tired of creating it manually. Lets write the following in our &lt;code&gt;Makefile&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nl"&gt;.PHONY:&lt;/span&gt; &lt;span class="nf"&gt;project&lt;/span&gt;
+
+&lt;span class="nl"&gt;project:&lt;/span&gt;
+    &lt;span class="nf"&gt;mkdir&lt;/span&gt; &lt;span class="no"&gt;project&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;
+    &lt;span class="nf"&gt;cd&lt;/span&gt; &lt;span class="no"&gt;project&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt; &lt;span class="no"&gt;mkdir&lt;/span&gt; &lt;span class="no"&gt;outbox&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt; &lt;span class="no"&gt;mkdir&lt;/span&gt; &lt;span class="no"&gt;inbox&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt; &lt;span class="no"&gt;mkdir&lt;/span&gt; &lt;span class="no"&gt;code&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt; &lt;span class="no"&gt;mkdir&lt;/span&gt; &lt;span class="no"&gt;data&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt; &lt;span class="no"&gt;touch&lt;/span&gt; &lt;span class="no"&gt;README.md&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;And our main command is done. however, if I want to specify another version of template, say, for data visualisation,
+I can add another command:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;project&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;mkdir&lt;/span&gt; &lt;span class="n"&gt;project&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;project&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="n"&gt;mkdir&lt;/span&gt; &lt;span class="n"&gt;outbox&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="n"&gt;mkdir&lt;/span&gt; &lt;span class="n"&gt;inbox&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="n"&gt;mkdir&lt;/span&gt; &lt;span class="n"&gt;code&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="n"&gt;mkdir&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="n"&gt;touch&lt;/span&gt; &lt;span class="n"&gt;README&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;md&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+
+&lt;span class="n"&gt;dataviz&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;project&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;project&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="n"&gt;mkdir&lt;/span&gt; &lt;span class="n"&gt;assets&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;assets&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="n"&gt;mkdir&lt;/span&gt; &lt;span class="n"&gt;fonts&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="n"&gt;mkdir&lt;/span&gt; &lt;span class="n"&gt;img&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="n"&gt;mkdir&lt;/span&gt; &lt;span class="n"&gt;icons&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;project&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="n"&gt;mkdir&lt;/span&gt; &lt;span class="n"&gt;js&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;js&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;clone&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;com&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;d3&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;d3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;git&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;And now we have another template, which adds D3 library. NOTE: It might be more sufficient to define your templates as different branches of the same repository on the github, and use Makefile just as an interface to clone them and drop the git link.&lt;/p&gt;
+&lt;p&gt;Similarly, you can wrap your complex data product into bunch of simple commands.
+My Foursquare scraper, for example, is described with:
+- print status
+- run scraper
+- dump data to csv
+- clean all data
+- report data statistics
+- show a log&lt;/p&gt;
+&lt;p&gt;Of course, this interface does not reduce your actual flexibility, as code is unchanged - you only define the most common cases.&lt;/p&gt;
+&lt;p&gt;For more information on Makefiles, check
+- &lt;a href="http://mrbook.org/blog/tutorials/make/"&gt;Makefiles. Tutorial by example&lt;/a&gt;
+- &lt;a href="https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_makefiles.html"&gt;GNU: Using make and writing Makefiles&lt;/a&gt;&lt;/p&gt;</summary><category term="interface"></category><category term="CLI"></category></entry><entry><title>Dashboard up and running. Part I</title><link href="http://casyfill.github.io/posts/2016/04/dashboard-up-and-running-part-i/" rel="alternate"></link><updated>2016-04-22T00:00:00-04:00</updated><author><name>Philipp Kats</name></author><id>tag:casyfill.github.io,2016-04-22:posts/2016/04/dashboard-up-and-running-part-i/</id><summary type="html">&lt;p&gt;In many cases you want to publish either results of your work, documentation or specific tool in the web. While there are tons of hosting services, it is quite convenient to start publishing your static pages, e.g. all html, css and javascript is pre-generated. This does not mean that data is required to be static: you can point to the outer source of data (which is the best practice anyway).&lt;/p&gt;
 &lt;p&gt;Among other advantages of this approach, most useful is that it fully copy with "Continious integration" idea, — you can constantly add new features and work on your project, while (either all or selected) commits will be automatically broadcasted.&lt;/p&gt;
 &lt;p&gt;There are two main options of publshing on github: &lt;code&gt;project gh-pages&lt;/code&gt; and &lt;code&gt;account page&lt;/code&gt;. Obviously, there is room for only one account page, so lets stick with gh-pages.&lt;/p&gt;
 &lt;p&gt;So, let's do it:&lt;/p&gt;
