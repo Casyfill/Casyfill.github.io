@@ -160,11 +160,11 @@ main div#ending_message {
     max-width: 192px;
     text-align: right;
   }
-  aside div#user_meta ul li {
+  aside div#user_meta ul li a {
     display: block;
   }
 
-  side div#user_meta ul li :hover{
+  side div#user_meta ul li a :hover{
     background-color: #d7a613;
     color: #000000;
   }
