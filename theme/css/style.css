@@ -60,8 +60,12 @@ main article {
   padding-left: 40px;
   padding-top: 10px;
   padding-bottom: 10px;
-
 }
+
+main article :hover{
+  background: #f6e46c;
+}
+
 main article div.article_text {
   line-height: 1.375em;
   -webkit-margin-before: 0em;
