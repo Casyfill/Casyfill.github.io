@@ -163,6 +163,11 @@ main div#ending_message {
   aside div#user_meta ul li {
     display: block;
   }
+
+  side div#user_meta ul li :hover{
+    background-color: #d7a613;
+  }
+
   main {
     width: 85%;
     position: absolute;
