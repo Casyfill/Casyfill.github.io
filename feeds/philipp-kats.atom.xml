@@ -61,9 +61,9 @@ In order to do so, just add a declaration:&lt;/p&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;Sometimes, you want to add a parameter (for example, folder name) from the shell. Generally, it is a bad practice, as things start to be complicated again. However, you can declare a variable in the file, then pass it's value from the shell:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;$make&lt;/span&gt; target &lt;span class="nv"&gt;FOO&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;bar
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;$make&lt;/span&gt; target &lt;span class="nv"&gt;FOO&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;bar
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
 
 &lt;h2&gt;Practice&lt;/h2&gt;
 &lt;p&gt;Lets take more practical example: I want to create a template project in my root folder, and I am tired of doing it manually. Lets write the following in our &lt;code&gt;Makefile&lt;/code&gt;:&lt;/p&gt;

@@ -116,9 +116,9 @@ In order to do so, just add a declaration:</p>
 </td></tr></table>
 
 <p>Sometimes, you want to add a parameter (for example, folder name) from the shell. Generally, it is a bad practice, as things start to be complicated again. However, you can declare a variable in the file, then pass it's value from the shell:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nv">$make</span> target <span class="nv">FOO</span><span class="o">=</span>bar
+<div class="highlight"><pre><span></span><span class="nv">$make</span> target <span class="nv">FOO</span><span class="o">=</span>bar
 </pre></div>
-</td></tr></table>
+
 
 <h2>Practice</h2>
 <p>Lets take more practical example: I want to create a template project in my root folder, and I am tired of doing it manually. Lets write the following in our <code>Makefile</code>:</p>
