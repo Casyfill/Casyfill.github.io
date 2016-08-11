@@ -56,54 +56,41 @@
   <div class="article_text">
     <p>You should always be able to explain what you're doing to your grandma.</p>
 <p>To display line numbers, use a path-less shebang instead of colons:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;The path-less shebang syntax *will* show line numbers.&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;The path-less shebang syntax *will* show line numbers.&quot;</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>At least, so do they say. However, when your product is literally a bunch of scripts that just DO something, it becomes hard to explain how to use it not only to your client or colleague - even by yourself, you'll find it hard to remember all the aspects and commands a few weeks later.</p>
 <p>Of course, that is why we use user interfaces - GUI represents all set of commands and operations you have, as well as current status, data, etc, etc. GUI is fun; Most of the time, however,  you don't have time nor budget to develop a good one.</p>
 <p>Because of this, and a few other reasons, you probably want to stick with command line. Yet again, command line is great, but it is quite hard to remember and tedious to repeat - especially if process requires a combination of scripts to be run with different settings ( I will definitely write another post on writing your CLI interface with <a href="https://github.com/docopt/docopt">docopts</a> another time). And explaining that to your grandma (colleague, boss, client)... they will definitely remember, whom to blame for all this anxiety with commands they have.</p>
 <p>So, what we gonna do? I'd say, MAKE. MAKE is a tool that is preinstalled already on any mac or linux system. All you have to do, is to create a <code>Makefile</code> in the right directory, and then describe all functions - rules -  within this file. For example, consider having a <code>Makefile</code> with this code in your folder:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nf">hello</span><span class="o">:</span>
+<div class="highlight"><pre><span></span><span class="nf">hello</span><span class="o">:</span>
     @echo <span class="s1">&#39;Hello world!&#39;</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>Note: the <tab> in the command line is necessary for make to work. Now, enter <code>make hello</code> in the command line. If everything is correct, program will print <code>Hello world!</code> as you'd expect it.</p>
 <p>Same way, you can run any bash command, python script with parameters, or other tool (think git, for example).
 The beauty is, those commands will work for anyone on any UNIX machine, and the <code>Makefile</code> is simple enough for anyone to reed and understand.</p>
 <p>Makefiles were created to simplify compiling C code into binary. Generally, every rule in the Makefile should follow
 this pattern:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nf">target</span><span class="o">:</span> <span class="n">dependencies</span>
+<div class="highlight"><pre><span></span><span class="nf">target</span><span class="o">:</span> <span class="n">dependencies</span>
 <span class="err">[tab]</span> <span class="err">system</span> <span class="err">command</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>However, for our python-data practice, we rarely need target files.
 In fact, as we don't need any files, we should state our commands as .PHONY. A phony target is one that is not really the name of a file; rather it is just a name for a recipe to be executed when you make an explicit request. There are two reasons to use a phony target: to avoid a conflict with a file of the same name, and to improve performance.
 In order to do so, just add a declaration:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nf">.PHONY</span><span class="o">:</span> <span class="n">hello</span>
+<div class="highlight"><pre><span></span><span class="nf">.PHONY</span><span class="o">:</span> <span class="n">hello</span>
 
 <span class="nf">hello</span><span class="o">:</span>
   @echo <span class="s1">&#39;Hello world!&#39;</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>You also can define common variables and keep comments (here I use example from GNU Make documentation):</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c"># target file</span>
+<div class="highlight"><pre><span></span><span class="c"># target file</span>
 <span class="nv">TARGET</span> <span class="o">=</span> myprog
 
 <span class="nf">all</span><span class="o">:</span> <span class="k">$(</span><span class="nv">TARGET</span><span class="k">)</span>
@@ -113,7 +100,7 @@ In order to do so, just add a declaration:</p>
 <span class="nf">clean</span><span class="o">:</span>
   <span class="k">$(</span>RM<span class="k">)</span> <span class="k">$(</span>TARGET<span class="k">)</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>Sometimes, you want to add a parameter (for example, folder name) from the shell. Generally, it is a bad practice, as things start to be complicated again. However, you can declare a variable in the file, then pass it's value from the shell:</p>
 <div class="highlight"><pre><span></span><span class="nv">$make</span> target <span class="nv">FOO</span><span class="o">=</span>bar
@@ -122,27 +109,17 @@ In order to do so, just add a declaration:</p>
 
 <h2>Practice</h2>
 <p>Lets take more practical example: I want to create a template project in my root folder, and I am tired of doing it manually. Lets write the following in our <code>Makefile</code>:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nf">.PHONY</span><span class="o">:</span> <span class="n">project</span>
+<div class="highlight"><pre><span></span><span class="nf">.PHONY</span><span class="o">:</span> <span class="n">project</span>
 
 <span class="nf">project</span><span class="o">:</span>
     mkdir project<span class="p">;</span>
     <span class="nb">cd</span> project<span class="p">;</span> mkdir outbox<span class="p">;</span> mkdir inbox<span class="p">;</span> mkdir code<span class="p">;</span> mkdir data<span class="p">;</span> touch README.md<span class="p">;</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>And our main command is done. however, if I want to specify another version of template, say, for data visualisation,
 I can add another command:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nf">project</span><span class="o">:</span>
+<div class="highlight"><pre><span></span><span class="nf">project</span><span class="o">:</span>
     mkdir project<span class="p">;</span>
     <span class="nb">cd</span> project<span class="p">;</span> mkdir outbox<span class="p">;</span> mkdir inbox<span class="p">;</span> mkdir code<span class="p">;</span> mkdir data<span class="p">;</span> touch README.md<span class="p">;</span>
 
@@ -150,7 +127,7 @@ I can add another command:</p>
     <span class="nb">cd</span> project<span class="p">;</span> mkdir assets<span class="p">;</span> <span class="nb">cd</span> assets<span class="p">;</span> mkdir fonts<span class="p">;</span> mkdir img<span class="p">;</span> mkdir icons<span class="p">;</span>
     <span class="nb">cd</span> project<span class="p">;</span> mkdir js<span class="p">;</span> <span class="nb">cd</span> js<span class="p">;</span> git clone git@github.com:d3/d3.git<span class="p">;</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>And now we have another template, which adds D3 library. NOTE: It might be more sufficient to define your templates as different branches of the same repository on the github, and use Makefile just as an interface to clone them and drop the git link.</p>
 <p>Similarly, you can wrap your complex data product into bunch of simple commands. My Foursquare scraper, for example, is described with:</p>

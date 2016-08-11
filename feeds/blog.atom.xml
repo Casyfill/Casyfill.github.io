@@ -1,54 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>City fish</title><link href="http://casyfill.github.io/" rel="alternate"></link><link href="http://casyfill.github.io/feeds/blog.atom.xml" rel="self"></link><id>http://casyfill.github.io/</id><updated>2016-08-10T00:00:00-04:00</updated><entry><title>just MAKE it</title><link href="http://casyfill.github.io/posts/2016/08/just-make-it/" rel="alternate"></link><updated>2016-08-10T00:00:00-04:00</updated><author><name>Philipp Kats</name></author><id>tag:casyfill.github.io,2016-08-10:posts/2016/08/just-make-it/</id><summary type="html">&lt;p&gt;You should always be able to explain what you're doing to your grandma.&lt;/p&gt;
 &lt;p&gt;To display line numbers, use a path-less shebang instead of colons:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;The path-less shebang syntax *will* show line numbers.&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;The path-less shebang syntax *will* show line numbers.&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
 
 &lt;p&gt;At least, so do they say. However, when your product is literally a bunch of scripts that just DO something, it becomes hard to explain how to use it not only to your client or colleague - even by yourself, you'll find it hard to remember all the aspects and commands a few weeks later.&lt;/p&gt;
 &lt;p&gt;Of course, that is why we use user interfaces - GUI represents all set of commands and operations you have, as well as current status, data, etc, etc. GUI is fun; Most of the time, however,  you don't have time nor budget to develop a good one.&lt;/p&gt;
 &lt;p&gt;Because of this, and a few other reasons, you probably want to stick with command line. Yet again, command line is great, but it is quite hard to remember and tedious to repeat - especially if process requires a combination of scripts to be run with different settings ( I will definitely write another post on writing your CLI interface with &lt;a href="https://github.com/docopt/docopt"&gt;docopts&lt;/a&gt; another time). And explaining that to your grandma (colleague, boss, client)... they will definitely remember, whom to blame for all this anxiety with commands they have.&lt;/p&gt;
 &lt;p&gt;So, what we gonna do? I'd say, MAKE. MAKE is a tool that is preinstalled already on any mac or linux system. All you have to do, is to create a &lt;code&gt;Makefile&lt;/code&gt; in the right directory, and then describe all functions - rules -  within this file. For example, consider having a &lt;code&gt;Makefile&lt;/code&gt; with this code in your folder:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;hello&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;hello&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
     @echo &lt;span class="s1"&gt;&amp;#39;Hello world!&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
 
 &lt;p&gt;Note: the &lt;tab&gt; in the command line is necessary for make to work. Now, enter &lt;code&gt;make hello&lt;/code&gt; in the command line. If everything is correct, program will print &lt;code&gt;Hello world!&lt;/code&gt; as you'd expect it.&lt;/p&gt;
 &lt;p&gt;Same way, you can run any bash command, python script with parameters, or other tool (think git, for example).
 The beauty is, those commands will work for anyone on any UNIX machine, and the &lt;code&gt;Makefile&lt;/code&gt; is simple enough for anyone to reed and understand.&lt;/p&gt;
 &lt;p&gt;Makefiles were created to simplify compiling C code into binary. Generally, every rule in the Makefile should follow
 this pattern:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;target&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;dependencies&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;target&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;dependencies&lt;/span&gt;
 &lt;span class="err"&gt;[tab]&lt;/span&gt; &lt;span class="err"&gt;system&lt;/span&gt; &lt;span class="err"&gt;command&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
 
 &lt;p&gt;However, for our python-data practice, we rarely need target files.
 In fact, as we don't need any files, we should state our commands as .PHONY. A phony target is one that is not really the name of a file; rather it is just a name for a recipe to be executed when you make an explicit request. There are two reasons to use a phony target: to avoid a conflict with a file of the same name, and to improve performance.
 In order to do so, just add a declaration:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2
-3
-4&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;.PHONY&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;hello&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;.PHONY&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;hello&lt;/span&gt;
 
 &lt;span class="nf"&gt;hello&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
   @echo &lt;span class="s1"&gt;&amp;#39;Hello world!&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
 
 &lt;p&gt;You also can define common variables and keep comments (here I use example from GNU Make documentation):&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2
-3
-4
-5
-6
-7
-8
-9&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c"&gt;# target file&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c"&gt;# target file&lt;/span&gt;
 &lt;span class="nv"&gt;TARGET&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; myprog
 
 &lt;span class="nf"&gt;all&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;&lt;span class="nv"&gt;TARGET&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
@@ -58,7 +45,7 @@ In order to do so, just add a declaration:&lt;/p&gt;
 &lt;span class="nf"&gt;clean&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
   &lt;span class="k"&gt;$(&lt;/span&gt;RM&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;TARGET&lt;span class="k"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
 
 &lt;p&gt;Sometimes, you want to add a parameter (for example, folder name) from the shell. Generally, it is a bad practice, as things start to be complicated again. However, you can declare a variable in the file, then pass it's value from the shell:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;$make&lt;/span&gt; target &lt;span class="nv"&gt;FOO&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;bar
@@ -67,27 +54,17 @@ In order to do so, just add a declaration:&lt;/p&gt;
 
 &lt;h2&gt;Practice&lt;/h2&gt;
 &lt;p&gt;Lets take more practical example: I want to create a template project in my root folder, and I am tired of doing it manually. Lets write the following in our &lt;code&gt;Makefile&lt;/code&gt;:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2
-3
-4
-5&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;.PHONY&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;project&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;.PHONY&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;project&lt;/span&gt;
 
 &lt;span class="nf"&gt;project&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
     mkdir project&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="nb"&gt;cd&lt;/span&gt; project&lt;span class="p"&gt;;&lt;/span&gt; mkdir outbox&lt;span class="p"&gt;;&lt;/span&gt; mkdir inbox&lt;span class="p"&gt;;&lt;/span&gt; mkdir code&lt;span class="p"&gt;;&lt;/span&gt; mkdir data&lt;span class="p"&gt;;&lt;/span&gt; touch README.md&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
 
 &lt;p&gt;And our main command is done. however, if I want to specify another version of template, say, for data visualisation,
 I can add another command:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2
-3
-4
-5
-6
-7&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;project&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;project&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
     mkdir project&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="nb"&gt;cd&lt;/span&gt; project&lt;span class="p"&gt;;&lt;/span&gt; mkdir outbox&lt;span class="p"&gt;;&lt;/span&gt; mkdir inbox&lt;span class="p"&gt;;&lt;/span&gt; mkdir code&lt;span class="p"&gt;;&lt;/span&gt; mkdir data&lt;span class="p"&gt;;&lt;/span&gt; touch README.md&lt;span class="p"&gt;;&lt;/span&gt;
 
@@ -95,7 +72,7 @@ I can add another command:&lt;/p&gt;
     &lt;span class="nb"&gt;cd&lt;/span&gt; project&lt;span class="p"&gt;;&lt;/span&gt; mkdir assets&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nb"&gt;cd&lt;/span&gt; assets&lt;span class="p"&gt;;&lt;/span&gt; mkdir fonts&lt;span class="p"&gt;;&lt;/span&gt; mkdir img&lt;span class="p"&gt;;&lt;/span&gt; mkdir icons&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="nb"&gt;cd&lt;/span&gt; project&lt;span class="p"&gt;;&lt;/span&gt; mkdir js&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nb"&gt;cd&lt;/span&gt; js&lt;span class="p"&gt;;&lt;/span&gt; git clone git@github.com:d3/d3.git&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
 
 &lt;p&gt;And now we have another template, which adds D3 library. NOTE: It might be more sufficient to define your templates as different branches of the same repository on the github, and use Makefile just as an interface to clone them and drop the git link.&lt;/p&gt;
 &lt;p&gt;Similarly, you can wrap your complex data product into bunch of simple commands. My Foursquare scraper, for example, is described with:&lt;/p&gt;
