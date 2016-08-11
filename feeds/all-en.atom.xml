@@ -4,27 +4,27 @@
 &lt;p&gt;Of course, that is why we use user interfaces - GUI represents all set of commands and operations you have, as well as current status, data, etc, etc. GUI is fun; Most of the time, however,  you don't have time nor budget to develop a good one.&lt;/p&gt;
 &lt;p&gt;Because of this, and a few other reasons, you probably want to stick with command line. Yet again, command line is great, but it is quite hard to remember and tedious to repeat - especially if process requires a combination of scripts to be run with different settings ( I will definitely write another post on writing your CLI interface with &lt;a href="https://github.com/docopt/docopt"&gt;docopts&lt;/a&gt; another time). And explaining that to your grandma (colleague, boss, client)... they will definitely remember, whom to blame for all this anxiety with commands they have.&lt;/p&gt;
 &lt;p&gt;So, what we gonna do? I'd say, MAKE. MAKE is a tool that is preinstalled already on any mac or linux system. All you have to do, is to create a &lt;code&gt;Makefile&lt;/code&gt; in the right directory, and then describe all functions - rules -  within this file. For example, consider having a &lt;code&gt;Makefile&lt;/code&gt; with this code in your folder:&lt;/p&gt;
-&lt;h1&gt;!make&lt;/h1&gt;
-&lt;p&gt;hello:
+&lt;p&gt;#!make
+  hello:
     @echo 'Hello world!'&lt;/p&gt;
 &lt;p&gt;Note: the &lt;tab&gt; in the command line is necessary for make to work. Now, enter &lt;code&gt;make hello&lt;/code&gt; in the command line. If everything is correct, program will print &lt;code&gt;Hello world!&lt;/code&gt; as you'd expect it.&lt;/p&gt;
 &lt;p&gt;Same way, you can run any bash command, python script with parameters, or other tool (think git, for example).
 The beauty is, those commands will work for anyone on any UNIX machine, and the &lt;code&gt;Makefile&lt;/code&gt; is simple enough for anyone to reed and understand.&lt;/p&gt;
 &lt;p&gt;Makefiles were created to simplify compiling C code into binary. Generally, every rule in the Makefile should follow
 this pattern:&lt;/p&gt;
-&lt;h1&gt;!make&lt;/h1&gt;
-&lt;p&gt;&lt;target&gt;: &lt;file&gt;
-    &lt;operations&gt; &lt;parameters&gt;&lt;/p&gt;
+&lt;p&gt;#!make
+  target: dependencies
+  [tab] system command&lt;/p&gt;
 &lt;p&gt;However, for our python-data practice, we rarely need target files.
 In fact, as we don't need any files, we should state our commands as .PHONY. A phony target is one that is not really the name of a file; rather it is just a name for a recipe to be executed when you make an explicit request. There are two reasons to use a phony target: to avoid a conflict with a file of the same name, and to improve performance.
 In order to do so, just add a declaration:&lt;/p&gt;
-&lt;h1&gt;!make&lt;/h1&gt;
-&lt;p&gt;.PHONY: hello&lt;/p&gt;
+&lt;p&gt;#!make
+  .PHONY: hello&lt;/p&gt;
 &lt;p&gt;hello:
     @echo 'Hello world!'&lt;/p&gt;
 &lt;p&gt;You also can define common variables and keep comments (here I use example from GNU Make documentation):&lt;/p&gt;
-&lt;h1&gt;!make&lt;/h1&gt;
-&lt;p&gt;# target file
+&lt;p&gt;#!make
+  # target file
   TARGET = myprog&lt;/p&gt;
 &lt;p&gt;all: $(TARGET)
     $(TARGET): $(TARGET).c
@@ -32,19 +32,19 @@ In order to do so, just add a declaration:&lt;/p&gt;
 &lt;p&gt;clean:
     $(RM) $(TARGET)&lt;/p&gt;
 &lt;p&gt;Sometimes, you want to add a parameter (for example, folder name) from the shell. Generally, it is a bad practice, as things start to be complicated again. However, you can declare a variable in the file, then pass it's value from the shell:&lt;/p&gt;
-&lt;h1&gt;!bash&lt;/h1&gt;
-&lt;p&gt;$make target FOO=bar&lt;/p&gt;
+&lt;p&gt;#!bash
+  $make target FOO=bar&lt;/p&gt;
 &lt;h2&gt;Practice&lt;/h2&gt;
 &lt;p&gt;Lets take more practical example: I want to create a template project in my root folder, and I am tired of doing it manually. Lets write the following in our &lt;code&gt;Makefile&lt;/code&gt;:&lt;/p&gt;
-&lt;h1&gt;!make&lt;/h1&gt;
-&lt;p&gt;.PHONY: project&lt;/p&gt;
+&lt;p&gt;#!make
+  .PHONY: project&lt;/p&gt;
 &lt;p&gt;project:
     mkdir project;
     cd project; mkdir outbox; mkdir inbox; mkdir code; mkdir data; touch README.md;&lt;/p&gt;
 &lt;p&gt;And our main command is done. however, if I want to specify another version of template, say, for data visualisation,
 I can add another command:&lt;/p&gt;
-&lt;h1&gt;!make&lt;/h1&gt;
-&lt;p&gt;project:
+&lt;p&gt;#!make
+  project:
     mkdir project;
     cd project; mkdir outbox; mkdir inbox; mkdir code; mkdir data; touch README.md;&lt;/p&gt;
 &lt;p&gt;dataviz: project;

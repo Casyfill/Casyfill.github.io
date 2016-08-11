@@ -59,27 +59,27 @@
 <p>Of course, that is why we use user interfaces - GUI represents all set of commands and operations you have, as well as current status, data, etc, etc. GUI is fun; Most of the time, however,  you don't have time nor budget to develop a good one.</p>
 <p>Because of this, and a few other reasons, you probably want to stick with command line. Yet again, command line is great, but it is quite hard to remember and tedious to repeat - especially if process requires a combination of scripts to be run with different settings ( I will definitely write another post on writing your CLI interface with <a href="https://github.com/docopt/docopt">docopts</a> another time). And explaining that to your grandma (colleague, boss, client)... they will definitely remember, whom to blame for all this anxiety with commands they have.</p>
 <p>So, what we gonna do? I'd say, MAKE. MAKE is a tool that is preinstalled already on any mac or linux system. All you have to do, is to create a <code>Makefile</code> in the right directory, and then describe all functions - rules -  within this file. For example, consider having a <code>Makefile</code> with this code in your folder:</p>
-<h1>!make</h1>
-<p>hello:
+<p>#!make
+  hello:
     @echo 'Hello world!'</p>
 <p>Note: the <tab> in the command line is necessary for make to work. Now, enter <code>make hello</code> in the command line. If everything is correct, program will print <code>Hello world!</code> as you'd expect it.</p>
 <p>Same way, you can run any bash command, python script with parameters, or other tool (think git, for example).
 The beauty is, those commands will work for anyone on any UNIX machine, and the <code>Makefile</code> is simple enough for anyone to reed and understand.</p>
 <p>Makefiles were created to simplify compiling C code into binary. Generally, every rule in the Makefile should follow
 this pattern:</p>
-<h1>!make</h1>
-<p><target>: <file>
-    <operations> <parameters></p>
+<p>#!make
+  target: dependencies
+  [tab] system command</p>
 <p>However, for our python-data practice, we rarely need target files.
 In fact, as we don't need any files, we should state our commands as .PHONY. A phony target is one that is not really the name of a file; rather it is just a name for a recipe to be executed when you make an explicit request. There are two reasons to use a phony target: to avoid a conflict with a file of the same name, and to improve performance.
 In order to do so, just add a declaration:</p>
-<h1>!make</h1>
-<p>.PHONY: hello</p>
+<p>#!make
+  .PHONY: hello</p>
 <p>hello:
     @echo 'Hello world!'</p>
 <p>You also can define common variables and keep comments (here I use example from GNU Make documentation):</p>
-<h1>!make</h1>
-<p># target file
+<p>#!make
+  # target file
   TARGET = myprog</p>
 <p>all: $(TARGET)
     $(TARGET): $(TARGET).c
@@ -87,19 +87,19 @@ In order to do so, just add a declaration:</p>
 <p>clean:
     $(RM) $(TARGET)</p>
 <p>Sometimes, you want to add a parameter (for example, folder name) from the shell. Generally, it is a bad practice, as things start to be complicated again. However, you can declare a variable in the file, then pass it's value from the shell:</p>
-<h1>!bash</h1>
-<p>$make target FOO=bar</p>
+<p>#!bash
+  $make target FOO=bar</p>
 <h2>Practice</h2>
 <p>Lets take more practical example: I want to create a template project in my root folder, and I am tired of doing it manually. Lets write the following in our <code>Makefile</code>:</p>
-<h1>!make</h1>
-<p>.PHONY: project</p>
+<p>#!make
+  .PHONY: project</p>
 <p>project:
     mkdir project;
     cd project; mkdir outbox; mkdir inbox; mkdir code; mkdir data; touch README.md;</p>
 <p>And our main command is done. however, if I want to specify another version of template, say, for data visualisation,
 I can add another command:</p>
-<h1>!make</h1>
-<p>project:
+<p>#!make
+  project:
     mkdir project;
     cd project; mkdir outbox; mkdir inbox; mkdir code; mkdir data; touch README.md;</p>
 <p>dataviz: project;
