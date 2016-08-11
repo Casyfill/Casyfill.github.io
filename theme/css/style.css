@@ -61,10 +61,11 @@ main article {
   padding-top: 10px;
   padding-bottom: 10px;
 }
-
+/*
+for now only outlines the text. have to add div to do it properly
 main article :hover{
   background: #f6e46c;
-}
+}*/
 
 main article div.article_text {
   line-height: 1.375em;
