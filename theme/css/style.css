@@ -166,6 +166,7 @@ main div#ending_message {
 
   side div#user_meta ul li :hover{
     background-color: #d7a613;
+    color: #000000;
   }
 
   main {
