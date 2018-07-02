@@ -27,9 +27,9 @@ PYGMENTS_STYLE = 'github'
 DISPLAY_PAGES_ON_MENU = True
 
 # Blogroll
-# LINKS = (('EN', '../index.html'),
-#          ('RU', '../tag/ru.html'),
-#          )
+LINKS = (('EN', '../category/en.html'),
+         ('RU', '../category/ru.html'),
+         )
 
 # Social widget
 SOCIAL = (('github', 'https://github.com/Casyfill'),
