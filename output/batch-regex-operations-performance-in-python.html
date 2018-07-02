@@ -1,0 +1,1143 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="./theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="./theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="./theme/font-awesome/css/font-awesome.min.css">
+
+    <link href="./theme/custom.css" rel="stylesheet">
+
+
+
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+
+
+
+<meta name="author" content="Philipp Kats" />
+<meta name="description" content="There was a discussion recently on whether it is better to use pandas native interface to regex over iterating; As I&#39;ve been able to imagine even more different angles of attack (say, using regex in SQL, or merging all patterns into one), I decided to check out them all and see how performance is different" />
+<meta name="keywords" content="streeteasy, python, pandas, regex, notebook">
+
+<meta property="og:site_name" content="City Fish"/>
+<meta property="og:title" content="Batch Regex operations: performance in python"/>
+<meta property="og:description" content="There was a discussion recently on whether it is better to use pandas native interface to regex over iterating; As I&#39;ve been able to imagine even more different angles of attack (say, using regex in SQL, or merging all patterns into one), I decided to check out them all and see how performance is different"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="./batch-regex-operations-performance-in-python.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2018-06-30 15:01:00-05:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="./author/philipp-kats.html">
+<meta property="article:section" content="en"/>
+<meta property="article:tag" content="streeteasy"/>
+<meta property="article:tag" content="python"/>
+<meta property="article:tag" content="pandas"/>
+<meta property="article:tag" content="regex"/>
+<meta property="article:tag" content="notebook"/>
+<meta property="og:image" content="">
+
+  <title>City Fish &ndash; Batch Regex operations: performance in python</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href=".">
+        <img src="./theme/img/profile.png" alt="" title="">
+      </a>
+      <h1><a href="."></a></h1>
+
+
+      <nav>
+        <ul class="list">
+          <li><a href="./pages/about.html#about">About</a></li>
+
+
+          <li><a href="./categories/"></a></li>
+          <li><a href="./categories/"></a></li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+        <li><a class="sc-github" href="https://github.com/Casyfill" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-linkedin" href="https://www.linkedin.com/in/philipp-kats/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href=".">    Home
+</a>
+
+
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="batch-regex-operations-performance-in-python">Batch Regex operations: performance in python</h1>
+    <p>
+          Posted on Sat 30 June 2018 in <a href="./category/en.html">en</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There was a discussion recently on whether it is better to use pandas native interface to regex over iterating; As I've been able to imagine even more different angles of attack (say, using regex in SQL, or merging all patterns into one), I decided to check out them all and see how performance is different</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="TL;DR;">TL;DR;<a class="anchor-link" href="#TL;DR;">&#182;</a></h4><ul>
+<li>slightly concize version of SE.concessions. <strong>(2 min 42 sec +/- 6 sec)</strong></li>
+<li>merged patterns in each deck and precompiled them <strong>(2min 45s ± 1.26 s)</strong></li>
+<li>Next, we checked how <code>apply</code> behaves <strong>(2min 44s ± 280 ms)</strong></li>
+<li>as well as pandas native <code>str.contains</code> <strong>(2min 39s ± 4 s)</strong></li>
+<li>we also tried to use dask to leverage our multiple cores <strong>(3min 7s ± 31.2 s)</strong> on 3 cores</li>
+<li>and finally, used SQL regex implementations to run computations on the server - was <strong>too long to wait</strong></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>In short, none of the attempts resulted in any significant improvement, likely because all of them use optimized C code under the hood, anyway.
+Yet, vectorized computations results in a way cleaner code.</li>
+<li>Dask's overhead resulted in significant increase for this amount of data.</li>
+<li>Using regex as part of SQL query leads to a very long querying time - of course, with the advantage of machine-independent results</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">SE.sql</span> <span class="k">import</span> <span class="n">_get_DF</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm</span> <span class="k">import</span> <span class="n">tqdm</span>
+<span class="n">tqdm</span><span class="o">.</span><span class="n">pandas</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Q</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;SELECT description, price FROM rentals WHERE</span>
+<span class="s1">       description IS NOT NULL AND</span>
+<span class="s1">       created_at &lt; &#39;2018-01-01&#39; AND created_at &gt; &#39;2015-12-31&#39; &#39;&#39;&#39;</span>
+<span class="n">rentals</span> <span class="o">=</span> <span class="n">_get_DF</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Got {len(rentals):,.0f} listings&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Got 548,159 listings
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rentals</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rentals</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="I.I-Slightly-shorter-implementation-of-SE.concessions">I.I Slightly shorter implementation of SE.concessions<a class="anchor-link" href="#I.I-Slightly-shorter-implementation-of-SE.concessions">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[44]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Patterns for each month (needed for month X free)</span>
+<span class="n">calendar</span> <span class="o">=</span> <span class="s1">&#39;(jan(uary)?)|(feb(ruary)?)|(mar(ch)?)|(apr(il)?)|(may)|(june?)|&#39;</span><span class="o">+</span>\
+           <span class="s1">&#39;(july?)|(aug(ust))|(sept?(ember)?)|(oct(ober)?)|(nov(ember)?)|&#39;</span><span class="o">+</span>\
+           <span class="s1">&#39;(dec(ember)?)&#39;</span>
+
+<span class="c1"># Different ways to state &quot;month&quot;</span>
+<span class="n">month</span> <span class="o">=</span> <span class="n">f</span><span class="s1">&#39;((mo?n?th_?s?_?)|(mo\.?s?\.?)|(</span><span class="si">%s</span><span class="s1">))&#39;</span> <span class="o">%</span> <span class="n">calendar</span>
+
+<span class="c1"># Patterns to determine if rent is discounted, and/or a net effective rent exists</span>
+<span class="n">rent_patterns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;(</span><span class="si">%s</span><span class="s1">|(weeks)|(rent))\s*(rent)?\s*(is)?\s*(are)?\s*((free)|(off(\.|\s))|(\son\s)|(op(\.|\s))|(concession)|(promotion))&#39;</span> <span class="o">%</span> <span class="n">month</span><span class="p">,</span>
+                 <span class="s1">&#39;free\s*((13th)|(thirteenth))?\s*((</span><span class="si">%s</span><span class="s1">)|(weeks)|(rent))&#39;</span> <span class="o">%</span> <span class="n">month</span><span class="p">,</span>
+                 <span class="s1">&#39;net effective&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;rent incentive&#39;</span>
+                <span class="p">]</span>
+
+
+<span class="n">cash_patterns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;((gift)|(prepaid)|(amazon))\s+card&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;free ((.*hd\s?tv)|(amazon prime)|(netflix)|(storage)|(gym membership))&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;((cash)|(\$[0-9]?)) (incentive)|(move in bonus)&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;uber credit&#39;</span><span class="p">]</span>
+
+<span class="n">deposit_patterns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;((reduced)|(no)) (security )?deposit&#39;</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">patterns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;rent&#39;</span><span class="p">:</span><span class="n">rent_patterns</span><span class="p">,</span> 
+            <span class="s2">&quot;cash&quot;</span><span class="p">:</span> <span class="n">cash_patterns</span><span class="p">,</span>
+            <span class="s1">&#39;deposit&#39;</span><span class="p">:</span> <span class="n">deposit_patterns</span><span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">get_rental_concession</span><span class="p">(</span><span class="n">description</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;given a rental listing description, determine whether listing contains</span>
+<span class="sd">        one or more concessions and what type of concessions it contains</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        description(str): listing description</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        ctypes: list of categories of concession contained</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">tags</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">pattern_deck</span> <span class="ow">in</span> <span class="n">patterns</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">pattern</span> <span class="ow">in</span> <span class="n">pattern_deck</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">description</span><span class="p">):</span>
+                <span class="n">tags</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+                <span class="k">break</span>
+    
+    <span class="k">if</span> <span class="n">tags</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">tags</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>(and create a benchmark to check our new code against)</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[48]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">timeit</span> -n1 -r2
+tags = {}
+for i, el in tqdm(rentals[&#39;description&#39;].iteritems()):
+    tags[i] = get_rental_concession(el)
+
+T = pd.Series(tags)
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>548159it [02:48, 3250.46it/s]
+548159it [02:35, 3535.03it/s]
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>2min 42s ± 6.79 s per loop (mean ± std. dev. of 2 runs, 1 loop each)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>let also store one in order to compare with other results</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[49]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tags</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">rentals</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+    <span class="n">tags</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_rental_concession</span><span class="p">(</span><span class="n">el</span><span class="p">)</span>
+
+<span class="n">T</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">tags</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[50]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">T</span><span class="p">[</span><span class="n">T</span><span class="o">.</span><span class="n">notnull</span><span class="p">()]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[50]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>39       {rent}
+40       {rent}
+41       {rent}
+42       {rent}
+43       {rent}
+44       {rent}
+46    {deposit}
+62       {rent}
+64       {rent}
+98       {rent}
+dtype: object</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="1.2-Now,-pattern-decks-are-nice-to-read,-but-perhaps-we-can-merge-them-into-one-pattern-and-pre-compute?">1.2 Now, pattern decks are nice to read, but perhaps we can merge them into one pattern and pre-compute?<a class="anchor-link" href="#1.2-Now,-pattern-decks-are-nice-to-read,-but-perhaps-we-can-merge-them-into-one-pattern-and-pre-compute?">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[115]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">patterns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;rent&#39;</span><span class="p">:</span><span class="n">rent_patterns</span><span class="p">,</span> 
+            <span class="s2">&quot;cash&quot;</span><span class="p">:</span> <span class="n">cash_patterns</span><span class="p">,</span>
+            <span class="s1">&#39;deposit&#39;</span><span class="p">:</span> <span class="n">deposit_patterns</span><span class="p">}</span>
+
+<span class="n">PATTERNS</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="s2">&quot;|&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s2">&quot;(</span><span class="si">{}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">el</span><span class="p">)</span><span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">v</span><span class="p">])</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">patterns</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[60]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">PATTERNS2</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span><span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">PATTERNS</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_rental_concession_2</span><span class="p">(</span><span class="n">description</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;given a rental listing description, determine whether listing contains</span>
+<span class="sd">        one or more concessions and what type of concessions it contains</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        description(str): listing description</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        ctypes: list of categories of concession contained</span>
+<span class="sd">    &#39;&#39;&#39;</span>    
+    <span class="n">tags</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">PATTERNS2</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">description</span><span class="p">)}</span>
+    
+    <span class="k">if</span> <span class="n">tags</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">tags</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note that this is slightly unfair as we also declare patterns dict once, and use set comprehension instead of iteration</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">timeit</span> -n1 -r2
+tags = {}
+for i, el in tqdm(rentals[&#39;description&#39;].iteritems()):
+    tags[i] = get_rental_concession_2(el)
+
+T2 = pd.Series(tags)
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>548159it [02:43, 3345.53it/s]
+548159it [02:46, 3294.80it/s]
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>2min 45s ± 1.26 s per loop (mean ± std. dev. of 2 runs, 1 loop each)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>It seems that there is no difference at all... but function is definitely more consise</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># tags = {}</span>
+<span class="c1"># for i, el in rentals[&#39;description&#39;].iteritems():</span>
+<span class="c1">#     tags[i] = get_rental_concession_2(el)</span>
+
+<span class="c1"># T2 = pd.Series(tags)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="2.-Lets-now-try-using-Apply-instead">2. Lets now try using <em>Apply</em> instead<a class="anchor-link" href="#2.-Lets-now-try-using-Apply-instead">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">timeit</span> -n1 -r2
+T3 = rentals[&#39;description&#39;].progress_apply(get_rental_concession_2)  # replace `progress_apply` with `apply` if you don&#39;t use tqdm
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>100%|██████████| 548159/548159 [02:44&lt;00:00, 3339.04it/s]
+100%|██████████| 548159/548159 [02:44&lt;00:00, 3327.68it/s]</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>2min 44s ± 280 ms per loop (mean ± std. dev. of 2 runs, 1 loop each)
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>It seems to takes absolutely the same amount of time, althrough way easier to read :-)</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="3.-Vectorising">3. Vectorising<a class="anchor-link" href="#3.-Vectorising">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_rental_concession_vec</span><span class="p">(</span><span class="n">dSeries</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;given a rental listing description, determine whether listing contains</span>
+<span class="sd">        one or more concessions and what type of concessions it contains</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        description(str): listing description</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        ctypes: list of categories of concession contained</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="n">k</span><span class="p">:</span><span class="n">dSeries</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">PATTERNS2</span><span class="o">.</span><span class="n">items</span><span class="p">()})</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">timeit</span> -n1 -r2
+T4 = get_rental_concession_vec(rentals[&#39;description&#39;])
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/Users/philippk/anaconda3/envs/py36/lib/python3.6/site-packages/ipykernel_launcher.py:10: UserWarning: This pattern has match groups. To actually get the groups, use str.extract.
+  # Remove the CWD from sys.path while we load stuff.
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>2min 39s ± 4 s per loop (mean ± std. dev. of 2 runs, 1 loop each)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">T4</span> <span class="o">=</span> <span class="n">get_rental_concession_vec</span><span class="p">(</span><span class="n">rentals</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">])</span>
+<span class="n">T4</span><span class="p">[</span><span class="n">T4</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="mi">1</span><span class="p">)]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[19]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>rent</th>
+      <th>cash</th>
+      <th>deposit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>39</th>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="4.-What-if-we-use-dask-to-leverage-our-N-cores?">4. What if we use dask to leverage our N cores?<a class="anchor-link" href="#4.-What-if-we-use-dask-to-leverage-our-N-cores?">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">dask</span> <span class="k">import</span> <span class="n">dataframe</span> <span class="k">as</span> <span class="n">dd</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mr</span> <span class="o">=</span> <span class="n">dd</span><span class="o">.</span><span class="n">from_pandas</span><span class="p">(</span><span class="n">rentals</span><span class="p">,</span> <span class="n">npartitions</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">timeit</span> -n1 -r2
+concessions = mr[&#39;description&#39;].map_partitions(get_rental_concession_vec)
+T5 = concessions.compute()
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/Users/philippk/anaconda3/envs/py36/lib/python3.6/site-packages/ipykernel_launcher.py:10: UserWarning: This pattern has match groups. To actually get the groups, use str.extract.
+  # Remove the CWD from sys.path while we load stuff.
+/Users/philippk/anaconda3/envs/py36/lib/python3.6/site-packages/ipykernel_launcher.py:10: UserWarning: This pattern has match groups. To actually get the groups, use str.extract.
+  # Remove the CWD from sys.path while we load stuff.
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>3min 7s ± 31.2 s per loop (mean ± std. dev. of 2 runs, 1 loop each)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So this was way slower in this case. Probably this can save some time if there is more than a million descriptions.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="5.-using-regex-in-SQL-query-itself?">5. using regex in SQL query itself?<a class="anchor-link" href="#5.-using-regex-in-SQL-query-itself?">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[74]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Q</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;SELECT description, price,</span>
+<span class="s1">       description REGEXP &#39;</span><span class="si">{rent}</span><span class="s1">&#39; as &#39;rent&#39;,</span>
+<span class="s1">       description REGEXP  &#39;</span><span class="si">{cash}</span><span class="s1">&#39; as &#39;cash&#39;, </span>
+<span class="s1">       description REGEXP &#39;</span><span class="si">{deposit}</span><span class="s1">&#39; as &#39;deposit&#39;</span>
+<span class="s1">       FROM rentals WHERE (1</span>
+<span class="s1">       AND description IS NOT NULL</span>
+<span class="s1">       AND created_at &lt; &#39;2018-01-01&#39; AND created_at &gt; &#39;2015-12-31&#39; );&#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">rent</span><span class="o">=</span><span class="n">PATTERNS</span><span class="p">[</span><span class="s1">&#39;rent&#39;</span><span class="p">],</span>
+                                                                                <span class="n">cash</span><span class="o">=</span><span class="n">PATTERNS</span><span class="p">[</span><span class="s1">&#39;cash&#39;</span><span class="p">],</span>
+                                                                                <span class="n">deposit</span><span class="o">=</span><span class="n">PATTERNS</span><span class="p">[</span><span class="s1">&#39;deposit&#39;</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="takes-too-long...">takes too long...<a class="anchor-link" href="#takes-too-long...">&#182;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[78]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## takes too long...</span>
+
+<span class="c1"># %%timeit -n1 -r1 </span>
+<span class="c1"># df2 = _get_DF(Q)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Compare-results">Compare results<a class="anchor-link" href="#Compare-results">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[87]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">altair</span> <span class="k">as</span> <span class="nn">alt</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[129]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
+    <span class="p">{</span><span class="s2">&quot;method&quot;</span><span class="p">:</span><span class="s1">&#39;SE.concessions&#39;</span><span class="p">,</span><span class="s2">&quot;mean&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="o">*</span><span class="mi">60</span> <span class="o">+</span><span class="mi">42</span><span class="p">,</span> <span class="s1">&#39;std&#39;</span><span class="p">:</span> <span class="mf">6.79</span> <span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;method&quot;</span><span class="p">:</span><span class="s1">&#39;pre-compiled&#39;</span><span class="p">,</span><span class="s2">&quot;mean&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="o">*</span><span class="mi">60</span> <span class="o">+</span><span class="mi">45</span><span class="p">,</span> <span class="s1">&#39;std&#39;</span><span class="p">:</span> <span class="mf">1.26</span> <span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;method&quot;</span><span class="p">:</span><span class="s1">&#39;pd.apply&#39;</span><span class="p">,</span><span class="s2">&quot;mean&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="o">*</span><span class="mi">60</span> <span class="o">+</span><span class="mi">44</span><span class="p">,</span> <span class="s1">&#39;std&#39;</span><span class="p">:</span> <span class="o">.</span><span class="mi">28</span> <span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;method&quot;</span><span class="p">:</span><span class="s1">&#39;vectorised&#39;</span><span class="p">,</span><span class="s2">&quot;mean&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="o">*</span><span class="mi">60</span> <span class="o">+</span><span class="mi">39</span><span class="p">,</span> <span class="s1">&#39;std&#39;</span><span class="p">:</span> <span class="mi">4</span> <span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;method&quot;</span><span class="p">:</span><span class="s1">&#39;dask-3&#39;</span><span class="p">,</span><span class="s2">&quot;mean&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="o">*</span><span class="mi">60</span> <span class="o">+</span> <span class="mi">7</span><span class="p">,</span> <span class="s1">&#39;std&#39;</span><span class="p">:</span> <span class="mf">31.2</span> <span class="p">}</span>
+<span class="p">])</span>
+
+
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;low&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;std&#39;</span><span class="p">]</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;high&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;std&#39;</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[130]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bar</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">results</span><span class="p">)</span><span class="o">.</span><span class="n">mark_point</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="s1">&#39;method:N&#39;</span><span class="p">),</span>
+    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;mean:Q&#39;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="s1">&#39;method:N&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">rule</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">results</span><span class="p">)</span><span class="o">.</span><span class="n">mark_rule</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;method:N&#39;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span>
+        <span class="s1">&#39;low&#39;</span><span class="p">,</span>
+        <span class="n">scale</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span><span class="n">zero</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+        <span class="n">axis</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Axis</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;performance, sec&#39;</span><span class="p">)</span>
+    <span class="p">),</span>
+    <span class="n">y2</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Y2</span><span class="p">(</span><span class="s1">&#39;high&#39;</span><span class="p">),</span>
+    <span class="n">color</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="s1">&#39;method:N&#39;</span><span class="p">),</span>
+    <span class="n">size</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+    <span class="n">opacity</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="o">.</span><span class="mi">3</span><span class="p">)</span>
+    
+<span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span>
+    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Text processing&#39;</span>
+<span class="p">)</span>
+
+<span class="n">bar</span> <span class="o">+</span> <span class="n">rule</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[130]:</div>
+
+
+
+
+<div class="output_png output_subarea output_execute_result">
+<img src="data:image/png;base64,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"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Additional-Links">Additional Links<a class="anchor-link" href="#Additional-Links">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://medium.freecodecamp.org/regex-was-taking-5-days-flashtext-does-it-in-15-minutes-55f04411025f">flashtext - faster than regex for hundreds of search words</a></p>
+
+</div>
+</div>
+</div>
+ 
+
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        processEnvironments: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="./tag/streeteasy.html">streeteasy</a>
+      <a href="./tag/python.html">python</a>
+      <a href="./tag/pandas.html">pandas</a>
+      <a href="./tag/regex.html">regex</a>
+      <a href="./tag/notebook.html">notebook</a>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy; Philipp Kats 2018</p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " City Fish ",
+  "url" : ".",
+  "image": "",
+  "description": ""
+}
+</script>
+
+</body>
+</html>
