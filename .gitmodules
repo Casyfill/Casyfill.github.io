@@ -1,0 +1,4 @@
+[submodule "src/Combo"]
+	path = pelican-plugins/ipynb2pelican
+	url = https://github.com/peijunz/ipynb2pelican
+	branch = master
