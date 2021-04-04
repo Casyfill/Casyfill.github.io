@@ -24,8 +24,11 @@ LINKS = (('EN', '../category/en.html'),
          )
 
 # Social widget
-SOCIAL = (('github', 'https://github.com/Casyfill'),
-          ('linkedin', 'https://www.linkedin.com/in/philipp-kats/'),)
+SOCIAL = (
+          ('medium', 'https://medium.com/data-journalism'),
+          ('github', 'https://github.com/Casyfill'),
+          ('linkedin', 'https://www.linkedin.com/in/philipp-kats/'),
+          )
 
 DEFAULT_PAGINATION = 10
 
@@ -38,8 +41,8 @@ PLUGINS = ['ipynb2pelican']             # Name of the plugin
 IGNORE_FILES = ['.ipynb_checkpoints']   # Prevent parsing checkpoints files
 THEME = "./theme"
 STATIC_PATHS = ['static']
-FAVICON = 'img/favicon.ico'
-CUSTOM_CSS = 'custom.css'
+FAVICON = '../theme/img/favicon.ico'
+CUSTOM_CSS = 'theme/stylesheet/custom.css'
 SUMMARY_MAX_LENGTH = 100
 LOAD_CONTENT_CACHE = False
 
