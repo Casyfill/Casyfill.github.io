@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
-from __future__ import unicode_literals
 
 AUTHOR = 'Philipp Kats'
 SITENAME = 'City Fish'
@@ -8,7 +7,8 @@ SITEURL = ''
 
 PATH = 'content'
 
-TIMEZONE = 'EST'
+TIMEZONE = 'America/Detroit'
+
 DEFAULT_LANG = 'en'
 
 # Feed generation is usually not desired when developing
@@ -17,14 +17,6 @@ CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
-
-# FLEX OPTS
-COPYRIGHT_NAME = 'Philipp Kats'
-COPYRIGHT_YEAR = '2018'
-HOME_HIDE_TAGS = True
-MAIN_MENU = True
-PYGMENTS_STYLE = 'github'
-DISPLAY_PAGES_ON_MENU = True
 
 # Blogroll
 LINKS = (('EN', '../category/en.html'),
@@ -35,7 +27,7 @@ LINKS = (('EN', '../category/en.html'),
 SOCIAL = (('github', 'https://github.com/Casyfill'),
           ('linkedin', 'https://www.linkedin.com/in/philipp-kats/'),)
 
-DEFAULT_PAGINATION = 100
+DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
