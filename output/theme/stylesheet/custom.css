@@ -24,6 +24,9 @@ aside nav a {
     color: #ffffff;
 }
 
+aside div img {
+    border-radius: 0px;
+}
 /* notebook */
 
 .prompt {
@@ -43,3 +46,8 @@ aside nav a {
 	background-color: white;
 	font-family: "Input";
 }
+
+/* .social {
+    position: absolute;
+    bottom: 20px;
+} */

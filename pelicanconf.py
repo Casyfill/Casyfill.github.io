@@ -19,8 +19,8 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Blogroll
-LINKS = (('EN', '../category/en.html'),
-         ('RU', '../category/ru.html'),
+LINKS = (('projects', '../category/projects.html'),
+         ('blog', '../category/blog.html'),
          )
 
 # Social widget
