@@ -19,8 +19,8 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Blogroll
-LINKS = (('projects', '../category/projects.html'),
-         ('blog', '../category/blog.html'),
+LINKS = (('Projects', '../category/projects.html'),
+         ('Blog', '../category/blog.html'),
          )
 
 # Social widget
@@ -43,6 +43,7 @@ THEME = "./theme"
 STATIC_PATHS = ['static']
 FAVICON = '../theme/img/favicon.ico'
 CUSTOM_CSS = 'theme/stylesheet/custom.css'
+USE_LESS = True
 SUMMARY_MAX_LENGTH = 100
 LOAD_CONTENT_CACHE = False
 

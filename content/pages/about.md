@@ -11,25 +11,35 @@ As a volunteer and lecturer I have experience teaching in Universities (ITMO, Hi
 
 
 
-## Cool Projects and Stuff
+## Projects and experiments
 
+#### Activity & Events
 - [BranchPoint](http://branchpoint.ru/) project; educational/research project in architectural computations (co-founder)
 - [Nayada Generative Pattern Design](missing)
 - [Strelka Research](missing)
-- [DaDaBlog](missing)
+- [Custom Boundaries](missing)
+- [NYC ViewShed](missing)
+#### Data Visualisation
 - [How Deputies Voted?](missing)
 - [Calculation of Russian Deputies Tax Declarations](missing)
 - [Russia Deputies Clustering](missing)
 - [Singapor Moscow Posters](missing)
-- [Moscow Urban Forum - Mobility Research](missing)
-- [PyCombo - Python Wrapper around Combo Network partition Algorythm](missing)
+
+
+#### Tools & Experiments
+- [PyCombo - Python Wrapper around Combo Network partition Algorythm](https://github.com/Casyfill/pyCombo)
 - [MosPlus](http://casyfill.github.io/mosplus/) (copy-cat of Cris Wong's [PlutoPlus](http://chriswhong.github.io/plutoplus/))
+
+
+## Research & Publications
+
+- [Moscow Urban Forum - Mobility Research](missing)
 - [Learn Python by building Data Science projects](missing)
+- [Grasshopper3D Code brochures](missing)
 
-
-## Publications
-
+#### Papers
 - [Wang L, Qian C, Kats P, Kontokosta C, Sobolevsky S (2017) Structure of 311 service requests as a signature of urban location. PLoS ONE 12(10): e0186314. https://doi.org/10.1371/journal.pone.0186314](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0186314)
 - [Landsman, David, Philipp Kats, Aleksandra Nenko, and Stanislav Sobolevsky. “Zoning of St. Petersburg Through the Prism of Social Activity Networks.” <i>Procedia Computer Science](missing)
-- [Kats, Philipp, Cheng Qian, Constantine Kontokosta, and Stanislav Sobolevsky. “Twitter Activity Timeline as a Signature of Urban Neighborhood](missing)
+- [Kats, Philipp, Cheng Qian, Constantine Kontokosta, and Stanislav Sobolevsky. “Twitter Activity Timeline as a Signature of Urban Neighborhood](https://arxiv.org/abs/1707.06122)
 - [Qian, Cheng, Philipp Kats, Sergey Malinchik, Mark Hoffman, Brian Kettler, Constantine Kontokosta, and Stanislav Sobolevsky. “Geo-Tagged Social Media Data as a Proxy for Urban Mobility]()
+- [Enwei Zhu, Maham Khan, Philipp Kats, Shreya Santosh Bamne, Stanislav Sobolevsky. "Digital Urban Sensing: A Multi-layered Approach"](https://arxiv.org/abs/1809.01280)
