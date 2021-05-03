@@ -1,7 +1,7 @@
 [submodule "pelican-plugins/ipynb2pelican"]
 	path = pelican-plugins/ipynb2pelican
-	url = https://github.com:peijunz/ipynb2pelican
+	url = https://github.com/peijunz/ipynb2pelican.git
 [submodule "theme"]
 	path = theme
-	url = https://github.com/alexandrevicenzi/Flex
+	url = https://github.com/alexandrevicenzi/Flex.git
 	branch = "v2.4.0"
