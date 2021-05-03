@@ -1,4 +1,5 @@
-# blog development readme
+# Personal Blog
+
 
 ### Theme
 
@@ -10,10 +11,6 @@ Using customized [FLEX](https://github.com/alexandrevicenzi/Flex/tree/b3bd59002a
 
 I am thinking of building something around [sidewalklabs](https://sidewalklabs.com/blog/) blog.
 
-
-### Plugins
-
-- [ipynb2pelican](https://github.com/peijunz/ipynb2pelican)
 
 
 ### Dev
