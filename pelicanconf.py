@@ -35,14 +35,14 @@ DEFAULT_PAGINATION = 10
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
 
-MARKUP = ('md', 'ipynb')                # Add 'ipynb'
-PLUGIN_PATHS = ['pelican-plugins']      # Ensure your plugin path is in it
-PLUGINS = ['ipynb2pelican']             # Name of the plugin
+MARKUP = ("md", "ipynb")                # Add 'ipynb'
+from pelican_jupyter import markup as nb_markup
+PLUGINS = [nb_markup]
 IGNORE_FILES = ['.ipynb_checkpoints']   # Prevent parsing checkpoints files
 THEME = "./theme"
 STATIC_PATHS = ['static']
 FAVICON = '../theme/img/favicon.ico'
-CUSTOM_CSS = 'theme/stylesheet/custom.css'
+CUSTOM_CSS = './custom.css'
 USE_LESS = True
 SUMMARY_MAX_LENGTH = 100
 LOAD_CONTENT_CACHE = False
