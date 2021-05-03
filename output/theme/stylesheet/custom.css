@@ -1,0 +1,64 @@
+
+@media screen and (min-width:768px){
+aside {
+	max-width: 220px;
+}
+
+main {
+	left: 220px;
+}
+
+article {
+	margin: 0 3% 2% !important;
+}
+}
+
+aside {
+	background-image: url(../img/background_stripe.png);
+    background-repeat: repeat;
+    border-right: #eeeeee 2px solid;
+}
+
+aside nav li {
+	background-color: #000000;
+	width: 140px;
+    color: #ffffff;
+	margin: auto;
+}
+
+aside div img {
+    border-radius: 0px;
+}
+/* notebook */
+
+.prompt {
+	display: none;
+}
+
+.input_area pre {
+	border-radius:0px;
+	border: 0px;
+	background-color: #eafaff;
+	font-family: "Input";
+	
+}
+
+.output_area pre {
+	border-radius:0px;
+	background-color: white;
+	font-family: "Input";
+}
+
+/* .social {
+    position: absolute;
+    bottom: 20px;
+} */
+
+
+a.sc-medium {
+	background-color: #111010;
+}
+
+a.sc-linkedin {
+	background-color: #111010;
+}
