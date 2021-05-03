@@ -7,7 +7,7 @@ My name is Philipp Kats, I am a data scientist and tinkerer with inerests in HCI
 
 Through my career I worked as Architectural designer (2009-2012), Urban planner, lecturer (2012-2014), Data journalist, project manager at Ria Novosti(2012-2015), Data scientist at StreetEasy (2015-...).
 
-As a volunteer and lecturer I have experience teaching in Universities (ITMO, Highter School of Economics), Hight Schools (Basics of data science), held and organized numerous public workshops and presentations.
+As a volunteer and lecturer I have experience teaching in Universities (ITMO, Highter School of Economics), Hight Schools (Basics of data science), held and organized numerous public workshops and presentations.t -
 
 
 
@@ -24,7 +24,7 @@ As a volunteer and lecturer I have experience teaching in Universities (ITMO, Hi
 - [Moscow Urban Forum - Mobility Research](missing)
 - [PyCombo - Python Wrapper around Combo Network partition Algorythm](missing)
 - [MosPlus](http://casyfill.github.io/mosplus/) (copy-cat of Cris Wong's [PlutoPlus](http://chriswhong.github.io/plutoplus/))
-- [Learn Python by building Data Science projects]()
+- [Learn Python by building Data Science projects](missing)
 
 
 ## Publications
