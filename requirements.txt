@@ -1,4 +1,4 @@
 pelican==4.6.0
-jupyter
+pelican_jupyter==0.10.0
 Markdown==3.3.4
 beautifulsoup4==4.9.3

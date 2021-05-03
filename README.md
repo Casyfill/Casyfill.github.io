@@ -2,7 +2,13 @@
 
 ### Theme
 
-for now I use customized [FLEX](https://github.com/alexandrevicenzi/Flex/tree/b3bd59002a3e85803332c35702d90e1e19ef39b6) theme. I am thinking of building something around [sidewalklabs](https://sidewalklabs.com/blog/) blog.
+Using customized [FLEX](https://github.com/alexandrevicenzi/Flex/tree/b3bd59002a3e85803332c35702d90e1e19ef39b6) theme. 
+
+### Deployment
+- [Github actions](https://github.com/marketplace/actions/github-pages-pelican-build-action)
+
+
+I am thinking of building something around [sidewalklabs](https://sidewalklabs.com/blog/) blog.
 
 
 ### Plugins
