@@ -1,7 +1,7 @@
 Title: About me
 Date: 2020-04-29 00:20
 
-[Download CV TO BE ADDED](assets/cv.pdf)
+[CV](../static/philipp_kats_cv_2016.pdf)
 
 My name is Philipp Kats, I am a data scientist and tinkerer with inerests in HCI, Design, Data Visualisation, Data Journalism, Urban Planning and Architecture. Quite a list. I was born in Kazan, Russia (I usually explain it as roughly "Austin of Russia"), for the last 6 years I learn to be a NewYorker. I hold a BA in Architecture, Masters in Urban Informatics from NYU, and also graduated from [Strelka Institute](https://strelka.com/en), studying under Carlo Ratty and Rem Koolhaas. 
 
