@@ -22,11 +22,14 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+        with:
+          submodules: recursive
       
       - name: GitHub Pages Pelican Build Action
         uses: nelsonjchen/gh-pages-pelican-action@0.1.10
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          PELICAN_THEME_FOLDER: 'theme'
 
   
       
