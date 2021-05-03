@@ -3,7 +3,7 @@
 
 AUTHOR = 'Philipp Kats'
 SITENAME = 'City Fish'
-SITEURL = ''
+SITETITLE = 'Philipp Kats'
 
 PATH = 'content'
 
