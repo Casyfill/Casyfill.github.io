@@ -39,10 +39,11 @@ MARKUP = ("md", "ipynb")                # Add 'ipynb'
 from pelican_jupyter import markup as nb_markup
 PLUGINS = [nb_markup]
 IGNORE_FILES = ['.ipynb_checkpoints']   # Prevent parsing checkpoints files
+
 THEME = "./theme"
 STATIC_PATHS = ['static']
 FAVICON = 'theme/img/favicon.ico'
-CUSTOM_CSS = 'theme/stylesheet/style.less'
+CUSTOM_CSS = 'theme/stylesheet/custom.css'
 USE_LESS = True
 SUMMARY_MAX_LENGTH = 100
 LOAD_CONTENT_CACHE = False
