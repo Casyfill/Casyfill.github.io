@@ -4,6 +4,7 @@ URL:
 save_as: index.html
 
 
+![photo](../static/photo.jpg)
 
 Hi! My name is Philipp Kats, I am a data scientist with focus on product development, spatial and network analysis. I am passionate about building tools, products and processes. I was born in Kazan, Russia, but lived in New York for the past 6 years. I hold a Specialist degree in Architectural design, Masters in Urban Informatics from NYU, also graduated from [Strelka Institute Senseable Moscow Lab](https://strelka.com/en), studying under Carlo Ratty and Rem Koolhaas. 
 
@@ -34,9 +35,9 @@ Through my career I worked as Architectural designer (2009-2012), Urban planner,
 - 2017, The value of Data Science Infrastructure ([slides](https://docs.google.com/presentation/d/1OmNIuGDNARkMqPhO2SMqEzl5DBNXzoYWxVqgyjr1a0s/edit?usp=sharing))
 - NYC ViewShed, ([slides](missing))
 - 2016, CUSP Capstone Presentation ([slides](https://www.dropbox.com/s/si56ccgj32ujbcy/NYPD_Capstone_presentation_45.pdf?dl=0))
-- 2015. Open data and Urban Analytics ([slides](https://www.dropbox.com/s/g7d2pg33r3gn795/2015_03_11_Library.pdf?dl=0), rus)
-- 2012. Digital Footprint of urban spaces. Strelka Midterm Presentation ([slides](https://www.dropbox.com/s/tg4ty5empo0m1v8/2012_02_13_Strelka_Midterm.pdf?dl=0))
-- 2012. City Through Foursquare ([slides](https://www.dropbox.com/s/ao1bcv225u7xnzl/2012_04_14_presentation%20foursquare.pptx?dl=0))
+- 2015, Open data and Urban Analytics ([slides](https://www.dropbox.com/s/g7d2pg33r3gn795/2015_03_11_Library.pdf?dl=0), rus)
+- 2012, Digital Footprint of urban spaces. Strelka Midterm Presentation ([slides](https://www.dropbox.com/s/tg4ty5empo0m1v8/2012_02_13_Strelka_Midterm.pdf?dl=0))
+- 2012, City Through Foursquare ([slides](https://www.dropbox.com/s/ao1bcv225u7xnzl/2012_04_14_presentation%20foursquare.pptx?dl=0))
 
 
 
@@ -57,7 +58,8 @@ Through my career I worked as Architectural designer (2009-2012), Urban planner,
 #### Other Publications
 - [Learn Python by building Data Science projects. Packt Book, 2018](https://www.amazon.com/Learn-Python-Building-Science-Applications/dp/1789535360)
 - [Moscow Urban Forum - Mobility Research, 2014](https://cdn.habidatum.com/Muscovites_Motions_report_ff63ef0601/Muscovites+Motions_report.pdf_Muscovites_Motions_report_ff63ef0601.pdf)
-- Grasshopper3D Code brochures, 2012:
+
+###### Grasshopper3D Code brochures, 2012:
   - [Arrays (rus)](https://app.box.com/file/728833252)
   - [Cross-reference in Grasshopper (rus)](https://app.box.com/file/3319283318?s=1ij9sezypnb96vw7cafy)
   - [All Dashboards (rus)](https://app.box.com/file/462740724)
