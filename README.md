@@ -31,7 +31,7 @@ conda create --name blog python=3.7 pip
 Now, install our dependencies
 ```
 conda activate blog
-pip install -f requirements.txt
+pip install -r requirements.txt
 ```
 
 ###### 3. Build and serve blog locally
