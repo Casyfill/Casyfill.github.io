@@ -43,11 +43,6 @@ Through my career I worked as Architectural designer (2009-2012), Urban planner,
 
 
 
-
-
-
-
-
 #### Papers
 - [Wang L, Qian C, Kats P, Kontokosta C, Sobolevsky S (2017) Structure of 311 service requests as a signature of urban location. PLoS ONE 12(10): e0186314. https://doi.org/10.1371/journal.pone.0186314](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0186314)
 - [Landsman, David, Philipp Kats, Aleksandra Nenko, and Stanislav Sobolevsky. “Zoning of St. Petersburg Through the Prism of Social Activity Networks.” <i>Procedia Computer Science](missing)
@@ -58,9 +53,4 @@ Through my career I worked as Architectural designer (2009-2012), Urban planner,
 #### Other Publications
 - [Learn Python by building Data Science projects. Packt Book, 2018](https://www.amazon.com/Learn-Python-Building-Science-Applications/dp/1789535360)
 - [Moscow Urban Forum - Mobility Research, 2014](https://cdn.habidatum.com/Muscovites_Motions_report_ff63ef0601/Muscovites+Motions_report.pdf_Muscovites_Motions_report_ff63ef0601.pdf)
-
-###### Grasshopper3D Code brochures, 2012:
-  - [Arrays (rus)](https://app.box.com/file/728833252)
-  - [Cross-reference in Grasshopper (rus)](https://app.box.com/file/3319283318?s=1ij9sezypnb96vw7cafy)
-  - [All Dashboards (rus)](https://app.box.com/file/462740724)
 
