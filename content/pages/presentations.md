@@ -3,6 +3,8 @@ Date: 2020-05-02 00:20
 
 
 
+- 2022, Yandex.Q, How to research cities through data? [video](https://www.youtube.com/watch?v=9P0axjVtb8I&fbclid=IwAR18_uBhi9AcUFXHZh-4oshmr3dvbOBIEmmX54FyXtpQqpXTLM5FLNAuJxw), [slides](https://docs.google.com/presentation/d/1AgRUjqhlr7cJt8BXN2u_FymKdUk2JbrPOrwdFTtT7O4/edit?usp=sharing), [event page](https://yandex.ru/promo/q/confarchitecture?fbclid=IwAR1noRDQZyg5fCR3SBajaA0qzjPOLnV8v1EDd8hS84IyEm3KEKAgnQOlUvs)
+- 2022, YakTak, Data science for Urban planners and Architects. [video](https://www.youtube.com/watch?v=uOK_8GPEF8s), [slides](https://docs.google.com/presentation/d/1C4REa8XPzuK1u5fft1TpU5ZhbLYv_2P7XH1hnBMlGJU/edit?usp=sharing)
 - 2021, Data Science in the City ([video (rus)](https://www.youtube.com/watch?v=uOK_8GPEF8s&t=3319s), [slides](https://docs.google.com/presentation/d/1C4REa8XPzuK1u5fft1TpU5ZhbLYv_2P7XH1hnBMlGJU/edit?usp=drive_web&ouid=102999697463608357609))
 - 2018, GeoNYC. Find your spot. Custom boundaries ([slides](https://docs.google.com/presentation/d/1SECOPRQB4gmTur-L67Q9TGDOBC7o5o-IJVgDdb1kDek/edit?usp=sharing), [video](https://www.dropbox.com/s/f5sr5se9bfqqdrl/nyc_datavis_all.mp4?dl=0))
 - 2018, NYC Data Visualization Meetup ([slides](https://docs.google.com/presentation/d/1kc4VsezCkqwyPURjf3Hhp8pxO1cqGmJaXmm4QmPEH7g/edit?usp=sharing))
