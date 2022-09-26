@@ -17,7 +17,6 @@ Through my career I worked as Architectural designer (2009-2012), Urban planner,
 
 - [PyCombo - Python Wrapper around Combo Network partition Algorythm](https://github.com/Casyfill/pyCombo)
 - [MosPlus](http://casyfill.github.io/mosplus/) (copy-cat of Cris Wong's [PlutoPlus](http://chriswhong.github.io/plutoplus/))
-- [DataScheme, dataframe validation tool](https://github.com/Casyfill/dataschema) (WIP)
 - [pdvega, vega driver for pandas](https://github.com/altair-viz/pdvega)
 - [StreetEasy Data Dashboard](https://streeteasy.com/blog/data-dashboard/) (Data Visualisation by Paul Buffa)
 
