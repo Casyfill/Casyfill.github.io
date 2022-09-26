@@ -1,4 +1,5 @@
 pelican[markdown]==4.8.0
+jinja2==3.1.2
 pelican_jupyter==0.10.1
 ipython_genutils==0.2.0
 beautifulsoup4==4.9.3
