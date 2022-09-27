@@ -1,4 +1,4 @@
-Title: Political projects I worked on at Ria Novosti (2013-2015).
+Title: Projects I worked on at Ria Novosti (2013-2015)
 Date: 2020-05-02 00:20
 save_as: projects/ria_novosti_projects.html
 
@@ -58,3 +58,15 @@ Visual representation of the state budget, and a "minigame" / survey on your per
 
 A visual representation of a new "Formula" for official pension (social security payments). Shows how it results in the same amount "on paper", allowing government to pay less over time.
 
+
+## Singapore Urban Forum
+
+![muf](../static/ria/muf.png)
+
+- (Information is beautiful Award)
+[link](https://www.informationisbeautifulawards.com/showcase/563-global-trends-challenging-cities))
+
+4 Posters, telling the story or Moscow's urban development
+
+Design: Nadezhda Andrianova, Maria Miahaylova
+Data, Content: Philipp Kats
