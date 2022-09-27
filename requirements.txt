@@ -1,5 +1,4 @@
 pelican[markdown]==4.8.0
-pelican_jupyter==0.10.1
-nbconvert==7.0.0
-ipython_genutils==0.2.0
-beautifulsoup4==4.9.3
+# ipython_genutils
+# beautifulsoup4==4.9.3
+# pelican_jupyter==0.10.1

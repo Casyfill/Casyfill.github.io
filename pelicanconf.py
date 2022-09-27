@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
+# from pelican_jupyter import markup as nb_markup
 
 AUTHOR = 'Philipp Kats'
 SITENAME = 'City Fish'
@@ -7,7 +8,13 @@ SITETITLE = 'Philipp Kats'
 
 PATH = 'content'
 
-TIMEZONE = 'America/Detroit'
+TIMEZONE = "America/New_York"
+
+# Enable i18n plugin.
+# Enable Jinja2 i18n extension used to parse translations.
+# JINJA_ENVIRONMENT = {"extensions": ["jinja2.ext.i18n"]}
+JINJA_ENVIRONMENT = {"extensions":[]}
+JINJA_EXTENSIONS = []
 
 DEFAULT_LANG = 'en'
 
@@ -35,9 +42,8 @@ DEFAULT_PAGINATION = 10
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
 
-MARKUP = ("md", "ipynb")                # Add 'ipynb'
-from pelican_jupyter import markup as nb_markup
-PLUGINS = [nb_markup]
+MARKUP = ("md", )              # Add 'ipynb', "ipynb"
+PLUGINS = []  #[nb_markup]
 IGNORE_FILES = ['.ipynb_checkpoints']   # Prevent parsing checkpoints files
 
 THEME = "./theme"
