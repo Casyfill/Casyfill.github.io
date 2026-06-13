@@ -1,0 +1,14 @@
+[project]
+name = "casyfill-github-io"
+version = "0.1.0"
+description = "Philipp Kats personal site"
+requires-python = ">=3.11"
+dependencies = [
+    "pelican[markdown]>=4.9",
+    "ghp-import>=2.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "livereload",
+]
