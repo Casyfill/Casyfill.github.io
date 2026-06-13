@@ -1,5 +1,6 @@
 Title: Other Projects
 Date: 2020-01-01 00:00
+url: other_projects.html
 save_as: other_projects.html
 
 This is an index of a few of my other projects. At some point I'll move each of them into a separate page and provide more details.
