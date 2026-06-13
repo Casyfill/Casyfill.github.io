@@ -8,6 +8,7 @@
 [x] redeploy
 [x] typos
 [x] links and image fixes
+[x] update github Actions to redeploy
  
 
 ### Stab 2
