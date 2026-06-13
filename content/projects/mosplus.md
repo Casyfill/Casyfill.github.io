@@ -1,5 +1,6 @@
 Title: MosPlus (PlutoPlus copycat)
 Date: 2020-09-27 20:58
+url: projects/mosplus.html
 save_as: projects/mosplus.html
 
 

@@ -1,5 +1,6 @@
 Title: Dataframe Schema
 Date: 2022-09-25 00:20
+url: projects/dataframe_schema.html
 save_as: projects/dataframe_schema.html
 
 
