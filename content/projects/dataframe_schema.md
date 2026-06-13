@@ -12,7 +12,7 @@ In our experience, we found that defining a very simple, explicit, and easy-to-g
 Compared to the alternatives, this package has few cornerstone ideas:
 1. It is meant to be simple and easy to use, taking minimal time to use and set up.
 2. It puts *Dataframe* front and center and goes from there (Read more below)
-3. It will be interchangable and will try to read  from and write to other formats (e.g. tableschema, great_expectations, etc).
+3. It will be interchangeable and will try to read  from and write to other formats (e.g. tableschema, great_expectations, etc).
 
    
 
@@ -24,4 +24,4 @@ We explicitly define "DataFrame" as a package-agnostic abstraction, as it (theor
 
 ## Resources
 - [repository](https://github.com/StreetEasy/dfs)
-- [pypi page](missing) 
+- [pypi page](https://pypi.org/project/dataframe-schema/)
