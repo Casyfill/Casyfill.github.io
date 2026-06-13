@@ -13,8 +13,7 @@ TIMEZONE = "America/New_York"
 # Enable i18n plugin.
 # Enable Jinja2 i18n extension used to parse translations.
 # JINJA_ENVIRONMENT = {"extensions": ["jinja2.ext.i18n"]}
-JINJA_ENVIRONMENT = {"extensions":[]}
-JINJA_EXTENSIONS = []
+JINJA_ENVIRONMENT = {"extensions": []}
 
 DEFAULT_LANG = 'en'
 
