@@ -11,4 +11,4 @@ The tools, lately, are at StreetEasy, where I work on things like our [home valu
 
 I co-created [Branchpoint](https://www.facebook.com/BranchPoint/), a non-profit teaching parametric design project, and perhaps one day I'll get back to it. And I teach, at both university and school level.
 
-[You can find my CV here](https://www.dropbox.com/s/vsipveepxasuf6r/cv_website.pdf?dl=0)
+[You can find my CV here](https://github.com/Casyfill/cv/releases/download/v2.2/main.pdf)
