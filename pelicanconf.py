@@ -42,7 +42,7 @@ DEFAULT_PAGINATION = 10
 RELATIVE_URLS = True
 
 MARKUP = ("md", )              # Add 'ipynb', "ipynb"
-PLUGINS = []  #[nb_markup]
+PLUGINS = ["pelican.plugins.render_math"]  #[nb_markup]
 IGNORE_FILES = ['.ipynb_checkpoints']   # Prevent parsing checkpoints files
 
 THEME = "./theme"

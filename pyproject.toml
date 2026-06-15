@@ -6,6 +6,7 @@ requires-python = ">=3.11"
 dependencies = [
     "pelican[markdown]>=4.9",
     "ghp-import>=2.1",
+    "pelican-render-math>=1.0",
 ]
 
 [project.optional-dependencies]
