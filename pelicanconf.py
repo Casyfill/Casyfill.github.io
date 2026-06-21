@@ -1,58 +1,79 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
-# from pelican_jupyter import markup as nb_markup
 
 AUTHOR = 'Philipp Kats'
 SITENAME = 'City Fish'
 SITETITLE = 'Philipp Kats'
 
 PATH = 'content'
-
 TIMEZONE = "America/New_York"
-
-# Enable i18n plugin.
-# Enable Jinja2 i18n extension used to parse translations.
-# JINJA_ENVIRONMENT = {"extensions": ["jinja2.ext.i18n"]}
-JINJA_ENVIRONMENT = {"extensions": []}
-
 DEFAULT_LANG = 'en'
 
-# Feed generation is usually not desired when developing
+THEME = "./theme_tufte"
+
+# Dev: root-relative links; production SITEURL is set in publishconf.py
+SITEURL = ''
+RELATIVE_URLS = False
+
+# Feeds off while developing
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
-# Blogroll
-LINKS = (('Projects', '../category/projects.html'),
-         ('Blog', '../category/blog.html'),
-         )
+# ---- Flat, topic-named URLs: every page lives at /slug/ ----
+ARTICLE_URL = '{slug}/'
+ARTICLE_SAVE_AS = '{slug}/index.html'
+PAGE_URL = '{slug}/'
+PAGE_SAVE_AS = '{slug}/index.html'
+DRAFT_URL = 'drafts/{slug}/'
+DRAFT_SAVE_AS = 'drafts/{slug}/index.html'
 
-# Social widget
+# ---- Curated nav (no auto taxonomy). Empty group => "soon". ----
+NAV_GROUPS = [
+    ("AI", []),
+    ("Work", [
+        ("Wrapping Combo", "/pycombo/"),
+        ("DataFrame Schema", "/dataframe-schema/"),
+        ("Data Journalism", "/data-journalism/"),
+    ]),
+    ("Talks & Publications", [
+        ("All talks & papers", "/talks-and-publications/"),
+    ]),
+    ("Personal", []),
+]
+
+# Turn off the blog scaffolding we don't want in a flat, curated site
+DIRECT_TEMPLATES = []
+CATEGORY_SAVE_AS = ''
+CATEGORIES_SAVE_AS = ''
+TAG_SAVE_AS = ''
+TAGS_SAVE_AS = ''
+AUTHOR_SAVE_AS = ''
+AUTHORS_SAVE_AS = ''
+ARCHIVES_SAVE_AS = ''
+PERIOD_ARCHIVES_SAVE_AS = ''
+USE_FOLDER_AS_CATEGORY = True
+
 SOCIAL = (
-          ('medium', 'https://medium.com/data-journalism'),
-          ('github', 'https://github.com/Casyfill'),
-          ('linkedin', 'https://www.linkedin.com/in/philipp-kats/'),
-          )
+    ('github', 'https://github.com/Casyfill'),
+    ('linkedin', 'https://www.linkedin.com/in/philipp-kats/'),
+)
 
-DEFAULT_PAGINATION = 10
+MARKUP = ("md",)
 
-# Uncomment following line if you want document-relative URLs when developing
-RELATIVE_URLS = True
-
-MARKUP = ("md", )              # Add 'ipynb', "ipynb"
-PLUGINS = []  #[nb_markup]
-IGNORE_FILES = ['.ipynb_checkpoints']   # Prevent parsing checkpoints files
-
-THEME = "./theme"
+# Protect LaTeX from Markdown and hand it to MathJax (arithmatex, generic mode)
+MARKDOWN = {
+    'extension_configs': {
+        'markdown.extensions.codehilite': {'css_class': 'highlight'},
+        'markdown.extensions.extra': {},
+        'markdown.extensions.meta': {},
+        'pymdownx.arithmatex': {'generic': True},
+    },
+    'output_format': 'html5',
+}
 STATIC_PATHS = ['static']
-FAVICON = 'theme/img/favicon.ico'
-CUSTOM_CSS = 'theme/stylesheet/custom.css'
-USE_LESS = True
-SUMMARY_MAX_LENGTH = 100
+DEFAULT_PAGINATION = False
+DELETE_OUTPUT_DIRECTORY = True
 LOAD_CONTENT_CACHE = False
-
-# IPYTTHON
-IPYNB_IGNORE_CSS = True
-IPYNB_REMOVE_EMPTY = True
