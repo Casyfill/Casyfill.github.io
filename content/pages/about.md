@@ -4,7 +4,7 @@ URL:
 save_as: index.html
 
 
-![photo](/static/photo.jpg)
+<span class="marginnote">![photo](/static/photo.jpeg)</span>
 
 Hi! I'm Philipp — I make tools and create stories with data.
 
