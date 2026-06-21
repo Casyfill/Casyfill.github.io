@@ -1,7 +1,6 @@
 Title: Presentations
 Date: 2020-05-02 00:20
-
-
+Status: draft
 
 - 2022, Yandex.Q, How to research cities through data? [video](https://www.youtube.com/watch?v=9P0axjVtb8I&fbclid=IwAR18_uBhi9AcUFXHZh-4oshmr3dvbOBIEmmX54FyXtpQqpXTLM5FLNAuJxw), [slides](https://docs.google.com/presentation/d/1AgRUjqhlr7cJt8BXN2u_FymKdUk2JbrPOrwdFTtT7O4/edit?usp=sharing), [event page](https://yandex.ru/promo/q/confarchitecture?fbclid=IwAR1noRDQZyg5fCR3SBajaA0qzjPOLnV8v1EDd8hS84IyEm3KEKAgnQOlUvs)
 - 2021, YakTak, Data science for Urban planners and Architects. [video](https://www.youtube.com/watch?v=uOK_8GPEF8s), [slides](https://docs.google.com/presentation/d/1C4REa8XPzuK1u5fft1TpU5ZhbLYv_2P7XH1hnBMlGJU/edit?usp=sharing), [poster code](https://github.com/Casyfill/yaktak_poster)

@@ -1,6 +1,6 @@
 Title: Publications
 Date: 2022-09-25 00:20
-
+Status: draft
 
 #### Books
 - [Learn Python by building Data Science projects. Packt Book, 2018](https://www.amazon.com/Learn-Python-Building-Science-Applications/dp/1789535360)
@@ -25,4 +25,3 @@ Date: 2022-09-25 00:20
   - [Arrays (rus)](https://app.box.com/file/728833252)
   - [Cross-reference in Grasshopper (rus)](https://app.box.com/file/3319283318?s=1ij9sezypnb96vw7cafy)
   - [All Dashboards (rus)](https://app.box.com/file/462740724)
-

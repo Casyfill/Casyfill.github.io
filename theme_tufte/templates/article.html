@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}{{ article.title }} — {{ SITENAME }}{% endblock %}
+{% block content %}
+<article class="article">
+  <h1>{{ article.title }}</h1>
+  <div class="post-meta">
+    {% if article.subtitle %}{{ article.subtitle }}{% else %}{% if article.category %}{{ article.category }} · {% endif %}{{ article.date|strftime('%B %Y') }}{% endif %}
+  </div>
+  {{ article.content }}
+</article>
+{% endblock %}

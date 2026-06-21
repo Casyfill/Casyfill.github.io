@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}{{ SITENAME }}{% endblock %}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ SITEURL }}/theme/css/style.css">
+<link rel="icon" href="{{ SITEURL }}/theme/img/profile.png">
+{% block head %}{% endblock %}
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};</script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar">
+    <a class="brand" href="{{ SITEURL }}/">
+      <span class="avatar">Ф</span>
+      <span>
+        <span class="brand-name">{{ SITETITLE|default(SITENAME) }}</span>
+      </span>
+    </a>
+
+    {% for name, items in NAV_GROUPS %}
+      <div class="navgroup">{{ name }}</div>
+      {% if items %}
+        {% for label, url in items %}
+          <a class="navlink{% if url == (SITEURL ~ output_file|default('') ) %} active{% endif %}" href="{{ SITEURL }}{{ url }}">{{ label }}</a>
+        {% endfor %}
+      {% else %}
+        <span class="navlink muted">— soon —</span>
+      {% endif %}
+    {% endfor %}
+
+    {% set recent = [] %}
+    {% if articles %}{% for a in articles|sort(attribute='date', reverse=True) %}
+      {% if recent|length < 3 and a.category and a.category|string == 'Others' %}{% set _ = recent.append(a) %}{% endif %}
+    {% endfor %}{% endif %}
+    {% if recent %}
+    <div class="navgroup">Recent</div>
+    {% for a in recent %}<a class="navlink" href="{{ SITEURL }}/{{ a.slug }}/">{{ a.title }}</a>{% endfor %}
+    {% endif %}
+    <a class="navlink muted" href="{{ SITEURL }}/all/">All →</a>
+
+    <div class="sidebar-foot">
+      {% for name, link in SOCIAL %}<a href="{{ link }}">{{ name|capitalize }}</a>{% endfor %}
+      <button class="theme-toggle" id="themeBtn" aria-label="Toggle dark mode">Dark</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    {% block content %}{% endblock %}
+  </main>
+</div>
+
+<script>
+(function(){
+  var root=document.documentElement, btn=document.getElementById('themeBtn');
+  function apply(t){root.setAttribute('data-theme',t);if(btn)btn.textContent=(t==='dark'?'Light':'Dark');
+    try{localStorage.setItem('theme',t);}catch(e){}}
+  var saved=null;try{saved=localStorage.getItem('theme');}catch(e){}
+  if(!saved){saved=(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';}
+  apply(saved);
+  if(btn)btn.addEventListener('click',function(){apply(root.getAttribute('data-theme')==='dark'?'light':'dark');});
+})();
+</script>
+</body>
+</html>
