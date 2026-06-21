@@ -57,8 +57,9 @@ PERIOD_ARCHIVES_SAVE_AS = ''
 USE_FOLDER_AS_CATEGORY = True
 
 SOCIAL = (
-    ('github', 'https://github.com/Casyfill'),
-    ('linkedin', 'https://www.linkedin.com/in/philipp-kats/'),
+    ('GitHub', 'https://github.com/Casyfill'),
+    ('LinkedIn', 'https://www.linkedin.com/in/philipp-kats/'),
+    ('CV', 'https://github.com/Casyfill/cv/releases/download/v2.2/main.pdf'),
 )
 
 MARKUP = ("md",)

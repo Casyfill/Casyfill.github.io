@@ -63,7 +63,7 @@ img{max-width:100%;height:auto;border-radius:8px;}
 .article p,.article h2,.article h3,.article ul,.article ol,.article blockquote,.article .post-meta,.article > h1,.article pre,.article table,.article .arithmatex{
   width:62%;max-width:44rem;}
 .marginnote mjx-container[display="true"]{text-align:center;}
-.marginnote img{display:block;margin-left:auto;margin-right:auto;max-width:90%;}
+.marginnote img{display:block;margin-left:auto;margin-right:auto;max-width:90%;border-radius:0;}
 .article table{border-collapse:collapse;font-size:.9rem;}
 .article th,.article td{border:0.5px solid var(--hairline);padding:.35rem .6rem;text-align:left;}
 .article thead th{background:var(--surface);color:var(--heading);}

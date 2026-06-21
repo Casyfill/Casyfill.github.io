@@ -45,7 +45,7 @@
     <a class="navlink muted" href="{{ SITEURL }}/all/">All →</a>
 
     <div class="sidebar-foot">
-      {% for name, link in SOCIAL %}<a href="{{ link }}">{{ name|capitalize }}</a>{% endfor %}
+      {% for name, link in SOCIAL %}<a href="{{ link }}" target="_blank" rel="noopener">{{ name }}</a>{% endfor %}
       <button class="theme-toggle" id="themeBtn" aria-label="Toggle dark mode">Dark</button>
     </div>
   </aside>
