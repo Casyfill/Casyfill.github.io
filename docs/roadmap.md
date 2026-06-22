@@ -12,13 +12,13 @@
  
 
 ### Stab 2
-- [ ] Review Current content, identify
-    [ ] What I lack
-    [ ] What needs to be added
-    [ ] Pace and content plan for the blog
-- [ ] Minor UI updates
-- [ ] set CV as github artifact and link to it
+- [x] finish PyCombo
+- [x] Data Journalism piece
+- [ ] 311 Piece
+- [ ] Professional addition
+- [ ] AI Experiments (Consensus?)
+- [ ] Data Schemas
 
 ### Stab 3
-- [ ] Design Improvements
-- [ ] Few initial Blog posts   
+- [ ] on Education (My 3 universities)
+- [ ] on faults
