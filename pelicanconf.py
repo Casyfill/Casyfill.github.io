@@ -36,12 +36,13 @@ NAV_GROUPS = [
     ("Work", [
         ("Wrapping Combo", "/pycombo/"),
         ("DataFrame Schema", "/dataframe-schema/"),
-        ("Data Journalism", "/data-journalism/"),
     ]),
     ("Talks & Publications", [
         ("All talks & papers", "/talks-and-publications/"),
     ]),
-    ("Personal", []),
+    ("Personal", [
+        ("Data Journalism", "/data-journalism/"),
+    ]),
 ]
 
 # Turn off the blog scaffolding we don't want in a flat, curated site
