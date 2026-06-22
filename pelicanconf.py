@@ -32,13 +32,14 @@ DRAFT_SAVE_AS = 'drafts/{slug}/index.html'
 
 # ---- Curated nav (no auto taxonomy). Empty group => "soon". ----
 NAV_GROUPS = [
-    ("AI", []),
     ("Work", [
         ("Wrapping Combo", "/pycombo/"),
         ("DataFrame Schema", "/dataframe-schema/"),
     ]),
+    ("AI", []),
     ("Talks & Publications", [
-        ("All talks & papers", "/talks-and-publications/"),
+        ("Talks", "/talks/"),
+        ("Books & Articles", "/books-and-articles/"),
     ]),
     ("Personal", [
         ("Data Journalism", "/data-journalism/"),
