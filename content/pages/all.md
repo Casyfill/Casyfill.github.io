@@ -8,7 +8,6 @@ Subtitle: Everything on the site, in one place.
     <li><span class="yr">2026</span><span class="it"><a href="/pycombo/">Wrapping Combo, three times over</a> <span class="venue">post</span></span></li>
     <li><span class="yr">2022</span><span class="it"><a href="/dataframe-schema/">DataFrame Schema</a> <span class="venue">project</span></span></li>
     <li><span class="yr">2020</span><span class="it"><a href="/mosplus/">MosPlus</a> <span class="venue">project</span></span></li>
-    <li><span class="yr">2015</span><span class="it"><a href="/data-journalism/">Foray in data journalism</a> <span class="venue">Ria Novosti, 2013–15</span></span></li>
   </ul>
   <h2>Talks</h2>
   <ul>
@@ -33,5 +32,9 @@ Subtitle: Everything on the site, in one place.
     <li><span class="yr"></span><span class="it"><a href="https://cdn.habidatum.com/Muscovites_Motions_report_ff63ef0601/Muscovites+Motions_report.pdf_Muscovites_Motions_report_ff63ef0601.pdf">Moscow Urban Forum — Mobility Research (2014)</a></span></li>
     <li><span class="yr"></span><span class="it"><a href="https://www.the-village.ru/village/city/big-data/146055-big-data-russia">Cities through big data (The Village)</a></span></li>
     <li><span class="yr"></span><span class="it"><a href="https://theoryandpractice.ru/presenters/7529-filipp-kats">Lectures & presentations before 2014 (Theory & Practice)</a></span></li>
+  </ul>
+  <h2>Personal</h2>
+  <ul>
+    <li><span class="yr">2015</span><span class="it"><a href="/data-journalism/">A short foray in data journalism</a> <span class="venue">Ria Novosti, 2012–15</span></span></li>
   </ul>
 </div>
