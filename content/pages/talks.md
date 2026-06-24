@@ -1,0 +1,13 @@
+Title: Talks
+Slug: talks
+
+<div class="listing">
+  <ul>
+    <li><span class="yr">2022</span><span class="it"><a href="/cities-through-data/">How to research cities through data?</a> <span class="venue">Yandex.Q</span></span></li>
+    <li><span class="yr">2021</span><span class="it"><a href="/data-science-for-planners/">Data science for urban planners and architects</a> <span class="venue">YakTak</span></span></li>
+    <li><span class="yr">2018</span><span class="it"><a href="/find-your-spot/">Find your spot. Custom boundaries</a> <span class="venue">GeoNYC</span></span></li>
+    <li><span class="yr">2018</span><span class="it"><a href="/nyc-dataviz-2018/">NYC Data Visualization Meetup</a></span></li>
+    <li><span class="yr">2017</span><span class="it"><a href="/data-science-infrastructure/">The value of Data Science Infrastructure</a></span></li>
+    <li><span class="yr">'12–'16</span><span class="it">Earlier talks — <a href="https://www.dropbox.com/s/si56ccgj32ujbcy/NYPD_Capstone_presentation_45.pdf?dl=0">CUSP Capstone, NYU CUSP (2016)</a> · <a href="https://www.dropbox.com/s/g7d2pg33r3gn795/2015_03_11_Library.pdf?dl=0">Open data &amp; urban analytics (2015)</a> · <a href="https://www.dropbox.com/s/tg4ty5empo0m1v8/2012_02_13_Strelka_Midterm.pdf?dl=0">Digital footprint of urban spaces, Strelka (2012)</a> · <a href="https://www.dropbox.com/s/ao1bcv225u7xnzl/2012_04_14_presentation%20foursquare.pptx?dl=0">City through Foursquare (2012)</a></span></li>
+  </ul>
+</div>
