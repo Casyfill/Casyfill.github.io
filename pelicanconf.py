@@ -38,8 +38,9 @@ NAV_GROUPS = [
     ]),
     ("AI", []),
     ("Talks & Publications", [
-        ("Talks", "/talks/"),
-        ("Books & Articles", "/books-and-articles/"),
+        ("Talks & presentations", "/talks-and-presentations/"),
+        ("Papers", "/papers/"),
+        ("Book", "/learn-python-data-science/"),
     ]),
     ("Personal", [
         ("Data Journalism", "/data-journalism/"),
