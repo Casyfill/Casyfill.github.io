@@ -1,0 +1,16 @@
+Figures for "Structure of 311 service requests as a signature of urban location"
+
+Source: Wang L, Qian C, Kats P, Kontokosta C, Sobolevsky S (2017).
+PLOS ONE 12(10): e0186314.  https://doi.org/10.1371/journal.pone.0186314
+Licensed CC BY 4.0 — free to reuse with attribution (and you're an author).
+
+Used by content/Others/papers/structure-of-311-requests.md:
+
+  new_york.png               NYC cluster map + socioeconomic radar (paper Figs 1 & 5) — full-width centerpiece
+  ny_cluster_distribution.png  share of 311 request types across the NYC clusters (Fig 2) — margin
+  chicago.png                Chicago cluster map + socioeconomic radar (Figs 3 & 6) — margin
+
+Not referenced by the page:
+  pone.0186314.g001.png      raw Fig 1 download (kept as a source; safe to delete)
+
+Boston (Figs 4 & 7) is available in the paper if you ever want a fourth city.
