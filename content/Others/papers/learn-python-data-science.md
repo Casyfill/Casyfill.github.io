@@ -7,6 +7,8 @@ Subtitle: Packt, 2018
 
 ---
 
+[View the book →](https://www.amazon.com/Learn-Python-Building-Science-Applications/dp/1789535360) · [code on GitHub →](https://github.com/PacktPublishing/Learn-Python-by-Building-Data-Science-Applications)
+
 <div class="marginnote"><img src="/static/book/book.jpg" alt="Cover of Learn Python by Building Data Science Applications, Packt 2018.">
 <strong>Learn Python by Building Data Science Applications.</strong> Packt, 2018 · co-authored with David Katz.</div>
 
@@ -24,7 +26,3 @@ It walks through Python basics, NumPy and Pandas, then several real projects —
 <strong>WWII battles, mapped.</strong> One thread — scraped from Wikipedia, cleaned, and plotted.</div> -->
 
 We picked WWII for that collecting-and-cleaning thread for the reasons above. Once you analyze it with any depth, though, the story turns dark — casualties, geography of destruction, hierarchies of campaigns. I wouldn't choose that subject for high school students again, and by extension I wouldn't anchor a beginner book on it today. The code patterns still hold; the framing was a bet I'd make differently now, especially given developments of the recent years.
-
-
-
-[View the book →](https://www.amazon.com/Learn-Python-Building-Science-Applications/dp/1789535360) · [code on GitHub →](https://github.com/PacktPublishing/Learn-Python-by-Building-Data-Science-Applications)
