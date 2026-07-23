@@ -9,6 +9,10 @@ Subtitle: Everything on the site, in one place.
     <li><span class="yr">2022</span><span class="it"><a href="/dataframe-schema/">DataFrame Schema</a> <span class="venue">project</span></span></li>
     <li><span class="yr">2020</span><span class="it"><a href="/mosplus/">MosPlus</a> <span class="venue">project</span></span></li>
   </ul>
+  <h2>AI</h2>
+  <ul>
+    <li><span class="yr">2026</span><span class="it"><a href="/banana-is-just-a-banana/">Working with AI, or "Sometimes, LLM is just a banana"</a> <span class="venue">note</span></span></li>
+  </ul>
   <h2>Talks</h2>
   <ul>
     <li><span class="yr">2022</span><span class="it"><a href="/cities-through-data/">How to research cities through data?</a> <span class="venue">Yandex.Q</span></span></li>
