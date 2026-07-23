@@ -8,6 +8,13 @@ Using customized [FLEX](https://github.com/alexandrevicenzi/Flex/tree/b3bd59002a
 ### Deployment
 - [Github actions](https://github.com/marketplace/actions/github-pages-pelican-build-action)
 
+### Analytics
+
+The live site uses [GoatCounter](https://www.goatcounter.com/) — lightweight, privacy-oriented pageview analytics (paths, referrers, browsers, locations). No cookies, no cross-site tracking; bots that identify themselves are ignored.
+
+The tracking script is in `theme_tufte/templates/base.html` and loads on every built page. Dashboard: [casyfill.goatcounter.com](https://casyfill.goatcounter.com/).
+
+Hits are sent on page load; the dashboard aggregates them about every **10 seconds** ([GoatCounter FAQ](https://www.goatcounter.com/help/faq)). Local previews (`make serve`) count too unless the script is blocked (adblockers often block `gc.zgo.at`).
 
 I am thinking of building something around [sidewalklabs](https://sidewalklabs.com/blog/) blog.
 
