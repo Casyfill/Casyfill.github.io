@@ -13,7 +13,13 @@ Tufte-style theme (a narrow reading column with right-hand margin notes).
 
 ## Develop
 
-Clone (use `--recurse-submodules` so the notebook helper comes along):
+### Analytics
+
+The live site uses [GoatCounter](https://www.goatcounter.com/) — lightweight, privacy-oriented pageview analytics (paths, referrers, browsers, locations). No cookies, no cross-site tracking; bots that identify themselves are ignored.
+
+The tracking script is in `theme_tufte/templates/base.html` and loads on every built page. Dashboard: [casyfill.goatcounter.com](https://casyfill.goatcounter.com/).
+
+Hits are sent on page load; the dashboard aggregates them about every **10 seconds** ([GoatCounter FAQ](https://www.goatcounter.com/help/faq)). Local previews (`make serve`) count too unless the script is blocked (adblockers often block `gc.zgo.at`).
 
 ```bash
 git clone --recurse-submodules https://github.com/Casyfill/Casyfill.github.io
