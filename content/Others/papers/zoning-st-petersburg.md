@@ -1,6 +1,7 @@
 Title: Zoning of St. Petersburg Through the Prism of Social Activity Networks
 Date: 2020-01-01
 Slug: zoning-st-petersburg
+Description: Redrawing St. Petersburg by where people actually gather and post, rather than by its administrative borders.
 
 *Redrawing St. Petersburg by where people actually gather and post, rather than by its administrative borders.*
 

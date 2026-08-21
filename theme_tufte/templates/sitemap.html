@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- for page in pages if not page.noindex %}
+  <url>
+    <loc>{{ SITEURL }}/{{ page.url }}</loc>
+    {%- if page.date %}
+    <lastmod>{{ page.date.strftime('%Y-%m-%d') }}</lastmod>
+    {%- endif %}
+    <changefreq>monthly</changefreq>
+    <priority>{% if page.save_as == 'index.html' %}1.0{% else %}0.6{% endif %}</priority>
+  </url>
+{%- endfor %}
+{%- for article in articles if not article.noindex %}
+  <url>
+    <loc>{{ SITEURL }}/{{ article.url }}</loc>
+    <lastmod>{{ article.modified.strftime('%Y-%m-%d') if article.modified else article.date.strftime('%Y-%m-%d') }}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+{%- endfor %}
+</urlset>

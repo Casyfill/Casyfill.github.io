@@ -1,6 +1,7 @@
 Title: Twitter Connections Shaping New York City
 Date: 2018-01-01
 Slug: twitter-connections-nyc
+Description: Mapping who mentions whom on Twitter, to see whether social ties draw the same neighborhoods that movement does.
 
 *Mapping who mentions whom on Twitter, to see whether social ties draw the same neighborhoods that movement does.*
 

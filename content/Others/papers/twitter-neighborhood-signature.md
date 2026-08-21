@@ -1,6 +1,7 @@
 Title: Twitter Activity Timeline as a Signature of Urban Neighborhood
 Date: 2017-01-01
 Slug: twitter-neighborhood-signature
+Description: The daily rhythm of geo-tagged tweets turns out to be a fingerprint of what a neighborhood is for.
 
 *The daily rhythm of geo-tagged tweets turns out to be a fingerprint of what a neighborhood is for.*
 

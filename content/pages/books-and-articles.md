@@ -1,5 +1,9 @@
 Title: Books & Articles
 Slug: books-and-articles
+Description: Books and published articles — 'Learn Python by Building Data Science Applications' (Packt, 2018) and peer-reviewed urban-analytics papers.
+Noindex: true
+<!-- Overlaps /papers/ (nav) and /learn-python-data-science/. Kept so the old URL
+     doesn't 404; noindexed and out of the sitemap. Delete when convenient. -->
 
 <div class="listing">
   <ul>

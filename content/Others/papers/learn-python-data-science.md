@@ -2,6 +2,8 @@ Title: Learn Python by Building Data Science Applications
 Date: 2018-01-01
 Slug: learn-python-data-science
 Subtitle: Packt, 2018
+Description: A project-based Python intro that grew out of a course my brother and I taught — and the high school where we both graduated.
+Image: /static/book/book.jpg
 
 *A project-based Python intro that grew out of a course my brother and I taught — and the high school where we both graduated.*
 

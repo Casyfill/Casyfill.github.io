@@ -1,6 +1,8 @@
 Title: Structure of 311 service requests as a signature of urban location
 Date: 2017-10-17
 Slug: structure-of-311-requests
+Description: The mix of problems a neighborhood reports to 311 turns out to be a reliable signature of the place itself.
+Image: /static/311/new_york.png
 
 *The mix of problems a neighborhood reports to 311 turns out to be a reliable signature of the place itself.*
 

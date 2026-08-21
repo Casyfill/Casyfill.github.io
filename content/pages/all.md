@@ -1,6 +1,7 @@
 Title: All
 Slug: all
 Subtitle: Everything on the site, in one place.
+Description: Every post, paper, talk, and project on the site, in one place.
 
 <div class="listing">
   <h2>Work</h2>
@@ -11,6 +12,7 @@ Subtitle: Everything on the site, in one place.
   </ul>
   <h2>AI</h2>
   <ul>
+    <li><span class="yr">2026</span><span class="it"><a href="/okf-notes-for-machines/">Notes for machines, or why we adopted OKF</a> <span class="venue">note</span></span></li>
     <li><span class="yr">2026</span><span class="it"><a href="/banana-is-just-a-banana/">Working with AI, or "Sometimes, LLM is just a banana"</a> <span class="venue">note</span></span></li>
   </ul>
   <h2>Talks</h2>

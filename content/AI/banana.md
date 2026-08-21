@@ -1,6 +1,7 @@
 Title: Working with AI, or "Sometimes, LLM is just a banana"
 Date: 2026-07-21 12:00
 Slug: banana-is-just-a-banana
+Description: Work in progress: is it fruit, or is it art? Is an LLM's real value as an advisor, or as a workhorse?
 
 *Work in progress: is it fruit, or is it art? Is an LLM's real value as an advisor, or as a workhorse?*
 

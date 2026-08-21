@@ -1,6 +1,7 @@
 Title: Geo-Tagged Social Media Data as a Proxy for Urban Mobility
 Date: 2017-01-01
 Slug: geotagged-urban-mobility
+Description: A test of whether a city's geo-tagged tweets can stand in for how people actually move.
 
 *A test of whether a city's geo-tagged tweets can stand in for how people actually move.*
 

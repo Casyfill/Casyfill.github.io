@@ -1,5 +1,10 @@
 Title: Talks
 Slug: talks
+Description: Talks and presentations, 2012–2022 — slides and video.
+Noindex: true
+<!-- Duplicate of /talks-and-presentations/ (which is the one in the nav and has the
+     Press & media block too). Kept only so the old /talks/ URL doesn't 404; marked
+     noindex and excluded from the sitemap. Delete once you're sure nothing links here. -->
 
 <div class="listing">
   <ul>

@@ -1,6 +1,8 @@
 Title: MosPlus (PlutoPlus copycat)
 Date: 2020-09-27 20:58
 Slug: mosplus
+Description: MosPlus — a fork of Chris Whong's PlutoPlus that made Moscow's 145,000-building open footprint dataset downloadable in usable chunks as GeoJSON, shapefile, or CSV.
+Image: /static/mosplus.png
 
 **MosPlus** is a forked version of Chris Wong's awesome [PlutoPlus](http://chriswhong.github.io/plutoplus/) project, built using open footprints for Moscow (Russia).
 

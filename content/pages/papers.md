@@ -1,6 +1,7 @@
 Title: Papers
 Slug: papers
 Subtitle: Peer-reviewed and preprint work on urban analytics
+Description: Peer-reviewed and preprint work on urban analytics — 311, Twitter, mobility, and social-activity networks in New York and St. Petersburg.
 
 <div class="listing">
   <h2>Papers</h2>
