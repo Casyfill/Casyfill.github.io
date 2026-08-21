@@ -29,7 +29,12 @@
 <meta name="author" content="{{ AUTHOR }}">
 <meta name="description" content="{{ meta_desc | truncate(300, true, '…') }}">
 {% if (page is defined and page.noindex) or (article is defined and article.noindex) %}<meta name="robots" content="noindex, follow">
-{% endif %}<link rel="canonical" href="{{ meta_url }}">
+{% endif %}{#- A `Redirect:` metadata field turns a page into a stub that forwards to its
+    replacement: meta refresh for the reader, canonical to the target for crawlers.
+    Use it to retire a URL without 404-ing an inbound link. -#}
+{%- set redirect_to = (page.redirect if page is defined else none) or (article.redirect if article is defined else none) -%}
+{% if redirect_to %}<meta http-equiv="refresh" content="0; url={{ SITEURL }}{{ redirect_to }}">
+<link rel="canonical" href="{{ SITEURL }}{{ redirect_to }}">{% else %}<link rel="canonical" href="{{ meta_url }}">{% endif %}
 
 <meta property="og:site_name" content="{{ SITETITLE|default(SITENAME) }}">
 <meta property="og:type" content="{{ meta_type }}">
