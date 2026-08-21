@@ -1,0 +1,20 @@
+Title: Notes for machines, or why we adopted OKF
+Date: 2026-07-31 12:00
+Slug: okf-notes-for-machines
+Description: Plain markdown, YAML frontmatter, and a little discipline — the cheapest way I found to make our LLM work better, cheaper, and above all faster.
+
+*Plain markdown, YAML frontmatter, and a little discipline — the cheapest way I found to make our LLM work better, cheaper, and above all faster.*
+
+---
+
+My team keeps a knowledge base: a couple hundred markdown notes on our products, pipelines, and decisions, cross-linked with wikilinks and published as a static site. Humans read it, but lately its heaviest readers are agents. And that changes the economics. An agent that has to rediscover context — scrape a wiki, guess at table names, ask around — is slow, expensive, and prone to inventing what it can't find. An agent pointed at a curated bundle of notes just... reads them, follows the links, and gets to work.
+
+That is what [OKF](https://github.com/GoogleCloudPlatform/knowledge-catalog/tree/main/okf) — Google's Open Knowledge Format — standardizes: knowledge as plain markdown files with YAML frontmatter, organized in a directory tree, readable by humans and agents alike, diffable in git. We conformed our KB to v0.1 this July: four required frontmatter fields, a small type taxonomy, every wikilink must resolve, all enforced by a lint gate in CI. The gains were immediate. Quality, because a note with missing frontmatter or a dead link can't merge. Cost, because plain files in git need no retrieval infrastructure, no vendor, no index to keep warm. And speed most of all — an agent starts each task from the index and arrives at the right note in a hop or two, instead of burning tokens reconstructing what the team already knows.
+
+v0.1 left real gaps, though. When an agent writes or edits a note, who is the author — and did a person actually check it? Is that pipeline doc still current, or quietly superseded? What is a claim derived from? We patched all of this with prose conventions: an `author` field, changelog entries naming the agent, deprecation banners in the body, and a human merge gate whose review left no record at all. Workable, but invisible to a machine reader — the one audience that most needs to know whether to trust a note.
+
+[OKF v0.2](https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals) (published in late July) adds vocabulary for exactly these gaps: `generated: {by, at}` for machine-readable attribution, `verified: [{by, at}]` recording that a human actually reviewed the content, `status` and `stale_after` for lifecycle instead of banners, and structured `sources` for provenance. It's additive and backward-compatible — a v0.1 bundle is valid v0.2 unchanged — so we adopt it per-edit, no migration. The payoff: trust becomes queryable. A consumer can tell unverified, agent-generated, and human-reviewed notes apart from frontmatter alone.
+
+The next step I'm planning is metric definitions. Our metrics live in Databricks; the numbers people (and agents) quote should trace back to the note that defines them. v0.2 gives that note a shape: `sources` naming the tables and the job that computes the metric, `stale_after` forcing a periodic re-review, and — down the road — the new *Attested Computation* concept, which ties a sanctioned computation to an executor receipt, so a quoted number carries its own proof of how it was produced. <!-- placeholder: specifics of the DBX metrics rollout — which metrics first, where the notes live — to fill in once decided -->
+
+A caveat, honestly held: the spec is immature. v0.2 is a draft from a single vendor, and it may shift under us. But every field we adopt is an opt-in frontmatter key that any conforming consumer must tolerate, and the format is a near-perfect match for the tools we already prefer — markdown, Obsidian, git, a static site generator. If OKF evolves, we rename some keys. If it dies, we keep a well-linted pile of markdown. I've made worse bets.
