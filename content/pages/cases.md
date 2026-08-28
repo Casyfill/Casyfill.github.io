@@ -9,8 +9,9 @@ Each one follows the same shape: what the problem was, the constraint that made 
 
 <div class="listing">
   <ul>
-    <!-- Cases land here as they ship. Sep: entity resolution with no ground truth.
-         Oct: inferring missing attributes. Nov: serving under a latency budget.
-         Format: <li><span class="yr">2026</span><span class="it"><a href="/slug/">Title</a> <span class="venue">case</span></span></li> -->
+    <li><span class="yr">2026</span><span class="it"><a href="/matching-without-labels/">The same sale, twice, and no way to know</a> <span class="venue">entity resolution</span></span></li>
+    <!-- Cases land here as they ship. Oct: inferring missing attributes.
+         Nov: serving under a latency budget. Copy the line above as the format;
+         keep it one per case, newest first. -->
   </ul>
 </div>

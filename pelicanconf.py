@@ -44,11 +44,11 @@ DRAFT_SAVE_AS = 'drafts/{slug}/index.html'
 # ---- Curated nav (no auto taxonomy). Empty group => "soon". ----
 NAV_GROUPS = [
     # Cases = write-ups of shipped production work (the evidence). Distinct from
-    # "Work" below, which is personal projects. Uncomment when case 1 ships —
-    # an index page with nothing in it shouldn't be in the nav.
-    # ("Cases", [
-    #     ("All cases", "/cases/"),
-    # ]),
+    # "Work" below, which is personal projects.
+    ("Cases", [
+        ("Matching without labels", "/matching-without-labels/"),
+        ("All cases", "/cases/"),
+    ]),
     ("Work", [
         ("Wrapping Combo", "/pycombo/"),
         ("DataFrame Schema", "/dataframe-schema/"),
