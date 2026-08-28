@@ -54,7 +54,7 @@ NAV_GROUPS = [
         ("DataFrame Schema", "/dataframe-schema/"),
     ]),
     ("AI", [
-        ("LLM is just a banana", "/banana-is-just-a-banana/"),  # TEMP — remove from nav later
+        ("LLM is just a banana", "/banana-is-just-a-banana/"),
         ("Notes for machines (OKF)", "/okf-notes-for-machines/"),
     ]),
     ("Talks & Publications", [
