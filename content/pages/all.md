@@ -6,6 +6,7 @@ Description: Every post, paper, talk, and project on the site, in one place.
 <div class="listing">
   <h2>Cases</h2>
   <ul>
+    <li><span class="yr">2026</span><span class="it"><a href="/right-and-useless/">A flag that was right and useless</a> <span class="venue">extraction from text</span></span></li>
     <li><span class="yr">2026</span><span class="it"><a href="/matching-without-labels/">The same sale, twice, and no way to know</a> <span class="venue">entity resolution</span></span></li>
   </ul>
   <h2>Work</h2>

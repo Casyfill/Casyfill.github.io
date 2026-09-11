@@ -47,6 +47,7 @@ NAV_GROUPS = [
     # "Work" below, which is personal projects.
     ("Cases", [
         ("Matching without labels", "/matching-without-labels/"),
+        ("Right and useless", "/right-and-useless/"),
         ("All cases", "/cases/"),
     ]),
     ("Work", [

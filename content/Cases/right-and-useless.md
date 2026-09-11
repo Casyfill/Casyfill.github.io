@@ -1,7 +1,6 @@
 Title: A flag that was right and useless
-Date: 2026-09-05 12:00
+Date: 2026-09-11 12:00
 Slug: right-and-useless
-Status: draft
 Description: A listing flag with near-perfect recall that nobody could act on, and a language model that failed by rounding the hard cases up rather than by inventing anything.
 
 *It caught everything it was supposed to catch. That turned out to be the problem.*
@@ -18,7 +17,7 @@ It was also close to useless, and it took reading a couple of hundred descriptio
 
 There was no ground truth, which everyone expects, and the usual answer is to go make some. That answer is right and it hides a trap I walked into.
 
-You start by sampling at random from what the flag catches and labelling it by hand, because a random sample is the only thing that tells you what the population really looks like. It does that job well. It also cannot do the job you most need, and the reason is arithmetic rather than effort: the failure that embarrasses you — a listing flagged as renovated where nothing about the home was renovated — is rare. Sample a hundred and fifty listings at random and you'll get one. One. You can label for a day and come away unable to say anything at all about whether the model catches the error you actually care about, while the accuracy number on your slide looks terrific, because it was computed almost entirely on easy cases.
+You start by sampling at random from what the flag catches and labelling it by hand, because a random sample is the only thing that tells you what the population really looks like. It does that job well. It also cannot do the job you most need, and the reason is arithmetic rather than effort: the failure that embarrasses you — a listing flagged as renovated where nothing about the home was renovated — is rare. Sample a couple of hundred listings at random and you'll get one, perhaps two. You can label for a day and come away unable to say anything at all about whether the model catches the error you actually care about, while the accuracy number on your slide looks terrific, because it was computed almost entirely on easy cases.
 
 The fix is to build a second set that is deliberately *not* representative: go hunting for the failure shapes on purpose, in rough quotas — building amenities rather than the home, negations and promises ("to be renovated", "renovation potential"), renovations dated far enough back to be irrelevant, plus a slice of ordinary positives as a control. Now you can measure the rare failure, because you went and concentrated it.
 

@@ -9,9 +9,9 @@ Each one follows the same shape: what the problem was, the constraint that made 
 
 <div class="listing">
   <ul>
+    <li><span class="yr">2026</span><span class="it"><a href="/right-and-useless/">A flag that was right and useless</a> <span class="venue">extraction from text</span></span></li>
     <li><span class="yr">2026</span><span class="it"><a href="/matching-without-labels/">The same sale, twice, and no way to know</a> <span class="venue">entity resolution</span></span></li>
-    <!-- Cases land here as they ship. Oct: inferring missing attributes.
-         Nov: serving under a latency budget. Copy the line above as the format;
-         keep it one per case, newest first. -->
+    <!-- Cases land here as they ship. Nov: serving under a latency budget.
+         Copy the line above as the format; keep it one per case, newest first. -->
   </ul>
 </div>
