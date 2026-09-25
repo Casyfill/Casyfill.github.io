@@ -18,6 +18,14 @@ CATEGORY_FEED_ATOM = 'feeds/{slug}.atom.xml'
 
 DELETE_OUTPUT_DIRECTORY = True
 
+# Drafts are a local workbench only: `make serve` (pelicanconf) still renders
+# them at /drafts/, but the published site never contains them. An unlisted
+# URL is still a public URL.
+DRAFT_URL = ''
+DRAFT_SAVE_AS = ''
+DRAFT_PAGE_URL = ''
+DRAFT_PAGE_SAVE_AS = ''
+
 # Following items are often useful when publishing
 
 #DISQUS_SITENAME = ""

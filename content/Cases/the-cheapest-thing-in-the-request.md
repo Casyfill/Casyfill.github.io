@@ -18,7 +18,7 @@ I came to it thinking about it the way a modeller thinks about it: which model c
 
 Then I measured where the time actually went, which I should have done first.
 
-Server-side compute — the actual prediction, the thing I'd been agonising over — was a couple of hundred *micro*seconds. The request's p95 was around fifty milliseconds. The budget was a hundred. So the model was using something on the order of a third of one percent of the time available to it, and the other ninety-nine-and-change percent was the service going and getting things.
+Server-side compute — the actual prediction, the thing I'd been agonising over — was about a hundred and fifty *micro*seconds. The request's p95 was around fifty milliseconds. The budget was a hundred. So the model was using something on the order of a third of one percent of the time available to it, and the other ninety-nine-and-change percent was the service going and getting things.
 
 That ratio is the whole case, and it inverts the question. I could have doubled the model's cost, or quadrupled it, and no dashboard anywhere would have twitched. The curve I'd been trying to find the optimum on was flat across the entire range I could plausibly want. Meanwhile a single call out to the service that authoritatively owns one of the input fields cost more, on its own, than everything else on the path put together. The expensive thing was never the arithmetic. It was the fetching.
 
