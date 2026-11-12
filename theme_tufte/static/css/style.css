@@ -67,6 +67,10 @@ img{max-width:100%;height:auto;border-radius:8px;}
 .article table{border-collapse:collapse;font-size:.9rem;}
 .article th,.article td{border:0.5px solid var(--hairline);padding:.35rem .6rem;text-align:left;}
 .article thead th{background:var(--surface);color:var(--heading);}
+.article .admonition{width:62%;max-width:44rem;box-sizing:border-box;background:var(--surface);border-left:2px solid var(--accent);
+  border-radius:0 6px 6px 0;padding:.6rem 1rem;margin:1.4rem 0;}
+.article .admonition p{width:auto;margin:.3rem 0;}
+.article .admonition-title{font-weight:600;color:var(--heading);}
 blockquote{border-left:2px solid var(--accent);margin:1.4rem 0;padding:.2rem 0 .2rem 1rem;color:var(--muted);font-style:italic;}
 
 .sidenote,.marginnote{float:right;clear:right;width:34%;max-width:20rem;margin-bottom:1rem;text-align:center;
@@ -76,6 +80,7 @@ blockquote{border-left:2px solid var(--accent);margin:1.4rem 0;padding:.2rem 0 .
 .sidenote::before{content:counter(sn) " ";font-size:.78em;vertical-align:super;color:var(--accent);font-weight:600;}
 
 figure{margin:1.8rem 0;width:100%;}
+figure svg{display:block;width:100%;height:auto;}
 figcaption{color:var(--muted);font-size:.78rem;margin-top:.5rem;}
 
 /* ---- Index / listing pages ---- */
@@ -89,7 +94,7 @@ figcaption{color:var(--muted);font-size:.78rem;margin-top:.5rem;}
 
 /* ---- Responsive ---- */
 @media (max-width:1040px){
-  .article p,.article h2,.article h3,.article ul,.article ol,.article blockquote,.article .post-meta,.article > h1,.article pre,.article table,.article .arithmatex{width:100%;}
+  .article p,.article h2,.article h3,.article ul,.article ol,.article blockquote,.article .post-meta,.article > h1,.article pre,.article table,.article .arithmatex,.article .admonition{width:100%;}
   .sidenote,.marginnote{float:none;width:auto;margin:.7rem 0;display:block;background:var(--surface);
     border-left:2px solid var(--accent);padding:.55rem .8rem;border-radius:0 6px 6px 0;}
 }

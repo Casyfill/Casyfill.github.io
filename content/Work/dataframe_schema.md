@@ -1,6 +1,7 @@
-Title: DataFrame Schema
+Title: dfSchema — a lightweight DataFrame schema enforcer
 Date: 2022-09-25 00:20
 Slug: dataframe-schema
+Description: DFSchema — a small Python package that validates a pandas DataFrame against an explicit, jsonschema-style contract. One dependency, and deliberately as simple as it can be.
 
 **DataFrame Schema** is a small and slim package that does only one job - it checks if a given *DataFrame* fits a certain list of defined expectations. It is heavily inspired by `jsonschema`, has only one dependency (Pydantic) and tries to be as simple and small as possible.
 

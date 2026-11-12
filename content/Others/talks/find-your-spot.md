@@ -2,6 +2,7 @@ Title: Find your spot. Custom boundaries
 Date: 2018-01-01
 Slug: find-your-spot
 Subtitle: GeoNYC · 2018
+Description: Talk: finding your spot in a city with custom boundaries — GeoNYC, 2018. Slides and video.
 
 [slides](https://docs.google.com/presentation/d/1SECOPRQB4gmTur-L67Q9TGDOBC7o5o-IJVgDdb1kDek/edit)
 

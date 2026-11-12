@@ -1,6 +1,7 @@
 Title: Social Activity Networks Shaping St. Petersburg
 Date: 2021-01-01
 Slug: social-activity-networks-st-petersburg
+Description: The fuller St. Petersburg study — three layers of social data, one map of how the city really divides.
 
 *The fuller St. Petersburg study — three layers of social data, one map of how the city really divides.*
 

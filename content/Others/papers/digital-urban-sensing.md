@@ -1,6 +1,7 @@
 Title: Digital Urban Sensing: A Multi-layered Approach
 Date: 2018-01-01
 Slug: digital-urban-sensing
+Description: No single dataset captures a whole city — so this one asks what happens when you stack six together.
 
 *No single dataset captures a whole city — so this one asks what happens when you stack six together.*
 

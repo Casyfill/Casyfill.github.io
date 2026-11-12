@@ -5,6 +5,17 @@ AUTHOR = 'Philipp Kats'
 SITENAME = 'City Fish'
 SITETITLE = 'Philipp Kats'
 
+# ---- SEO / social-card defaults (used by base.html) ----
+# SITETAGLINE lands in the homepage <title>; SITEDESCRIPTION is the fallback
+# meta description and the JSON-LD Person description.
+SITETAGLINE = 'Senior Applied Scientist — production ML, spatial data, visualization'
+SITEDESCRIPTION = (
+    'Philipp Kats — Senior Applied Scientist at StreetEasy (Zillow). '
+    'Production ML for property valuation, entity matching, ranking and retrieval. '
+    'Writing on machine learning, spatial data, and data visualization.'
+)
+SITEIMAGE = '/static/photo.jpeg'  # default og:image; override per-article with `Image:`
+
 PATH = 'content'
 TIMEZONE = "America/New_York"
 DEFAULT_LANG = 'en'
@@ -33,22 +44,29 @@ DRAFT_SAVE_AS = 'drafts/{slug}/index.html'
 # ---- Curated nav (no auto taxonomy). Empty group => "soon". ----
 NAV_GROUPS = [
     ("Work", [
-        ("Wrapping Combo", "/pycombo/"),
-        ("DataFrame Schema", "/dataframe-schema/"),
+        ("Agate: Obsidian plugin", "/agate/"),
+        ("pyCombo", "/pycombo/"),
+        ("dfSchema", "/dataframe-schema/"),
+        ("Book: Learn Python by Building", "/learn-python-data-science/"),
     ]),
-    ("AI", []),
+    ("AI", [
+        ("LLM is just a banana", "/banana-is-just-a-banana/"),
+        ("Notes for machines (OKF)", "/okf-notes-for-machines/"),
+    ]),
     ("Talks & Publications", [
         ("Talks & presentations", "/talks-and-presentations/"),
         ("Papers", "/papers/"),
-        ("Book", "/learn-python-data-science/"),
     ]),
     ("Personal", [
         ("Data Journalism", "/data-journalism/"),
     ]),
 ]
 
-# Turn off the blog scaffolding we don't want in a flat, curated site
-DIRECT_TEMPLATES = []
+# Turn off the blog scaffolding we don't want in a flat, curated site.
+# `sitemap` is the one direct template we keep — it renders templates/sitemap.html
+# to /sitemap.xml so search engines can find every page.
+DIRECT_TEMPLATES = ['sitemap']
+SITEMAP_SAVE_AS = 'sitemap.xml'
 CATEGORY_SAVE_AS = ''
 CATEGORIES_SAVE_AS = ''
 TAG_SAVE_AS = ''
@@ -72,12 +90,15 @@ MARKDOWN = {
     'extension_configs': {
         'markdown.extensions.codehilite': {'css_class': 'highlight'},
         'markdown.extensions.extra': {},
+        'markdown.extensions.admonition': {},
         'markdown.extensions.meta': {},
         'pymdownx.arithmatex': {'generic': True},
     },
     'output_format': 'html5',
 }
-STATIC_PATHS = ['static']
+# `static` is copied to /static/; robots.txt is remapped to the site root.
+STATIC_PATHS = ['static', 'extra/robots.txt']
+EXTRA_PATH_METADATA = {'extra/robots.txt': {'path': 'robots.txt'}}
 DEFAULT_PAGINATION = False
 DELETE_OUTPUT_DIRECTORY = True
 LOAD_CONTENT_CACHE = False

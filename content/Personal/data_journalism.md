@@ -1,6 +1,8 @@
 Title: A short foray in Data Journalism (2012–2015)
 Date: 2020-05-02 00:20
 Slug: data-journalism
+Description: Almost an accidental, formative detour into data journalism — what we built, what it taught me, and how it ended.
+Image: /static/data_journalism/vis-gosduma-20.png
 
 *Almost an accidental, formative detour into data journalism — what we built, what it taught me, and how it ended.*
 

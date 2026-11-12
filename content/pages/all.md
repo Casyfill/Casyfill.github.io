@@ -1,16 +1,20 @@
 Title: All
 Slug: all
 Subtitle: Everything on the site, in one place.
+Description: Every post, paper, talk, and project on the site, in one place.
 
 <div class="listing">
   <h2>Work</h2>
   <ul>
-    <li><span class="yr">2026</span><span class="it"><a href="/pycombo/">Wrapping Combo, three times over</a> <span class="venue">post</span></span></li>
-    <li><span class="yr">2022</span><span class="it"><a href="/dataframe-schema/">DataFrame Schema</a> <span class="venue">project</span></span></li>
+    <li><span class="yr">2026</span><span class="it"><a href="/agate/">Agate: an Obsidian plugin that turns Bases into data visualizations with Vega</a> <span class="venue">Obsidian plugin</span></span></li>
+    <li><span class="yr">2026</span><span class="it"><a href="/pycombo/">pyCombo — wrapping a C++ community-detection algorithm for practical use</a> <span class="venue">post</span></span></li>
+    <li><span class="yr">2022</span><span class="it"><a href="/dataframe-schema/">dfSchema — a lightweight DataFrame schema enforcer</a> <span class="venue">project</span></span></li>
     <li><span class="yr">2020</span><span class="it"><a href="/mosplus/">MosPlus</a> <span class="venue">project</span></span></li>
+    <li><span class="yr">2018</span><span class="it"><a href="/learn-python-data-science/">Learn Python by Building Data Science Applications</a> <span class="venue">book · Packt</span></span></li>
   </ul>
   <h2>AI</h2>
   <ul>
+    <li><span class="yr">2026</span><span class="it"><a href="/okf-notes-for-machines/">Notes for machines, or why we adopted OKF</a> <span class="venue">note</span></span></li>
     <li><span class="yr">2026</span><span class="it"><a href="/banana-is-just-a-banana/">Working with AI, or "Sometimes, LLM is just a banana"</a> <span class="venue">note</span></span></li>
   </ul>
   <h2>Talks</h2>
@@ -24,17 +28,13 @@ Subtitle: Everything on the site, in one place.
   </ul>
   <h2>Papers</h2>
   <ul>
+    <li><span class="yr">2021</span><span class="it"><a href="/social-activity-networks-st-petersburg/">Social Activity Networks Shaping St. Petersburg</a> <span class="venue">HICSS, 2021</span></span></li>
+    <li><span class="yr">2020</span><span class="it"><a href="/zoning-st-petersburg/">Zoning of St. Petersburg Through the Prism of Social Activity Networks</a> <span class="venue">Procedia Computer Science, 2020</span></span></li>
+    <li><span class="yr">2018</span><span class="it"><a href="/digital-urban-sensing/">Digital Urban Sensing: A Multi-layered Approach</a> <span class="venue">arXiv, 2018</span></span></li>
+    <li><span class="yr">2018</span><span class="it"><a href="/twitter-connections-nyc/">Twitter Connections Shaping New York City</a> <span class="venue">HICSS, 2018</span></span></li>
     <li><span class="yr">2017</span><span class="it"><a href="/structure-of-311-requests/">Structure of 311 service requests as a signature of urban location</a> <span class="venue">PLoS ONE 12(10): e0186314, 2017</span></span></li>
     <li><span class="yr">2017</span><span class="it"><a href="/twitter-neighborhood-signature/">Twitter Activity Timeline as a Signature of Urban Neighborhood</a> <span class="venue">arXiv, 2017</span></span></li>
     <li><span class="yr">2017</span><span class="it"><a href="/geotagged-urban-mobility/">Geo-Tagged Social Media Data as a Proxy for Urban Mobility</a> <span class="venue">Springer, 2017</span></span></li>
-    <li><span class="yr">2018</span><span class="it"><a href="/digital-urban-sensing/">Digital Urban Sensing: A Multi-layered Approach</a> <span class="venue">arXiv, 2018</span></span></li>
-    <li><span class="yr">2018</span><span class="it"><a href="/twitter-connections-nyc/">Twitter Connections Shaping New York City</a> <span class="venue">HICSS, 2018</span></span></li>
-    <li><span class="yr">2020</span><span class="it"><a href="/zoning-st-petersburg/">Zoning of St. Petersburg Through the Prism of Social Activity Networks</a> <span class="venue">Procedia Computer Science, 2020</span></span></li>
-    <li><span class="yr">2021</span><span class="it"><a href="/social-activity-networks-st-petersburg/">Social Activity Networks Shaping St. Petersburg</a> <span class="venue">HICSS, 2021</span></span></li>
-  </ul>
-  <h2>Book</h2>
-  <ul>
-    <li><span class="yr">2018</span><span class="it"><a href="/learn-python-data-science/">Learn Python by Building Data Science Applications</a> <span class="venue">Packt, 2018</span></span></li>
   </ul>
   <h2>Press &amp; media</h2>
   <ul>

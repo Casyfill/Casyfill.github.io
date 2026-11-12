@@ -1,6 +1,7 @@
 Title: Talks & Presentations
 Slug: talks-and-presentations
 Subtitle: Talks, slides, and video — 2012–2022
+Description: Talks and presentations, 2012–2022 — slides and video on cities, data, and visualization.
 
 <div class="listing">
   <h2>Talks</h2>
