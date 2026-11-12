@@ -66,3 +66,5 @@ The tools didn't stand still. Altair picked up a prefix and is now [Vega-Altair]
 ## Where it went
 
 My own path drifted away from this kind of work. The team I'm on moved from economics and day-to-day editorial content to a data-product team building actual features, so public-facing visualization isn't the daily craft anymore, and I miss it more than I'd expected. The app I built to serve these specs is still running. The engineering held up; the harder problem, which I underrated at the time, was getting non-technical colleagues to use the full range of what it offered. A spec is elegant to people who think in specs; for everyone else, the distance between *possible* and *actually used* turned out to be the real design work, and the part I'd take a different run at today.
+
+The idea itself stayed with me. In 2026 I built [Agate](/agate/), an Obsidian plugin that draws Vega and Vega-Lite charts from notes — the same bet on specs, this time for my own vault.

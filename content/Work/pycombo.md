@@ -33,7 +33,7 @@ Where it sits today: **Leiden** (2019) is the fast Louvain successor that guaran
 
 ## The algorithm was a file someone handed me
 
-I was working in Stanislav Sobolevsky's lab on a string of urban-network papers, and Combo was our default tool for pulling structure out of these graphs — recovering, say, the latent districts of a city from a social-activity network (see _[Social Activity Networks Shaping St. Petersburg](https://scholarspace.manoa.hawaii.edu/items/9f2923ae-874a-4e24-971b-b88c72e08e8d)_, HICSS 2021). The way I "had" the algorithm, though, was literally a file: someone handed me the C++, and I ran it.
+I was working in Stanislav Sobolevsky's lab on a string of urban-network papers, and Combo was our default tool for pulling structure out of these graphs — recovering, say, the latent districts of a city from a social-activity network (see _[Social Activity Networks Shaping St. Petersburg](/social-activity-networks-st-petersburg/)_, HICSS 2021). The way I "had" the algorithm, though, was literally a file: someone handed me the C++, and I ran it.
 
 The reference implementation behaves like a classic research artifact. You clone [Alexander Belyi's repo](https://github.com/Alexander-Belyi/Combo), run `make`, and you get `comboCPP` — a command-line program that reads a graph from a Pajek `.net` file, writes the community labels to a `.txt`, and prints the achieved modularity to stdout.
 
@@ -145,7 +145,7 @@ That quality isn't free: Combo is markedly slower and hungrier for memory than L
 
 ## Where it's ended up
 
-I started `pycombo` to scratch my own itch, but the part I'm proudest of is what came after. It's been installed more than 80,000 times, and it's quietly become the default way to run Combo from Python — the workhorse behind urban-structure analyses I worked on, like recovering the social fabric of [St. Petersburg](https://scholarspace.manoa.hawaii.edu/items/9f2923ae-874a-4e24-971b-b88c72e08e8d) from social-media activity, and a baseline that turns up in independent [community-detection benchmarks](https://arxiv.org/abs/2302.14698). None of that reach came from the algorithm itself — it came from the unglamorous work of making the algorithm usable, and keeping it usable for the better part of a decade.
+I started `pycombo` to scratch my own itch, but the part I'm proudest of is what came after. It's been installed more than 80,000 times, and it's quietly become the default way to run Combo from Python — the workhorse behind urban-structure analyses I worked on, like recovering the social fabric of [St. Petersburg](/social-activity-networks-st-petersburg/) from social-media activity, and a baseline that turns up in independent [community-detection benchmarks](https://arxiv.org/abs/2302.14698). None of that reach came from the algorithm itself — it came from the unglamorous work of making the algorithm usable, and keeping it usable for the better part of a decade.
 
 ## What I took away
 

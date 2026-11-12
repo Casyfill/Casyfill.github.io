@@ -118,7 +118,7 @@ html[data-theme="dark"]{
 .highlight .kt{color:var(--syn-type);}
 .highlight .nf,.highlight .fm,.highlight .na{color:var(--syn-func);}
 .highlight .nb,.highlight .bp,.highlight .nc,.highlight .nn,.highlight .ne{color:var(--syn-type);}
-.highlight .nd{color:var(--syn-keyword);}
+.highlight .nd,.highlight .nt{color:var(--syn-keyword);}
 .highlight .nv,.highlight .vc,.highlight .vg,.highlight .vi{color:var(--syn-name);}
 .highlight .no{color:var(--syn-number);}
 .highlight .s,.highlight .sa,.highlight .sb,.highlight .sc,.highlight .dl,.highlight .sd,.highlight .s2,.highlight .se,.highlight .sh,.highlight .si,.highlight .sx,.highlight .sr,.highlight .s1,.highlight .ss{color:var(--syn-string);}

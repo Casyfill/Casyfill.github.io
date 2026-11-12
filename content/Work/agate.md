@@ -28,7 +28,7 @@ Image: /static/agate/base-to-chart.jpg
 
 ## What to use it for
 
-To me, Obsidian's main value is its simplicity and flexibility: there is no declared structure or format for your notes. As a result, finding a structure that works is the user's own quest — a hard one, and never a one-time thing. That's why I wanted Vega here: freedom in how I visualize my notes, combined with charts I can reuse and that stay live as the notes and their structure change.
+To me, Obsidian's main value is its simplicity and flexibility: there is no declared structure or format for your notes. As a result, finding a structure that works is the user's own quest — a hard one, and never a one-time thing. That's why I wanted Vega here — a tool I've relied on since at least 2018, when I [gave a talk about it](/nyc-dataviz-2018/): freedom in how I visualize my notes, combined with charts I can reuse and that stay live as the notes and their structure change.
 
 [Vega Visualizations](https://community.obsidian.md/plugins/obsidian-vega) already renders Vega in Obsidian, but with the data written into the spec. Agate connects it to Bases, and I now use it daily.
 

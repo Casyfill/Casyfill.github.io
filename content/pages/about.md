@@ -16,4 +16,4 @@ I'm drawn to tools and services somehow connected to the physical world. I got h
 
 Before moving to NYC, I co-created [Branchpoint](https://www.facebook.com/BranchPoint/), a non-profit teaching parametric design project, and perhaps one day I'll get back to it. And I teach at both university and school level.
 
-I write here now and then — most recently on [packaging a research algorithm so strangers can install it](/pycombo/) and on [what changes when your notes' heaviest readers are agents](/okf-notes-for-machines/). The [full list](/all/) has the papers, talks, and older work.
+I write here now and then — most recently on [Agate, my Obsidian plugin that draws charts from notes](/agate/), on [packaging a research algorithm so strangers can install it](/pycombo/), and on [what changes when your notes' heaviest readers are agents](/okf-notes-for-machines/). The [full list](/all/) has the papers, talks, and older work.

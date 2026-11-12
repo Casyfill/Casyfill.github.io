@@ -11,6 +11,6 @@ Description: The fuller St. Petersburg study — three layers of social data, on
 
 The longer, fuller version of the [Procedia paper](/zoning-st-petersburg/). We added a third layer to the social-activity network: alongside geo-tagged VKontakte posts and Google Places, we brought in "Nash Peterburg" ("Our Petersburg"), the city's portal for reporting local problems — St. Petersburg's answer to 311.
 
-Stacking the layers and running community detection on the combined network gives a zoning of the city that tracks its socioeconomic geography more faithfully than any single layer alone — the kind of read that's useful for planning, transport, and real estate. My part was the network analysis and clustering.
+Stacking the layers and running community detection — Combo, through [`pycombo`](/pycombo/) — on the combined network gives a zoning of the city that tracks its socioeconomic geography more faithfully than any single layer alone — the kind of read that's useful for planning, transport, and real estate. My part was the network analysis and clustering.
 
 <!-- "My part" is inferred from author order (2nd author) and your clustering/network focus — Philipp, please confirm or correct. -->
