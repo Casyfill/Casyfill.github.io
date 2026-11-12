@@ -2,6 +2,8 @@ Title: The same sale, twice, and no way to know
 Date: 2026-08-28 12:00
 Modified: 2026-10-02 15:00
 Slug: matching-without-labels
+Status: draft
+Category: Cases
 Image: /static/cases/calibration-two-populations.png
 Description: Deciding whether two records describe the same real-world sale, with no labels, no stated cost of a wrong answer, and products downstream that break quietly.
 

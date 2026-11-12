@@ -2,6 +2,7 @@ Title: The model was the cheapest thing in the request
 Date: 2026-09-18 12:00
 Slug: the-cheapest-thing-in-the-request
 Status: draft
+Category: Cases
 Description: A hard latency budget on a prediction service, and the discovery that the model spent almost none of it — the budget was going to fetching, not to thinking.
 
 *I kept arguing about which model. The budget was being spent somewhere else entirely.*

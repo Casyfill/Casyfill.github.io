@@ -1,6 +1,8 @@
 Title: A flag that was right and useless
 Date: 2026-09-11 12:00
 Slug: right-and-useless
+Status: draft
+Category: Cases
 Description: A listing flag with near-perfect recall that nobody could act on, and a language model that failed by rounding the hard cases up rather than by inventing anything.
 
 *It caught everything it was supposed to catch. That turned out to be the problem.*

@@ -43,16 +43,11 @@ DRAFT_SAVE_AS = 'drafts/{slug}/index.html'
 
 # ---- Curated nav (no auto taxonomy). Empty group => "soon". ----
 NAV_GROUPS = [
-    # Cases = write-ups of shipped production work (the evidence). Distinct from
-    # "Work" below, which is personal projects.
-    ("Cases", [
-        ("Matching without labels", "/matching-without-labels/"),
-        ("Right and useless", "/right-and-useless/"),
-        ("All cases", "/cases/"),
-    ]),
     ("Work", [
-        ("Wrapping Combo", "/pycombo/"),
-        ("DataFrame Schema", "/dataframe-schema/"),
+        ("Agate: Obsidian plugin", "/agate/"),
+        ("pyCombo", "/pycombo/"),
+        ("dfSchema", "/dataframe-schema/"),
+        ("Book: Learn Python by Building", "/learn-python-data-science/"),
     ]),
     ("AI", [
         ("LLM is just a banana", "/banana-is-just-a-banana/"),
@@ -61,7 +56,6 @@ NAV_GROUPS = [
     ("Talks & Publications", [
         ("Talks & presentations", "/talks-and-presentations/"),
         ("Papers", "/papers/"),
-        ("Book", "/learn-python-data-science/"),
     ]),
     ("Personal", [
         ("Data Journalism", "/data-journalism/"),
@@ -96,6 +90,7 @@ MARKDOWN = {
     'extension_configs': {
         'markdown.extensions.codehilite': {'css_class': 'highlight'},
         'markdown.extensions.extra': {},
+        'markdown.extensions.admonition': {},
         'markdown.extensions.meta': {},
         'pymdownx.arithmatex': {'generic': True},
     },

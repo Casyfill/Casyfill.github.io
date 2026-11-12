@@ -1,5 +1,6 @@
 Title: Cases
 Slug: cases
+Status: draft
 Subtitle: Nine years of production ML, written up one problem at a time.
 Description: Case write-ups from nine years of production machine learning at StreetEasy — entity resolution, serving under a latency budget, inferring missing attributes, and what each one taught me.
 

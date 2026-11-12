@@ -2,17 +2,17 @@ Title: Learn Python by Building Data Science Applications
 Date: 2018-01-01
 Slug: learn-python-data-science
 Subtitle: Packt, 2018
-Description: A project-based Python intro that grew out of a course my brother and I taught — and the high school where we both graduated.
+Description: A project-based Python textbook that grew from the high school course David and I taught.
 Image: /static/book/book.jpg
 
-*A project-based Python intro that grew out of a course my brother and I taught — and the high school where we both graduated.*
+*A project-based Python textbook that grew from the high school course David and I taught.*
 
 ---
 
 <div class="marginnote"><img src="/static/book/book.jpg" alt="Cover of Learn Python by Building Data Science Applications, Packt 2018.">
-<strong>Learn Python by Building Data Science Applications.</strong> Packt, 2018 · co-authored with David Katz.</div>
+<strong>Learn Python by Building Data Science Applications.</strong> Packt, 2018 · co-authored with <a href="https://www.linkedin.com/in/dbkatz1989/">David Katz</a>.</div>
 
-Co-authored with **David Katz**. The book grew out of a Python and data course we taught together at **Liceum 33 in Kazan** around 2017 — and became a Packt title in 2018.
+Co-authored with **[David Katz](https://www.linkedin.com/in/dbkatz1989/)**. The book grew out of a Python and data course we taught together at **Liceum 33 in Kazan** around 2017 — and became a Packt title in 2018.
 
 <div class="marginnote"><img src="/static/book/simulations.png" alt="Simulating Animal Population. Grid of Monte Carlo simulation plots in blue and red.">
 <strong>Simulating Animal Population with Monte Carlo.</strong> From the modeling chapters — many draws, one question.</div>

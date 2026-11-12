@@ -1,4 +1,4 @@
-Title: Wrapping Combo, three times over
+Title: pyCombo — wrapping a C++ community-detection algorithm for practical use
 Date: 2026-06-15 20:08
 Slug: pycombo
 Description: Turning a research C++ algorithm into something anyone can pip install — and what a decade of maintaining it taught me about shipping software that lasts.
