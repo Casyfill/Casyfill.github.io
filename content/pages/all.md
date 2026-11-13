@@ -4,7 +4,7 @@ Subtitle: Everything on the site, in one place.
 Description: Every post, paper, talk, and project on the site, in one place.
 
 <div class="listing">
-  <h2>Work</h2>
+  <h2>Projects</h2>
   <ul>
     <li><span class="yr">2026</span><span class="it"><a href="/agate/">Agate: an Obsidian plugin that turns Bases into data visualizations with Vega</a> <span class="venue">Obsidian plugin</span></span></li>
     <li><span class="yr">2026</span><span class="it"><a href="/pycombo/">pyCombo — wrapping a C++ community-detection algorithm for practical use</a> <span class="venue">post</span></span></li>

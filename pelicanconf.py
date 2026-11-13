@@ -43,7 +43,7 @@ DRAFT_SAVE_AS = 'drafts/{slug}/index.html'
 
 # ---- Curated nav (no auto taxonomy). Empty group => "soon". ----
 NAV_GROUPS = [
-    ("Work", [
+    ("Projects", [
         ("Agate: Obsidian plugin", "/agate/"),
         ("pyCombo", "/pycombo/"),
         ("dfSchema", "/dataframe-schema/"),
