@@ -8,12 +8,20 @@ Description: Philipp Kats — Senior Applied Scientist at StreetEasy (Zillow), w
 <span class="marginnote">![photo](/static/photo.jpeg)</span>
 
 
-Hi! I'm Philipp — a Senior Applied Scientist at StreetEasy. I work on [home valuation](https://streeteasy.com/home-value-estimate), entity matching, and recommendation — from the data and the models through to the services and APIs that ship them. In practice, I'm something like a product engineer for ML: I work directly with product managers, and often with design, and build the capabilities ahead of the ask — so we can meet it in the middle.
+Hi! I'm Philipp — a Senior Applied Scientist at Zillow. I build machine-learning products end to end: from the data and the models through to the services and APIs that ship them.
 
-Nine years on the same domain, which is long enough to see things through. The valuation model covers about 1.5 million New York homes; the entity matching behind comps and market reports runs daily; the API serving both handles a few thousand requests a minute. Most of what I've learned lives in the gap between a model that works in a notebook and one that works on a Tuesday morning.
+I work primarily on home valuation, property data, entity matching, and recommendations, directly with product managers and design. My focus is on what several products need in common: data and models that serve more than one of them, and infrastructure that is already there when the ask arrives.
 
-I'm drawn to tools and services somehow connected to the physical world: cities and spatial data, visualization, and small tools other people can actually use — like [pyCombo](/pycombo/) and [Agate](/agate/). I got here the long way around — first an architect, then an urban planner, then a data journalist, and now — applied scientist. I've long stopped treating those as separate careers — it's one way of working that's just had several names.
+Much of what I've learned about ML lives in the gap between a model that works in a notebook and one that works for months without you even noticing.
 
-Before moving to NYC, I co-created [Branchpoint](https://www.facebook.com/BranchPoint/), a non-profit teaching parametric design project, and perhaps one day I'll get back to it. And I teach at both university and school level.
+I'm drawn to tools and services somehow connected to the physical world — cities, spatial data — and to visualization and small tools other people can actually use. I got here the long way around — first an architect, then an urban planner, then a data journalist, and now an applied scientist. I've long stopped treating those as separate careers — it's one way of working that's just had several names.
 
-I write here now and then — most recently on [what changes when your notes' heaviest readers are agents](/okf-notes-for-machines/). The [full list](/all/) has the papers, talks, and older work.
+Before moving to NYC, I taught Urban Informatics at university and Data Science at school, and co-created [Branchpoint](https://www.facebook.com/BranchPoint/), a non-profit project teaching parametric design — perhaps one day I'll get back to it.
+
+I keep a few pet projects and write here now and then. Some places to start:
+
+- [Agate](/agate/) — an Obsidian plugin that draws charts from your notes.
+- [pyCombo](/pycombo/) — packaging a research algorithm so strangers can install it, three times over.
+- [A short foray in data journalism](/data-journalism/) — what we built, what it taught me, and how it ended.
+
+The [full list](/all/) has the papers, talks, and older work.
