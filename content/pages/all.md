@@ -4,6 +4,11 @@ Subtitle: Everything on the site, in one place.
 Description: Every post, paper, talk, and project on the site, in one place.
 
 <div class="listing">
+  <h2>Cases</h2>
+  <ul>
+    <li><span class="yr">2026</span><span class="it"><a href="/okf-notes-for-machines/">Notes for machines, or why we adopted OKF</a> <span class="venue">note</span></span></li>
+    <li><span class="yr">2026</span><span class="it"><a href="/banana-is-just-a-banana/">This is not a pipe</a> <span class="venue">note</span></span></li>
+  </ul>
   <h2>Projects</h2>
   <ul>
     <li><span class="yr">2026</span><span class="it"><a href="/agate/">Agate: an Obsidian plugin that turns Bases into data visualizations with Vega</a> <span class="venue">Obsidian plugin</span></span></li>
@@ -11,11 +16,6 @@ Description: Every post, paper, talk, and project on the site, in one place.
     <li><span class="yr">2022</span><span class="it"><a href="/dataframe-schema/">dfSchema — a lightweight DataFrame schema enforcer</a> <span class="venue">project</span></span></li>
     <li><span class="yr">2020</span><span class="it"><a href="/mosplus/">MosPlus</a> <span class="venue">project</span></span></li>
     <li><span class="yr">2018</span><span class="it"><a href="/learn-python-data-science/">Learn Python by Building Data Science Applications</a> <span class="venue">book · Packt</span></span></li>
-  </ul>
-  <h2>AI</h2>
-  <ul>
-    <li><span class="yr">2026</span><span class="it"><a href="/okf-notes-for-machines/">Notes for machines, or why we adopted OKF</a> <span class="venue">note</span></span></li>
-    <li><span class="yr">2026</span><span class="it"><a href="/banana-is-just-a-banana/">Working with AI, or "Sometimes, LLM is just a banana"</a> <span class="venue">note</span></span></li>
   </ul>
   <h2>Talks</h2>
   <ul>

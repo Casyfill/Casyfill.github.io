@@ -1,6 +1,6 @@
 Title: Cases
-Slug: cases
 Status: draft
+Slug: cases
 Subtitle: Nine years of production ML, written up one problem at a time.
 Description: Case write-ups from nine years of production machine learning at StreetEasy — entity resolution, serving under a latency budget, inferring missing attributes, and what each one taught me.
 
@@ -12,6 +12,8 @@ Each one follows the same shape: what the problem was, the constraint that made 
   <ul>
     <li><span class="yr">2026</span><span class="it"><a href="/right-and-useless/">A flag that was right and useless</a> <span class="venue">extraction from text</span></span></li>
     <li><span class="yr">2026</span><span class="it"><a href="/matching-without-labels/">The same sale, twice, and no way to know</a> <span class="venue">entity resolution</span></span></li>
+    <li><span class="yr">2026</span><span class="it"><a href="/okf-notes-for-machines/">Notes for machines, or why we adopted OKF</a> <span class="venue">note</span></span></li>
+    <li><span class="yr">2026</span><span class="it"><a href="/banana-is-just-a-banana/">This is not a pipe</a> <span class="venue">note</span></span></li>
     <!-- Cases land here as they ship. Nov: serving under a latency budget.
          Copy the line above as the format; keep it one per case, newest first. -->
   </ul>

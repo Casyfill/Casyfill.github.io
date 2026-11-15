@@ -43,15 +43,17 @@ DRAFT_SAVE_AS = 'drafts/{slug}/index.html'
 
 # ---- Curated nav (no auto taxonomy). Empty group => "soon". ----
 NAV_GROUPS = [
+    # Cases = write-ups of shipped production work (the evidence). Distinct from
+    # "Projects" below, which is personal projects.
+    ("Cases", [
+        ("This is not a pipe", "/banana-is-just-a-banana/"),
+        ("Notes for machines (OKF)", "/okf-notes-for-machines/"),
+    ]),
     ("Projects", [
         ("pyCombo", "/pycombo/"),
         ("dfSchema", "/dataframe-schema/"),
         ("Agate: Obsidian plugin", "/agate/"),
-        ("Book: Learn Python by Building", "/learn-python-data-science/"),
-    ]),
-    ("AI", [
-        ("LLM is just a banana", "/banana-is-just-a-banana/"),
-        ("Notes for machines (OKF)", "/okf-notes-for-machines/"),
+        ("Learn Python by Building", "/learn-python-data-science/"),
     ]),
     ("Talks & Publications", [
         ("Talks & presentations", "/talks-and-presentations/"),
