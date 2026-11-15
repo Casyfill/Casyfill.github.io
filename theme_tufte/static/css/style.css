@@ -10,7 +10,7 @@
 html[data-theme="dark"]{
   --bg:#1a1b26; --surface:#202331; --surface-2:#24283b; --code-bg:#24283b;
   --text:#a9b1d6; --muted:#7e88b8; --accent:#7aa2f7; --hairline:#2a2e42; --heading:#c0caf5; --avatar-bg:#7aa2f7;
-  --mark:rgba(249,168,0,.32);
+  --mark:rgba(237,34,93,.42);
 }
 
 *{box-sizing:border-box;}
