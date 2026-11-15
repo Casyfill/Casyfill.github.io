@@ -16,6 +16,19 @@ It's a personal site — **warm, quirky, reflective** — and represents my inte
 - **Sensitive context** (I'm Russian; the news agency I worked at was state-aligned): state it plainly, once, with dignity. Don't foreground "state media," and don't be defensive or apologetic — pride-forward. Hedge contested claims ("by some accounts").
 - Credits go compactly inside captions: `Code: … · Design: … · Editor/analyst: … · Director: …`.
 
+## Publishable-content rule
+
+A piece goes live only if it passes all six. Drafts that fail stay `Status: draft`.
+
+1. **The object is concrete in the first 100 words.** A stranger can say what the thing is, with one example (a listing, a pair of records). Hide the employer's names, keep the object.
+2. **A picture of the problem appears before the first scroll ends**, and a second one shows the decision or the result. Text-only pieces don't ship.
+3. **I wrote the spine.** I draft it, or retell it in my own words. An assistant may fix grammar, check proper names and suggest structure. If I can't retell a section without looking, it goes.
+4. **It survives a cold read.** A day later I read it once, top to bottom; any paragraph I have to reread gets rewritten or cut.
+5. **Every general claim sits next to its instance.** A quotable line with no case beside it is removed.
+6. **Numbers are cleared and length is capped** — about 1,200 words for a case.
+
+For an assistant working in this repo: don't draft the spine of a piece, and don't mark a piece ready to publish. Checks 3 and 4 are mine to make.
+
 ## Markup conventions (theme_tufte)
 
 - **Margin note** — the default aside for an image + caption/credits. Put the image and caption text *directly* inside the div; **do not** wrap it in `<figure>`/`<figcaption>`:

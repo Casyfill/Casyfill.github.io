@@ -1,15 +1,18 @@
 Title: This is not a pipe
 Date: 2026-07-21 12:00
 Slug: banana-is-just-a-banana
+Image: /static/cases/unit-parsing-flow.png
 Description: Two cases of working with an LLM on our own tools — and how, each time, the AI ended up somewhere other than where I planned to put it.
 
-*Working with a tool, on a tool — and where the line between them moved.*
+*Twice I planned where the AI would go in my work. Twice it ended up somewhere else, and changed what was worth building.*
 
 ---
 
 <!-- review note: domain deliberately abstracted; no product, dataset, or figures named. -->
 
-In *Systems Thinking*, Jamshid Gharajedaghi writes that "dissolving a problem transforms it and generates a whole new set of concerns." Solving a major constraint does not just expose the next bottleneck in an otherwise unchanged system. The conditions of success change, and the system has to change with them.
+Twice I planned where an LLM would fit into my work, and twice it ended up somewhere else. I planned a model, and the AI did the research instead. I planned AI in the product, and it became the builder.
+
+Jamshid Gharajedaghi has a line for this in *Systems Thinking*: "dissolving a problem transforms it and generates a whole new set of concerns." Solving a major constraint does not just expose the next bottleneck in an otherwise unchanged system. The conditions of success change, and the system has to change with them.
 
 I keep coming back to this now that much of my work is done together with an LLM. We build tools, and we build them with a tool. The two cases below are small, but in both, the constraint I had planned around disappeared — and <mark>what replaced it was not the next item on the same list</mark>. Where the AI belonged changed, who knew what changed, and so did what was worth building at all.
 
@@ -54,7 +57,7 @@ In the first case, the model contradicted my *method*, and it was right: my know
 
 ## What moved
 
-In the first case I planned a model, and the AI did the research instead. In the second I planned AI in the product, and it became the builder. Each time, removing one constraint did more than reveal the next one. <mark>It changed what was worth building</mark>: once looking is cheap, a model can be unnecessary; once code is cheap, the questions are about data, specification and judgment. And it changed my part in the work: less writing, more choosing which problem is worth solving, where the agent's work ends, and which source of knowledge to trust.
+Each time, removing one constraint did more than reveal the next one. <mark>It changed what was worth building</mark>: once looking is cheap, a model can be unnecessary; once code is cheap, the questions are about data, specification and judgment. And it changed my part in the work: less writing, more choosing which problem is worth solving, where the agent's work ends, and which source of knowledge to trust.
 
 I don't have answers here, but I have questions:
 

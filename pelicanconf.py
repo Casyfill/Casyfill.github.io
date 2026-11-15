@@ -43,15 +43,14 @@ DRAFT_SAVE_AS = 'drafts/{slug}/index.html'
 
 # ---- Curated nav (no auto taxonomy). Empty group => "soon". ----
 NAV_GROUPS = [
-    # Cases = write-ups of shipped production work (the evidence). Distinct from
-    # "Projects" below, which is personal projects.
-    ("Cases", [
+    # Notes = short pieces on how I work. Rename back to "Cases" once the
+    # write-ups of shipped production work (content/Cases/*, drafts) are live.
+    ("Notes", [
         ("This is not a pipe", "/banana-is-just-a-banana/"),
         ("Notes for machines (OKF)", "/okf-notes-for-machines/"),
     ]),
     ("Projects", [
         ("pyCombo", "/pycombo/"),
-        ("dfSchema", "/dataframe-schema/"),
         ("Agate: Obsidian plugin", "/agate/"),
         ("Learn Python by Building", "/learn-python-data-science/"),
     ]),
@@ -83,6 +82,7 @@ SOCIAL = (
     ('GitHub', 'https://github.com/Casyfill'),
     ('LinkedIn', 'https://www.linkedin.com/in/philipp-kats/'),
     ('CV', 'https://github.com/Casyfill/cv/releases/download/v2.2/main.pdf'),
+    ('Email', 'mailto:casyfill@gmail.com'),
 )
 
 MARKUP = ("md",)

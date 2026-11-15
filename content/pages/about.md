@@ -20,6 +20,7 @@ Before moving to NYC, I taught Urban Informatics at university and Data Science 
 
 I keep a few pet projects and write here now and then. Some places to start:
 
+- [This is not a pipe](/banana-is-just-a-banana/) — two cases of working with an LLM on our own tools, and how the AI ended up somewhere other than where I planned to put it.
 - [Agate](/agate/) — an Obsidian plugin that draws charts from your notes.
 - [pyCombo](/pycombo/) — packaging a research algorithm so strangers can install it, three times over.
 - [A short foray in data journalism](/data-journalism/) — what we built, what it taught me, and how it ended.

@@ -4,7 +4,7 @@ Subtitle: Everything on the site, in one place.
 Description: Every post, paper, talk, and project on the site, in one place.
 
 <div class="listing">
-  <h2>Cases</h2>
+  <h2>Notes</h2>
   <ul>
     <li><span class="yr">2026</span><span class="it"><a href="/okf-notes-for-machines/">Notes for machines, or why we adopted OKF</a> <span class="venue">note</span></span></li>
     <li><span class="yr">2026</span><span class="it"><a href="/banana-is-just-a-banana/">This is not a pipe</a> <span class="venue">note</span></span></li>
