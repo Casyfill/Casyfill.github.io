@@ -2,6 +2,7 @@ Title: City through Foursquare
 Date: 2012-04-14
 Slug: city-through-foursquare
 Subtitle: Strelka Institute · 2012
+Description: My capstone at the Strelka Institute, 2012 — reading Moscow through Foursquare check-ins. Slides.
 
 [slides](https://www.dropbox.com/s/ao1bcv225u7xnzl/2012_04_14_presentation%20foursquare.pptx?dl=0)
 

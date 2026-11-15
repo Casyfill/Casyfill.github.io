@@ -2,7 +2,7 @@ Title: Find your spot. Custom boundaries
 Date: 2018-01-01
 Slug: find-your-spot
 Subtitle: GeoNYC · 2018
-Description: Talk: finding your spot in a city with custom boundaries — GeoNYC, 2018. Slides and video.
+Description: Talk: finding your spot in a city with custom boundaries — GeoNYC, 2018. Slides.
 
 [slides](https://docs.google.com/presentation/d/1SECOPRQB4gmTur-L67Q9TGDOBC7o5o-IJVgDdb1kDek/edit)
 
@@ -26,7 +26,7 @@ By 2018 our users had quietly drawn about forty thousand of them. That struck me
 It was also my excuse to solve a harder problem: how do you even draw forty thousand overlapping polygons on one map? Plot them the usual way and you get an ink-black smear. This is the quiet trouble with big-data visualization — the tools are few, the technique is fiddly, and the story is hard to compose — but it pays off, because a simple aggregate often hides the very thing you're after. The answer here was datashader, fairly new at the time, which I'll come back to.
 
 <figure><img src="/static/presentations_talks/2018_geo_nyc/overall.png" alt="All ~40,000 custom search boundaries over New York City, rendered as a glowing density map; Manhattan blazes and the boroughs' structure emerges.">
-<figcaption><strong>The city, drawn by its searchers.</strong> Every custom boundary at once. The shape of New York falls out on its own, brightest where people search the most. 2 Squares around union square - our default shape (see above).</figcaption></figure>
+<figcaption><strong>The city, drawn by its searchers.</strong> Every custom boundary at once. The shape of New York falls out on its own, brightest where people search the most. The two squares around Union Square are the tool's default shape (see above).</figcaption></figure>
 
 Even plotted as-is, the result was breath-taking. The structure of the city emerges on its own: people fence their searches along highways and big avenues. A few mega-polygons stretch clear across the map, drawn by people searching whole boroughs at once. And one spot in Queens lit up in a way I didn't expect.
 
