@@ -60,6 +60,7 @@ NAV_GROUPS = [
     ]),
     ("Personal", [
         ("Data Journalism", "/data-journalism/"),
+        ("Mapping my travels", "/travel-maps/"),
     ]),
 ]
 

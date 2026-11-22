@@ -44,6 +44,7 @@ Description: Every post, paper, talk, and project on the site, in one place.
   </ul>
   <h2>Personal</h2>
   <ul>
+    <li><span class="yr">2026</span><span class="it"><a href="/travel-maps/">Mapping my travels, again, but better</a> <span class="venue">note</span></span></li>
     <li><span class="yr">2015</span><span class="it"><a href="/data-journalism/">A short foray in data journalism</a> <span class="venue">Ria Novosti, 2012–15</span></span></li>
   </ul>
 </div>
